@@ -31,6 +31,22 @@ export default defineConfig({
 					label: '6. Các Giải Đấu',
 					items: [{ autogenerate: { directory: 'giaidau' } }],
 				},
+				{
+					label: '7. Chuyển Nhượng & Tài Chính',
+					items: [{ autogenerate: { directory: 'chuyennhuong' } }],
+				},
+				{
+					label: '8. Lịch Sử & Cột Mốc',
+					items: [{ autogenerate: { directory: 'lichsu' } }],
+				},
+				{
+					label: '9. HLV & Trường Phái',
+					items: [{ autogenerate: { directory: 'hlv' } }],
+				},
+				{
+					label: '10. Văn Hóa & Derby',
+					items: [{ autogenerate: { directory: 'vanhoa' } }],
+				},
 			],
 		}),
 	],
