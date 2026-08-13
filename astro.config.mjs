@@ -6,6 +6,7 @@ export default defineConfig({
 		starlight({
 			title: 'Footypedia',
 			description: 'Bách khoa toàn thư bóng đá bài bản',
+			customCss: ['./src/styles/custom.css'], // <-- Thêm dòng này vào
 			sidebar: [
 				{
 					label: '1. Luật Bóng Đá',

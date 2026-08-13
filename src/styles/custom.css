@@ -1,0 +1,4 @@
+/* Ẩn hoàn toàn các Tầng chưa chọn trên thanh Sidebar */
+starlight-sidebar details:not([open]) {
+  display: none !important;
+}
