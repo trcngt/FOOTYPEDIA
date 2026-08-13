@@ -10,7 +10,7 @@ hero:
       icon: right-arrow
       variant: primary
     - text: Khám phá Vị Trí
-      link: /vitri/false9/
+      link: /vitri/sweeper-keeper/
       icon: open-book
 ---
 
@@ -19,16 +19,27 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## Khám phá chủ đề
 
 <CardGrid stagger>
-	<Card title="Luật Chơi Cơ Bản" icon="open-book">
-		Giải thích chi tiết về Việt vị, VAR, thẻ phạt và luật chạm tay.
-	</Card>
-	<Card title="Vị Trí & Vai Trò" icon="pencil">
-		Phân biệt Tiền vệ mỏ neo, False 9, Inverted Fullback và Sweeper Keeper.
-	</Card>
-	<Card title="Sơ Đồ Chiến Thuật" icon="setting">
-		Các sơ đồ 4-3-3, 4-2-3-1, 3-5-2 cùng triết lý Gegenpressing, Tiki-taka.
-	</Card>
-	<Card title="Hồ Sơ Cầu Thủ" icon="magnifier">
-		Phân tích chi tiết phong cách thi đấu của các siêu sao thế giới.
-	</Card>
+	<a href="/luatchoi/viet-vi/" style="text-decoration: none;">
+		<Card title="Luật Chơi Cơ Bản" icon="open-book">
+			Giải thích chi tiết về Việt vị, VAR, thẻ phạt và luật chạm tay.
+		</Card>
+	</a>
+
+	<a href="/vitri/sweeper-keeper/" style="text-decoration: none;">
+		<Card title="Vị Trí & Vai Trò" icon="pencil">
+			Phân biệt Tiền vệ mỏ neo, False 9, Inverted Fullback và Sweeper Keeper.
+		</Card>
+	</a>
+
+	<a href="/chienthuat/so-do-433/" style="text-decoration: none;">
+		<Card title="Sơ Đồ Chiến Thuật" icon="setting">
+			Các sơ đồ 4-3-3, 4-2-3-1, 3-5-2 cùng triết lý Gegenpressing, Tiki-taka.
+		</Card>
+	</a>
+
+	<a href="/cauthu/lionel-messi/" style="text-decoration: none;">
+		<Card title="Hồ Sơ Cầu Thủ" icon="magnifier">
+			Phân tích chi tiết phong cách thi đấu của các siêu sao thế giới.
+		</Card>
+	</a>
 </CardGrid>
