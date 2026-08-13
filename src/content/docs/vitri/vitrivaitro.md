@@ -1,6 +1,7 @@
 ---
-title: Vị Trí & Vai Trò Cầu Thủ
-description: Tổng quan các vị trí trên sân bóng đá từ thủ môn đến tiền đạo.
+title: 2.0 Tổng Quan Vị Trí & Vai Trò
+description: Hướng dẫn cơ bản về các vị trí thi đấu trên sân bóng.
+sidebar:
   order: 0
 ---
 
