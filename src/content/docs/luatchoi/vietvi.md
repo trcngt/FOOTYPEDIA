@@ -1,6 +1,8 @@
 ---
 title: 1.1 Luật Việt Vị (Offside)
-description: Hướng dẫn chi tiết cách nhận biết tình huống việt vị cho người mới.
+description: Hướng dẫn chi tiết cách nhận biết tình huống việt vị.
+sidebar:
+  order: 1
 ---
 
 **Việt vị** (Offside) là quy định hạn chế khả năng cầu thủ đội tấn công đứng "cắm" sẵn ở gần khung thành đối phương để chờ đường chuyền.

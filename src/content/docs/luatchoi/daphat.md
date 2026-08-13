@@ -1,6 +1,8 @@
 ---
 title: 1.5 Đá Phạt Trực Tiếp & Gián Tiếp
 description: Phân biệt hai hình thức đá phạt cơ bản trong bóng đá.
+sidebar:
+  order: 5
 ---
 
 Khi một cầu thủ bị phạm lỗi ngoài vòng cấm, trọng tài sẽ cho đội bị phạm lỗi hưởng một quả đá phạt (Free-kick).

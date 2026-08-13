@@ -1,6 +1,8 @@
 ---
 title: 1.2 Công Nghệ VAR
-description: Tìm hiểu 4 trường hợp VAR được phép can thiệp vào trận đấu.
+description: Tìm hiểu 4 trường hợp VAR được phép can thiệp.
+sidebar:
+  order: 2
 ---
 
 **VAR** (Video Assistant Referee - Trợ lý trọng tài video) được sử dụng để hỗ trợ trọng tài chính giảm thiểu các sai sót nghiêm trọng.

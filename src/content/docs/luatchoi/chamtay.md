@@ -1,6 +1,8 @@
 ---
 title: 1.3 Luật Bóng Chạm Tay (Handball)
-description: Phân biệt các trường hợp bị thổi phạt và không bị phạt khi bóng chạm tay.
+description: Phân biệt các trường hợp bị thổi phạt và không bị phạt.
+sidebar:
+  order: 3
 ---
 
 Luật chạm tay là một trong những luật gây tranh cãi nhất. Trọng tài sẽ bắt lỗi dựa vào **cơ thể có bị phình to bất thường hay không**.

@@ -1,6 +1,8 @@
 ---
 title: 1.4 Thẻ Phạt & Quả Phạt Đền (Penalty)
 description: Tìm hiểu các hành vi bị rút thẻ vàng, thẻ đỏ và quy định sút phạt đền.
+sidebar:
+  order: 4
 ---
 
 Thẻ phạt dùng để duy trì kỷ luật trên sân, trong khi quả phạt đền (Penalty) là hình phạt nặng nhất dành cho đội phòng ngự khi phạm lỗi trong vòng cấm.
