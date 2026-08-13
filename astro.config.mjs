@@ -20,7 +20,7 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'chienthuat' } }],
 				},
 				{
-					label: '4. Style & Kỹ Năng Chuyên Môn',
+					label: '4. Style & Kỹ Năng',
 					items: [{ autogenerate: { directory: 'phongcach' } }],
 				},
 				{
