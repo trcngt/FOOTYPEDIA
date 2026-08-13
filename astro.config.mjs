@@ -16,6 +16,10 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'vitri' } }],
 				},
 				{
+                    label: '3. Sơ Đồ & Chiến Thuật',
+                    items: [{ autogenerate: { directory: 'chienthuat' } }],
+                },
+				{
 					label: 'Hướng Dẫn',
 					items: [{ autogenerate: { directory: 'guides' } }],
 				},
