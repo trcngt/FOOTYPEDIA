@@ -1,45 +1,73 @@
 ---
 title: Footypedia
-description: Bách khoa toàn thư bóng đá dành cho người mới bắt đầu.
+description: Bách khoa toàn thư bóng đá bài bản từ cơ bản đến nâng cao.
 template: splash
 hero:
-  tagline: Hiểu bóng đá sâu sắc hơn, dễ dàng hơn bao giờ hết. Giải mã luật chơi, vị trí cầu thủ và sơ đồ chiến thuật bằng ngôn ngữ trực quan.
-  actions:
-    - text: Tra cứu Luật Chơi
-      link: /luatchoi/viet-vi/
-      icon: right-arrow
-      variant: primary
-    - text: Khám phá Vị Trí
-      link: /vitri/sweeper-keeper/
-      icon: open-book
+  tagline: Bách khoa toàn thư bóng đá bài bản. Chọn một chủ đề bên dưới để bắt đầu hành trình tìm hiểu!
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Khám phá chủ đề
+## Khám phá 10 Tầng tri thức
 
 <CardGrid stagger>
 	<a href="/luatchoi/viet-vi/" style="text-decoration: none;">
-		<Card title="Luật Chơi Cơ Bản" icon="open-book">
-			Giải thích chi tiết về Việt vị, VAR, thẻ phạt và luật chạm tay.
+		<Card title="1. Luật Bóng Đá" icon="open-book">
+			Nền móng cơ bản: Việt vị, VAR, thẻ phạt, luật chạm tay, đá phạt.
 		</Card>
 	</a>
 
 	<a href="/vitri/sweeper-keeper/" style="text-decoration: none;">
-		<Card title="Vị Trí & Vai Trò" icon="pencil">
-			Phân biệt Tiền vệ mỏ neo, False 9, Inverted Fullback và Sweeper Keeper.
+		<Card title="2. Vị Trí Cầu Thủ" icon="pencil">
+			Vai trò chuyên môn: Sweeper Keeper, Inverted Fullback, False 9, Số 6.
 		</Card>
 	</a>
 
 	<a href="/chienthuat/so-do-433/" style="text-decoration: none;">
-		<Card title="Sơ Đồ Chiến Thuật" icon="setting">
-			Các sơ đồ 4-3-3, 4-2-3-1, 3-5-2 cùng triết lý Gegenpressing, Tiki-taka.
+		<Card title="3. Sơ Đồ & Chiến Thuật" icon="setting">
+			Đọc trận đấu: Sơ đồ 4-3-3, 4-2-3-1, 3-5-2, Gegenpressing, Tiki-taka.
+		</Card>
+	</a>
+
+	<a href="/phongcach/luat-chuyen-keo-bong/" style="text-decoration: none;">
+		<Card title="4. Style & Kỹ Năng" icon="star">
+			Giải mã chỉ số: Progressive Carry/Pass, Kháng Pressing, Half-space.
 		</Card>
 	</a>
 
 	<a href="/cauthu/lionel-messi/" style="text-decoration: none;">
-		<Card title="Hồ Sơ Cầu Thủ" icon="magnifier">
-			Phân tích chi tiết phong cách thi đấu của các siêu sao thế giới.
+		<Card title="5. Hồ Sơ Cầu Thủ" icon="magnifier">
+			Phân tích phong cách thi đấu & sự tiến hóa của các siêu sao.
+		</Card>
+	</a>
+
+	<a href="/giaidau/champions-league/" style="text-decoration: none;">
+		<Card title="6. Các Giải Đấu" icon="document">
+			Thế thức & lịch sử Champions League, Ngoại Hạng Anh, World Cup.
+		</Card>
+	</a>
+
+	<a href="/chuyennhuong/luat-ffp/" style="text-decoration: none;">
+		<Card title="7. Chuyển Nhượng & Tài Chính" icon="laptop">
+			Góc độ kinh doanh: Luật FFP, Phí chuyển nhượng, Khấu hao.
+		</Card>
+	</a>
+
+	<a href="/lichsu/lich-su-world-cup/" style="text-decoration: none;">
+		<Card title="8. Lịch Sử & Cột Mốc" icon="information">
+			Các kỳ World Cup kinh điển và những tập thể vĩ đại nhất.
+		</Card>
+	</a>
+
+	<a href="/hlv/pep-guardiola/" style="text-decoration: none;">
+		<Card title="9. HLV & Trường Phái" icon="add-document">
+			Hồ sơ các chiến lược gia: Pep Guardiola, Jürgen Klopp.
+		</Card>
+	</a>
+
+	<a href="/vanhoa/el-clasico/" style="text-decoration: none;">
+		<Card title="10. Văn Hóa & Derby" icon="list-format">
+			Những trận Siêu kinh điển, Derby rực lửa & văn hóa cổ vũ.
 		</Card>
 	</a>
 </CardGrid>
