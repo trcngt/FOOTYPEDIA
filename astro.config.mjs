@@ -5,7 +5,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Footypedia',
-			description: 'Bách khoa toàn thư bóng đá dành cho người mới bắt đầu',
+			description: 'Bách khoa toàn thư bóng đá bài bản',
 			sidebar: [
 				{
 					label: '1. Luật Bóng Đá',
@@ -16,16 +16,16 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'vitri' } }],
 				},
 				{
-                    label: '3. Sơ Đồ & Chiến Thuật',
-                    items: [{ autogenerate: { directory: 'chienthuat' } }],
-                },
-				{
-					label: 'Hướng Dẫn',
-					items: [{ autogenerate: { directory: 'guides' } }],
+					label: '3. Sơ Đồ & Chiến Thuật',
+					items: [{ autogenerate: { directory: 'chienthuat' } }],
 				},
 				{
-					label: 'Tài Liệu Tham Khảo',
-					items: [{ autogenerate: { directory: 'reference' } }],
+					label: '4. Style & Kỹ Năng Chuyên Môn',
+					items: [{ autogenerate: { directory: 'phongcach' } }],
+				},
+				{
+					label: '5. Phân Tích Cầu Thủ',
+					items: [{ autogenerate: { directory: 'cauthu' } }],
 				},
 			],
 		}),
