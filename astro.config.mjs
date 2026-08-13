@@ -9,43 +9,53 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: '1. Luật Bóng Đá',
-					autogenerate: { directory: 'luatchoi' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'luatchoi' } }],
 				},
 				{
 					label: '2. Vị Trí Cầu Thủ',
-					autogenerate: { directory: 'vitri' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'vitri' } }],
 				},
 				{
 					label: '3. Sơ Đồ & Chiến Thuật',
-					autogenerate: { directory: 'chienthuat' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'chienthuat' } }],
 				},
 				{
 					label: '4. Style & Kỹ Năng',
-					autogenerate: { directory: 'phongcach' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'phongcach' } }],
 				},
 				{
 					label: '5. Hồ Sơ Cầu Thủ',
-					autogenerate: { directory: 'cauthu' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'cauthu' } }],
 				},
 				{
 					label: '6. Các Giải Đấu',
-					autogenerate: { directory: 'giaidau' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'giaidau' } }],
 				},
 				{
 					label: '7. Chuyển Nhượng & Tài Chính',
-					autogenerate: { directory: 'chuyennhuong' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'chuyennhuong' } }],
 				},
 				{
 					label: '8. Lịch Sử & Cột Mốc',
-					autogenerate: { directory: 'lichsu' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'lichsu' } }],
 				},
 				{
 					label: '9. HLV & Trường Phái',
-					autogenerate: { directory: 'hlv' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'hlv' } }],
 				},
 				{
 					label: '10. Văn Hóa & Derby',
-					autogenerate: { directory: 'vanhoa' },
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'vanhoa' } }],
 				},
 			],
 		}),
