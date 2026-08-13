@@ -24,8 +24,12 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'phongcach' } }],
 				},
 				{
-					label: '5. Phân Tích Cầu Thủ',
+					label: '5. Hồ Sơ Cầu Thủ',
 					items: [{ autogenerate: { directory: 'cauthu' } }],
+				},
+				{
+					label: '6. Các Giải Đấu',
+					items: [{ autogenerate: { directory: 'giaidau' } }],
 				},
 			],
 		}),
