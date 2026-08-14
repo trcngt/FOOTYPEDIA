@@ -1,4 +1,84 @@
-/* Ẩn hoàn toàn các Tầng chưa chọn trên thanh Sidebar */
+/* Import phông chữ Plus Jakarta Sans tối ưu tiếng Việt từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+  /* Áp dụng phông chữ Plus Jakarta Sans toàn bộ trang */
+  --sl-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sl-font-heading: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* =========================================================
+   1. BẢNG MÀU DARK MODE (Tone Sân Cỏ Đêm & Champion)
+   ========================================================= */
+:root[data-theme='dark'] {
+  /* Accent main: Green Emerald nổi bật */
+  --sl-color-accent-low: #0a2e1d;
+  --sl-color-accent: #10b981;
+  --sl-color-accent-high: #6ee7b7;
+
+  /* Nền trang & Sidebar */
+  --sl-color-bg: #090d16;
+  --sl-color-bg-nav: #0f172a;
+  --sl-color-bg-sidebar: #0b1120;
+  
+  /* Text & Border */
+  --sl-color-white: #f8fafc;
+  --sl-color-gray-1: #e2e8f0;
+  --sl-color-gray-2: #94a3b8;
+  --sl-color-gray-3: #64748b;
+  --sl-color-gray-4: #334155;
+  --sl-color-gray-5: #1e293b;
+  --sl-color-gray-6: #0f172a;
+  --sl-color-border: #1e293b;
+}
+
+/* =========================================================
+   2. BẢNG MÀU LIGHT MODE (Tone Sân Cỏ Ban Ngày)
+   ========================================================= */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #d1fae5;
+  --sl-color-accent: #059669;
+  --sl-color-accent-high: #065f46;
+
+  --sl-color-bg: #f8fafc;
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #f1f5f9;
+
+  --sl-color-black: #0f172a;
+  --sl-color-gray-1: #1e293b;
+  --sl-color-gray-2: #334155;
+  --sl-color-gray-3: #475569;
+  --sl-color-gray-4: #94a3b8;
+  --sl-color-gray-5: #e2e8f0;
+  --sl-color-gray-6: #f1f5f9;
+  --sl-color-border: #e2e8f0;
+}
+
+/* =========================================================
+   3. TỐI ƯU UI CARD TRANG CHỦ & SIDEBAR
+   ========================================================= */
+/* Bo góc & hiệu ứng hover mềm mại cho các Card */
+.card {
+  border-radius: 12px !important;
+  transition: all 0.2s ease-in-out !important;
+  border: 1px solid var(--sl-color-border) !important;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sl-color-accent) !important;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);
+}
+
+/* Nút Hero primary mang sắc thái thể thao */
+.action.primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+}
+
+/* Giữ hiệu ứng ẩn các Tầng chưa chọn trên Sidebar */
 starlight-sidebar details:not([open]) {
   display: none !important;
 }
