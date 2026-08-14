@@ -19,29 +19,25 @@
   --sl-color-accent-high: #a7f3d0;
 }
 
-/* HIỆU ỨNG THẺ (CARD) NHẸ NHÀNG, MƯỢT MÀ */
+/* Thẻ Card tĩnh hoàn toàn, không chuyển động, không bóng */
 .card {
   border-radius: 12px !important;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  transform: none !important;
+  transition: none !important;
+  box-shadow: none !important;
 }
 
 .card:hover {
-  transform: translateY(-2px) !important; /* Nhích nhẹ 2px */
-  border-color: var(--sl-color-accent) !important;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08) !important; /* Bóng mờ dịu mắt */
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-/* NÚT HERO "VỀ CHÚNG TÔI" */
+/* Nút Hero tĩnh */
 .action.primary {
   background-color: var(--sl-color-accent) !important;
   color: #ffffff !important;
   font-weight: 600 !important;
   border-radius: 8px !important;
-  transition: opacity 0.2s ease !important;
-}
-
-.action.primary:hover {
-  opacity: 0.9 !important; /* Đổi độ trong suốt nhẹ khi rê chuột */
 }
 
 /* Giữ Sidebar chỉ mở Tầng hiện tại */
