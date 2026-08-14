@@ -44,3 +44,32 @@
 starlight-sidebar details:not([open]) {
   display: none !important;
 }
+
+/* =========================================================
+   THANH TIẾN TRÌNH ĐỌC BÀI (READING PROGRESS BAR)
+   ========================================================= */
+@keyframes read-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+html {
+  scroll-timeline: --page-scroll block;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--sl-color-accent);
+  z-index: 1000;
+  animation: read-progress auto linear;
+  animation-timeline: --page-scroll;
+  animation-timeline: scroll(root block);
+}

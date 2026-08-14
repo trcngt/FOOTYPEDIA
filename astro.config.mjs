@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+	site: 'https://footypedia.vercel.app',
 	integrations: [
 		starlight({
 			title: 'Footypedia',
@@ -21,9 +22,16 @@ export default defineConfig({
 					href: 'https://github.com/trcngt/FOOTYPEDIA',
 				},
 			],
+			editLink: {
+				baseUrl: 'https://github.com/trcngt/FOOTYPEDIA/edit/main/',
+			},
 			customCss: ['./src/styles/custom.css'],
 			credits: false,
 			sidebar: [
+				{
+					label: '🏠 Về Trang Chủ',
+					link: '/',
+				},
 				{
 					label: '1. Luật Bóng Đá',
 					collapsed: true,

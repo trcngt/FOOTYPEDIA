@@ -5,6 +5,11 @@ sidebar:
   order: 1
 ---
 
+import { Badge } from '@astrojs/starlight/components';
+
+<Badge text="Cơ bản" variant="success" /> <Badge text="⏱ 4 phút đọc" variant="note" />
+
+Nội dung bài viết bắt đầu ở đây...
 **Việt vị** (Offside) là quy định hạn chế khả năng cầu thủ đội tấn công đứng "cắm" sẵn ở gần khung thành đối phương để chờ đường chuyền.
 
 ## Điều kiện bị tính việt vị
