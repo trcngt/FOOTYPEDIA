@@ -29,7 +29,7 @@ export default defineConfig({
 			credits: false,
 			sidebar: [
 				{
-					label: '🏠 Về Trang Chủ',
+					label: 'Trang Chủ',
 					link: '/',
 				},
 				{
