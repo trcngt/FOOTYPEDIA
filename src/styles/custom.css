@@ -19,24 +19,29 @@
   --sl-color-accent-high: #a7f3d0;
 }
 
-/* Tinh chỉnh giao diện các ô Thẻ (Card) */
+/* HIỆU ỨNG THẺ (CARD) NHẸ NHÀNG, MƯỢT MÀ */
 .card {
   border-radius: 12px !important;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px) !important; /* Nhích nhẹ 2px */
   border-color: var(--sl-color-accent) !important;
-  box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08) !important; /* Bóng mờ dịu mắt */
 }
 
-/* Nút Hero "Về chúng tôi" */
+/* NÚT HERO "VỀ CHÚNG TÔI" */
 .action.primary {
   background-color: var(--sl-color-accent) !important;
   color: #ffffff !important;
   font-weight: 600 !important;
   border-radius: 8px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.action.primary:hover {
+  opacity: 0.9 !important; /* Đổi độ trong suốt nhẹ khi rê chuột */
 }
 
 /* Giữ Sidebar chỉ mở Tầng hiện tại */
