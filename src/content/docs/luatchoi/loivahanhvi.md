@@ -1,0 +1,83 @@
+---
+title: 1.10 Lỗi & Hành Vi Vi Phạm 
+description: Tổng hợp các lỗi phạt trực tiếp, gián tiếp, luật bóng chạm tay (Handball) và tiêu chuẩn rút thẻ phạt IFAB.
+sidebar:
+  order: 10
+---
+
+**Điều luật 12 (Fouls and Misconduct)** là nền tảng duy trì tính công bằng, kỷ luật và an toàn tính mạng cho cầu thủ trên sân. Mọi pha can thiệp bằng còi hoặc rút thẻ của trọng tài đều dựa trên các khung tiêu chuẩn được phân loại chi tiết dưới đây.
+
+---
+
+## 1. Các lỗi bị phạt Quả Đá Phạt Trực Tiếp (Direct Free Kick)
+
+Một quả đá phạt trực tiếp (hoặc **Phạt đền / Penalty** nếu xảy ra bên trong vòng cấm của đội phạm lỗi) được trao cho đối phương nếu một cầu thủ có hành vi bất cẩn, liều lĩnh hoặc dùng lực quá mức trong các hành động:
+
+* Xung sát, xô đẩy hoặc nhảy vào đối phương.
+* Đá, tìm cách đá, ngáng chân hoặc gạt ngã đối phương.
+* Đánh nguội hoặc tìm cách đánh đối phương.
+* Xoạc bóng trúng người đối phương trước khi chạm bóng hoặc vào bóng nguy hiểm.
+* **Cản trở có va chạm:** Cố tình kéo áo, giữ người hoặc ngáng đường di chuyển của đối phương.
+* **Cắn hoặc nhổ nước bọt** vào bất kỳ ai trên sân.
+* **Dùng tay chơi bóng trái luật (Handball)**.
+
+---
+
+## 2. Luật Bóng Chạm Tay (Handball Rule)
+
+Không phải mọi tình huống bóng chạm tay đều là lỗi. Cầu thủ bị coi là phạm lỗi dùng tay chơi bóng trong các trường hợp:
+
+1. **Cố ý dùng tay:** Chủ động di chuyển bàn tay hoặc cánh tay về phía quả bóng.
+2. **Làm cơ thể to ra một cách bất thường (Unnaturally bigger):** Để cánh tay/bàn tay ở vị trí không phải là hệ quả tự nhiên từ chuyển động cơ thể trong tình huống đó (giơ tay ngang vai, vung tay quá cao).
+3. **Ghi bàn bằng tay:** Ghi bàn trực tiếp vào lưới đối phương bằng tay/cánh tay (kể cả vô ý), hoặc chạm tay vô ý rồi ghi bàn ngay sau đó.
+
+> 📌 **Vị trí xác định tay:** Tính từ **mép dưới của hố nách** trở xuống hết bàn tay. Phần vai từ nách trở lên được tính là vị trí hợp lệ để chơi bóng.
+
+---
+
+## 3. Các lỗi bị phạt Quả Đá Phạt Gián Tiếp (Indirect Free Kick)
+
+Quả phạt gián tiếp được trao khi có vi phạm nhưng không mang tính chất bạo lực thân thể trực tiếp:
+
+### Lỗi từ phía Thủ môn:
+* Giữ bóng trên tay quá **6 giây** trước khi phát bóng.
+* **Bắt bóng từ đường chuyền về (Back-pass):** Dùng tay bắt bóng do đồng đội chủ ý dùng chân đá về.
+* Bắt bóng trực tiếp từ một quả **ném biên** của đồng đội.
+* Thả bóng xuống đất rồi dùng tay bắt lại khi bóng chưa chạm cầu thủ khác.
+
+### Lỗi từ mọi Cầu thủ:
+* Lối chơi nguy hiểm (ví dụ: giơ chân quá cao gần mặt đối phương khi tranh chấp trên không).
+* Ngăn cản đường tiến của thủ môn khi họ đang chuẩn bị phát bóng.
+* Có lời lẽ, hành vi lăng mạ hoặc xúc phạm trên sân.
+
+---
+
+## 4. Hệ thống Kỷ luật & Thẻ phạt
+
+Trọng tài có 3 cấp độ xử lý kỷ luật đối với cầu thủ và ban huấn luyện:
+
+| Cấp độ phạt | Hành vi điển hình |
+| :--- | :--- |
+| **Nhắc nhở miệng** | Phạm lỗi chiến thuật nhẹ lần đầu hoặc va chạm vô ý. |
+| 🟨 **Thẻ Vàng (Cảnh cáo)** | * Câu giờ hoặc trì hoãn trận đấu.<br>* Phản ứng thái quá với trọng tài.<br>* Cởi áo ăn mừng bàn thắng.<br>* Phạm lỗi chiến thuật ngăn chặn đợt tấn công triển vọng (SPA).<br>* Không tuân thủ cự ly hàng rào 9,15m. |
+| 🟥 **Thẻ Đỏ (Truất quyền)** | * Bạo lực sân cỏ, đánh nguội, nhổ nước bọt.<br>* Vào bóng triệt hạ bằng gầm giày ở tốc độ cao (Serious Foul Play).<br>* Nhận 2 thẻ vàng trong cùng một trận đấu.<br>* **Phạm lỗi DOGSO** (Ngăn chặn cơ hội ghi bàn mười mươi). |
+
+---
+
+## 5. Luật DOGSO & Quy tắc "Tránh phạt đền nhân đôi" (Double Jeopardy)
+
+**DOGSO** (*Denying an Obvious Goal-Scoring Opportunity*) là lỗi ngăn cản một cơ hội ghi bàn rõ rệt của đối phương:
+
+* Nếu phạm lỗi **ngoài vòng cấm** $\rightarrow$ Nhận thẻ đỏ trực tiếp 🟥.
+* Nếu phạm lỗi **trong vòng cấm**:
+  * Nếu cầu thủ phòng ngự **có nỗ lực tranh chấp bóng hợp lệ** nhưng vô tình phạm lỗi dẫn đến phạt đền $\rightarrow$ Trọng tài giảm án xuống **Thẻ Vàng 🟨 + Phạt đền** (để tránh hình phạt quá nặng vừa thẻ đỏ vừa penalty).
+  * Nếu là hành vi cố tình kéo áo, đẩy người, chơi bóng thô bạo hoặc dùng tay cản bóng trên vạch vôi $\rightarrow$ Vẫn giữ nguyên **Thẻ Đỏ trực tiếp 🟥 + Phạt đền**.
+
+---
+
+:::tip[Góc nhìn trọng tài]
+Khi đánh giá một pha vào bóng, trọng tài luôn cân nhắc 3 mức độ:
+1. **Careless (Bất cẩn):** Chỉ thổi phạt, không rút thẻ.
+2. **Reckless (Liều lĩnh / Bất chấp an toàn đối phương):** Phạt thẻ Vàng 🟨.
+3. **Using excessive force (Dùng vũ lực quá mức):** Phạt thẻ Đỏ 🟥 trực tiếp.
+:::

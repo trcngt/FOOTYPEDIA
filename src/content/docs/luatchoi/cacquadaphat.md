@@ -1,0 +1,63 @@
+---
+title: 1.11 Các Quả Đá Phạt 
+description: Phân biệt đá phạt trực tiếp vs gián tiếp, quy tắc cự ly hàng rào 9,15m và luật đá phạt nhanh IFAB.
+sidebar:
+  order: 11
+---
+
+**Quả đá phạt (Free Kick)** là phương thức bắt đầu lại trận đấu sau khi một đội bị phạm lỗi bởi đối phương. Trong bóng đá, có hai loại quả đá phạt cơ bản với các quy tắc thực hiện và giá trị bàn thắng hoàn toàn khác nhau: **Đá phạt trực tiếp** và **Đá phạt gián tiếp**.
+
+---
+
+## 1. Phân biệt Đá phạt Trực tiếp & Gián tiếp
+
+| Tiêu chí | Đá phạt Trực tiếp (Direct Free Kick) | Đá phạt Gián tiếp (Indirect Free Kick) |
+| :--- | :--- | :--- |
+| **Ký hiệu của Trọng tài** | Chỉ một tay về phía khung thành đội bị phạt. | **Giơ thẳng một tay lên cao** và giữ nguyên cho đến khi bóng đã chạm một cầu thủ khác hoặc ra ngoài sân. |
+| **Sút thẳng vào lưới đối phương** | **Công nhận bàn thắng** ngay lập tức. | **KHÔNG công nhận bàn thắng**. Trận đấu bắt đầu lại bằng quả phát bóng lên cho đối phương (trừ khi bóng đã chạm ít nhất 1 người khác trước khi vào lưới). |
+| **Sút thẳng vào lưới nhà** | Không tính phản lưới nhà $\rightarrow$ Đối phương được hưởng quả **Phạt góc**. | Không tính phản lưới nhà $\rightarrow$ Đối phương được hưởng quả **Phạt góc**. |
+| **Nguồn gốc thổi phạt** | Từ các lỗi tranh chấp cơ thể liều lĩnh, bạo lực hoặc dùng tay chơi bóng (Handball). | Từ các lỗi không va chạm: việt vị, chuyền về cho thủ môn bắt bóng (Back-pass), lối chơi nguy hiểm. |
+
+---
+
+## 2. Quy chuẩn thực hiện quả đá phạt
+
+### 1. Vị trí và trạng thái bóng
+* Quả đá phạt phải được thực hiện tại đúng vị trí xảy ra lỗi (trọng tài có thể dùng bình sơn xịt tự hủy để cố định điểm đặt bóng).
+* Quả bóng bắt buộc phải **ở trạng thái tĩnh (đứng yên hoàn toàn)** trước khi đá.
+* Bóng chính thức vào cuộc ngay khi được đá và có chuyển động rõ ràng.
+
+### 2. Cự ly khoảng cách 9,15m
+* Tất cả các cầu thủ của đội phòng ngự phải đứng cách vị trí đặt bóng tối thiểu **9,15m** (10 yards) cho đến khi bóng được đá vào cuộc.
+* Nếu đội phòng ngự cố tình đứng gần hơn 9,15m hoặc lao lên trước khi bóng lăn $\rightarrow$ Nhận thẻ vàng cảnh cáo 🟨 và thực hiện lại quả đá phạt.
+
+### 3. Quy định cấm chen vào hàng rào (Quy tắc 1 mét)
+* Khi đội phòng ngự lập hàng rào gồm **3 cầu thủ trở lên**, tất cả các cầu thủ của đội tấn công phải đứng cách hàng rào đó **tối thiểu 1 mét**.
+* Nếu cầu thủ tấn công cố tình đứng chen vào, áp sát dưới 1m làm xáo trộn hàng rào khi bóng được đá $\rightarrow$ Trọng tài phạt **Quả đá phạt gián tiếp** cho đội phòng ngự.
+
+---
+
+## 3. Kỹ thuật Đá phạt Nhanh (Quick Free Kick)
+
+Đội được hưởng quả đá phạt có quyền thực hiện quả đá phạt nhanh ngay lập tức mà không cần chờ hiệu lệnh còi của trọng tài, **với điều kiện**:
+
+1. Trọng tài chưa ra hiệu yêu cầu chờ còi (để rút thẻ phạt hoặc vào sân xịt sơn đo cự ly hàng rào).
+2. Quả bóng đã được đặt đứng yên tại đúng vị trí phạm lỗi.
+
+> 📌 **Lợi thế:** Đá phạt nhanh giúp tận dụng khoảnh khắc đối phương mất tập trung hoặc chưa kịp lùi về tổ chức đội hình phòng ngự.
+
+---
+
+## 4. Quả đá phạt gián tiếp bên trong Vòng cấm
+
+Khi đội phòng ngự phạm lỗi phạt gián tiếp ngay bên trong vòng cấm địa của mình (phổ biến nhất là thủ môn bắt bóng do đồng đội chuyền về):
+
+* Quả phạt gián tiếp được thực hiện tại vị trí xảy ra lỗi.
+* Nếu vị trí phạm lỗi nằm bên trong khu vực 5m50 (Goal area), điểm đặt bóng sẽ được kéo lùi ra mép ngoài của vạch 5m50 (song song với vạch cầu môn).
+* **Đặc quyền cự ly hàng rào:** Toàn bộ cầu thủ phòng ngự được phép đứng dàn hàng ngang ngay trên vạch vôi khung thành (giữa 2 cột dọc) ngay cả khi khoảng cách từ vạch vôi tới điểm đặt bóng **nhỏ hơn 9,15m**.
+
+---
+
+:::tip[Góc nhìn chiến thuật: Người nằm dưới hàng rào (Draft Excluder)]
+Kể từ khi các chuyên gia sút phạt (như Messi, Ronaldinho, Coutinho) sáng tạo ra chiêu sút bóng chìm luồn dưới chân hàng rào khi họ nhảy lên, các đội bóng hiện đại đã phát minh ra vai trò một cầu thủ nằm ngang ngay phía sau gót chân hàng rào để bịt kín hoàn toàn khoảng trống này!
+:::

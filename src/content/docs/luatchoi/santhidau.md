@@ -1,0 +1,75 @@
+---
+title: 1.1 Sân Thi Đấu
+description: Kích thước tiêu chuẩn, các vạch kẻ sân và khu vực kỹ thuật theo quy định IFAB/FIFA.
+sidebar:
+  order: 1
+---
+
+**Sân thi đấu (The Field of Play)** là không gian diễn ra toàn bộ diễn biến của một trận cầu. Theo quy định chính thức của **IFAB (Hội đồng Luật Bóng đá Quốc tế)** và **FIFA**, sân bóng đá phải có hình chữ nhật, bề mặt cỏ tự nhiên hoặc nhân tạo đạt chuẩn, cùng hệ thống vạch kẻ rõ ràng.
+
+---
+
+## 1. Kích thước tiêu chuẩn của sân
+
+Chiều dài của đường biên dọc (Touchline) bắt buộc phải lớn hơn chiều dài của đường biên ngang (Goal line).
+
+| Hạng mục | Tiêu chuẩn chung | Tiêu chuẩn Quốc tế (FIFA / C1 / World Cup) |
+| :--- | :--- | :--- |
+| **Chiều dài (Biên dọc)** | 90m – 120m | **105m** |
+| **Chiều rộng (Biên ngang)** | 45m – 90m | **68m** |
+| **Bề mặt sân** | Cỏ tự nhiên hoặc Cỏ nhân tạo (màu xanh lá) | Chuẩn FIFA Quality Pro |
+| **Độ rộng vạch kẻ** | Tối đa 12cm | Đồng nhất trên toàn bộ mặt sân |
+
+> 📌 **Kích thước "Vàng" hiện đại:** Hầu hết các sân vận động hàng đầu thế giới (như Bernabéu, Camp Nou, Wembley, Etihad) đều thiết lập kích thước chuẩn xác là **105m x 68m**.
+
+---
+
+## 2. Các khu vực quan trọng trên sân
+
+### Vòng tròn trung tâm & Điểm giao bóng
+* Nằm chính giữa sân, được chia đôi bởi **Đường giữa sân (Halfway line)**.
+* Ở tâm có **Điểm giao bóng (Centre mark)**.
+* **Vòng tròn trung tâm** có bán kính **9,15m** tính từ điểm giao bóng. Khi giao bóng, cầu thủ đối phương không được bước vào vòng tròn này.
+
+### Vòng cấm địa (Penalty Area - Khu 16m50)
+* Kéo dài **16,5m** từ mép trong của mỗi cột dọc vào trong sân và sang hai bên.
+* **Ý nghĩa:**
+  * Thủ môn được phép dùng tay chơi bóng trong khu vực này.
+  * Mọi lỗi trực tiếp do đội phòng ngự phạm phải trong vòng cấm đều dẫn đến quả phạt đền (Penalty).
+* **Chấm phạt đền (Penalty mark):** Cách tâm khung thành đúng **11m**.
+* **Vòng cung ngoài vòng cấm (D-box):** Bán kính **9,15m** tính từ chấm 11m, nhằm đảm bảo khoảng cách an toàn cho các cầu thủ khi đá phạt đền.
+
+### Khu vực cầu môn (Goal Area - Khu 5m50)
+* Kéo dài **5,5m** từ mép trong cột dọc.
+* Dùng làm vị trí để đặt bóng cho các quả phát bóng lên (Goal kick).
+
+### Cung phạt góc (Corner Area)
+* Bán kính **1m** tính từ mỗi góc sân.
+* Có cắm cờ góc (không nhọn, cao tối thiểu **1,5m**).
+
+---
+
+## 3. Khung thành (Goal)
+
+Khung thành được đặt chính giữa mỗi đường biên ngang:
+
+* **Chiều rộng (khoảng cách giữa 2 cột dọc):** **7,32m** (tương đương 8 yards).
+* **Chiều cao (khoảng cách từ đất lên mép dưới xà ngang):** **2,44m** (tương đương 8 feet).
+* Cột và xà ngang phải có màu trắng, làm bằng gỗ, kim loại hoặc vật liệu composite an toàn.
+
+---
+
+## 4. Khu vực kỹ thuật (Technical Area)
+
+Khu vực bên ngoài đường biên dọc dành riêng cho ban huấn luyện và cầu thủ dự bị:
+
+* Kéo dài sang hai bên ghế ngồi **1m** và cách đường biên dọc tối thiểu **1m**.
+* Chỉ **1 người tại một thời điểm** được phép đứng chỉ đạo chiến thuật và phải luôn ở trong khu vực này.
+
+---
+
+:::tip[Góc nhìn chiến thuật]
+Kích thước mặt sân ảnh hưởng rất lớn đến lối chơi:
+* **Sân rộng (68m):** Rất thích hợp cho lối đá kiểm soát bóng, chuyển hướng tấn công và kéo giãn cự ly đội hình đối phương.
+* **Sân hẹp:** Tạo lợi thế cho các đội chơi phòng ngự lùi sâu (Low Block), pressing tầm cao và tận dụng các quả ném biên xa.
+:::

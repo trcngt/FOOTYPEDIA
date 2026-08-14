@@ -1,32 +1,18 @@
 ---
-title: 1.1 Luật Việt Vị (Offside)
-description: Hướng dẫn chi tiết cách nhận biết tình huống việt vị.
+title: 1.9 Luật Việt Vị
+description: Định nghĩa vị trí việt vị, 3 trường hợp bị thổi phạt và công nghệ bắt việt vị bán tự động (SAOT).
 sidebar:
-  order: 1
+  order: 9
 ---
 
-import { Badge } from '@astrojs/starlight/components';
+**Luật Việt Vị (Offside - Law 11)** là một trong những điều luật phức tạp, tinh tế và có tầm ảnh hưởng lớn nhất đến sự phát triển của chiến thuật bóng đá hiện đại. Bản chất của luật việt vị là ngăn chặn tiền đạo đối phương "mắc màn" chực chờ sẵn bên phần sân đội bạn để nhận bóng dễ dàng.
 
-<Badge text="Cơ bản" variant="success" /> <Badge text="⏱ 4 phút đọc" variant="note" />
+---
 
-Nội dung bài viết bắt đầu ở đây...
-**Việt vị** (Offside) là quy định hạn chế khả năng cầu thủ đội tấn công đứng "cắm" sẵn ở gần khung thành đối phương để chờ đường chuyền.
+## 1. Thế nào là Vị trí việt vị (Offside Position)?
 
-## Điều kiện bị tính việt vị
+Cầu thủ đứng ở vị trí việt vị khi hội tụ đủ **3 điều kiện đồng thời**:
 
-Một cầu thủ bị phạt việt vị nếu ở **thời điểm đồng đội nhả bóng**, cầu thủ đó thỏa mãn **cả 3 điều kiện**:
-
-1. Đang ở **phần sân đối phương**.
-2. Đứng **gần đường biên ngang đối phương hơn cả bóng**.
-3. Không có ít nhất **2 cầu thủ đối phương** (thường tính cả thủ môn) ở giữa mình và đường biên ngang.
-
-:::tip[Quy tắc cốt lõi]
-Trọng tài tính vị trí tại **thời điểm bóng rời chân người chuyền**, không tính thời điểm cầu thủ nhận bóng!
-:::
-
-## 3 Trường hợp KHÔNG bị tính việt vị
-
-Cầu thủ đứng ở bất kỳ vị trí nào cũng **không bị việt vị** nếu nhận bóng trực tiếp từ:
-* Quả **ném biên**
-* Quả **phạt góc**
-* Quả **phát bóng** (của thủ môn từ vạch 5m50)
+1. Đang đứng ở **phần sân của đối phương** (không tính vạch giữa sân).
+2. Đứng **gần đường biên ngang sân đối phương hơn quả bóng**.
+3. Đứng **gần đường biên ngang sân đối phương hơn cầu thủ phòng ngự áp chót** (cầu thủ thứ hai tính từ dưới lên của đối phương — thường là một trung vệ, vì thủ môn là cầu thủ cuối cùng).
