@@ -86,13 +86,3 @@ export default defineConfig({
 		}),
 	],
 });
-
-/* Ẩn hoàn toàn các nhóm sidebar đang đóng khi người dùng đang ở trong 1 chuyên mục cụ thể */
-.sidebar-content > ul > li > details:not([open]) {
-  display: none !important;
-}
-
-/* Tùy chỉnh để nút Trang Chủ vẫn luôn hiển thị trên cùng */
-.sidebar-content > ul > li:has(a[href="/"]) {
-  display: block !important;
-}
