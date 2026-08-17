@@ -5,10 +5,6 @@ sidebar:
   order: 5
 ---
 
-import { Badge } from '@astrojs/starlight/components';
-
-<Badge text="Điều luật 7" variant="success" /> <Badge text="⏱ 4 phút đọc" variant="note" />
-
 Bóng đá là môn thể thao sử dụng **đồng hồ chạy liên tục (Running Clock)**. Khác với Futsal hay Bóng rổ, đồng hồ đếm giờ trong bóng đá sân cỏ 11 người không dừng lại khi bóng ra ngoài đường biên hay khi có phạm lỗi, mà thời gian hao hụt sẽ được cộng dồn vào cuối mỗi hiệp dưới dạng **Thời gian bù giờ (Stoppage Time / Injury Time)**.
 
 ---

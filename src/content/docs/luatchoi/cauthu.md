@@ -9,7 +9,7 @@ Trận đấu bóng đá được vận hành bởi con người. Để đảm b
 
 ---
 
-## 1. Số lượng cầu thủ trên sân (Law 3)
+## 1. Số lượng cầu thủ trên sân 
 
 ### Số lượng tiêu chuẩn
 * Mỗi đội ra sân với tối đa **11 cầu thủ**, trong đó **bắt buộc phải có 1 thủ môn**.
@@ -32,7 +32,7 @@ Trận đấu bóng đá được vận hành bởi con người. Để đảm b
 
 ---
 
-## 3. Trang phục thi đấu bắt buộc (Law 4)
+## 3. Trang phục thi đấu bắt buộc 
 
 Một cầu thủ bước vào sân bắt buộc phải mang đầy đủ **5 món trang bị cơ bản**:
 

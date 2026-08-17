@@ -19,7 +19,7 @@ sidebar:
 | **Chất liệu** | Da hoặc vật liệu tổng hợp phù hợp (không thấm nước, không gây nguy hiểm) |
 | **Chu vi** | **68cm – 70cm** (27 – 28 inches) |
 | **Trọng lượng** | **410g – 450g** (14 – 16 oz) khi bắt đầu trận đấu |
-| **Áp suất không khí** | **0,6 – 1,1 atm** ($600 – 1.100\text{ g/cm}^2$, tương đương 8,5 – 15,6 psi) ở mực nước biển |
+| **Áp suất không khí** | **0,6 – 1,1 atm** (600 – 1.100^2 g/cm, tương đương 8,5 – 15,6 psi) ở mực nước biển |
 
 > 📌 **Chứng chỉ FIFA:** Các quả bóng sử dụng trong các giải đấu chính thức (như World Cup, Euro, Champions League, Premier League) phải đạt chuẩn chất lượng cao nhất: **FIFA Quality Pro**.
 
