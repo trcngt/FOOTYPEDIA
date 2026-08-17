@@ -5,8 +5,6 @@ sidebar:
   order: 5
 ---
 
-> 📌 **Tầng 3: Sơ Đồ Đội Hình** | ⏱ 9 phút đọc
-
 Trong bóng đá hiện đại, một sơ đồ cố định 90 phút đã hoàn toàn biến mất. Các HLV đỉnh cao sử dụng **cơ chế biến hình linh hoạt theo quyền kiểm soát bóng**: xuất phát với một sơ đồ trên danh nghĩa (4-3-3 hoặc 4-2-3-1), nhưng khi đội nhà có bóng, cấu trúc lập tức biến chuyển thành **3-2-5, 2-3-5 hoặc 3-2-4-1** để áp đảo quân số.
 
 ---

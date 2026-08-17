@@ -84,3 +84,21 @@ nav.sidebar ul > li:has(details:not([open])):not(:has(a[aria-current="page"])) {
 starlight-menu-tree > ul > li:not(:has([aria-current="page"])):not(:has(a[href="/"])) {
   display: none !important;
 }
+
+/* Tăng khoảng cách giữa các mục (li) trong sidebar */
+nav.sidebar ul li {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Tăng khoảng cách đệm (padding) và độ cao dòng (line-height) cho từng link */
+nav.sidebar a {
+  padding-top: 0.45rem !important;
+  padding-bottom: 0.45rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Tăng khoảng cách giữa các nhóm chuyên mục lớn */
+nav.sidebar details {
+  margin-bottom: 0.75rem;
+}
