@@ -16,16 +16,18 @@ Một bàn thắng được tính là **hợp lệ** khi và chỉ khi:
 1. **Toàn bộ quả bóng đã vượt qua hoàn toàn vạch vôi khung thành (Goal line)**, ở khoảng không nằm giữa hai cột dọc và phía dưới xà ngang.
 2. Đội ghi bàn **không phạm bất kỳ lỗi nào** (như việt vị, phạm lỗi tranh chấp, hoặc dùng tay chơi bóng) trước hoặc trong lúc đưa bóng vào lưới.
 
-[CỘT DỌC]                                       [CỘT DỌC]
-       │                                               │
-       │                                               │
+```text
+       [CỘT DỌC]                                       [CỘT DỌC]
+           │                                               │
+           │                                               │
 ───────────┴───────────────────────────────────────────────┴─────────── (Vạch vôi)
-(  ○  )  <-- 100% bóng qua vạch = BÀN THẮNG (GOAL)!
+                               (  ○  )  <-- 100% bóng qua vạch = BÀN THẮNG (GOAL)!
+```
 
 ### Các trường hợp đặc biệt KHÔNG được công nhận bàn thắng:
-* **Thủ môn ném bóng thẳng vào lưới đối phương:** Nếu thủ môn ném bóng trực tiếp từ tay mình vào lưới đối phương mà không chạm ai $\rightarrow$ Không tính bàn thắng, đối phương được hưởng **quả phát bóng lên (Goal kick)**.
-* **Người ngoài/Vật lạ can thiệp:** Nếu bóng đang bay vào lưới nhưng bị khán giả, nhân viên nhặt bóng hoặc vật thể lạ chặn lại $\rightarrow$ Trọng tài dừng trận đấu và thực hiện **thả bóng (Dropped ball)**.
-* **Thừa người trên sân lúc ghi bàn:** Nếu đội ghi bàn có 12 người trên sân (cầu thủ dự bị hoặc HLV chạy vào sân can thiệp tình huống) $\rightarrow$ Hủy bàn thắng, phạt thẻ vàng người vi phạm và cho đối phương hưởng quả đá phạt trực tiếp tại vị trí người đó can thiệp.
+* **Thủ môn ném bóng thẳng vào lưới đối phương:** Nếu thủ môn ném bóng trực tiếp từ tay mình vào lưới đối phương mà không chạm ai -> Không tính bàn thắng, đối phương được hưởng **quả phát bóng lên (Goal kick)**.
+* **Người ngoài/Vật lạ can thiệp:** Nếu bóng đang bay vào lưới nhưng bị khán giả, nhân viên nhặt bóng hoặc vật thể lạ chặn lại -> Trọng tài dừng trận đấu và thực hiện **thả bóng (Dropped ball)**.
+* **Thừa người trên sân lúc ghi bàn:** Nếu đội ghi bàn có 12 người trên sân (cầu thủ dự bị hoặc HLV chạy vào sân can thiệp tình huống) -> Hủy bàn thắng, phạt thẻ vàng người vi phạm và cho đối phương hưởng quả đá phạt trực tiếp tại vị trí người đó can thiệp.
 
 ---
 
@@ -64,25 +66,15 @@ Nếu vẫn hòa sau 120 phút thi đấu, hai đội bước vào loạt đá l
 
 Loạt sút luân lưu không phải là một phần thời gian thi đấu chính thức, mà là một quy trình kỹ thuật độc lập để phân định đội chiến thắng:
 
-<Tabs>
-  <TabItem label="Thủ tục chọn sân & Lượt đá">
-    * **Tung đồng xu lần 1:** Trọng tài chọn khung thành thực hiện loạt sút (trừ trường hợp yếu tố an ninh, ánh sáng hoặc mặt sân buộc phải chọn một khung thành cụ thể).
-    * **Tung đồng xu lần 2:** Đội trưởng đoán đúng mặt đồng xu được quyền chọn **Sút trước** hoặc **Sút sau**.
-  </TabItem>
-  <TabItem label="Quy tắc Cân bằng quân số (Reduce to Equate)">
-    * Nếu kết thúc trận đấu, Đội A chỉ còn 9 người (do 2 thẻ đỏ) trong khi Đội B có đủ 11 người:
-    * **Đội B bắt buộc phải loại bớt 2 cầu thủ** khỏi danh sách tham gia đá luân lưu để danh sách sút của hai đội có quân số bằng nhau (9 vs 9).
-    * Điều này nhằm đảm bảo tính công bằng, tránh trường hợp đội bị thẻ đỏ được cho cầu thủ sút giỏi nhất quay lại sút vòng 2 sớm hơn.
-  </TabItem>
-  <TabItem label="Quy trình 5 lượt & Cái chết bất ngờ (Sudden Death)">
-    * **5 lượt đầu:** Mỗi đội đá luân phiên 5 quả. Đội nào tạo được khoảng cách bàn thắng mà đối phương không thể bắt kịp (ví dụ dẫn 3-0 sau 3 lượt) sẽ thắng cuộc ngay lập tức.
-    * **Sau 5 lượt nếu vẫn hòa:** Hai đội bước vào loạt đá "Cái chết bất ngờ" theo từng cặp 1 vs 1. Đội nào ghi bàn trong khi đối thủ cùng lượt đá hỏng sẽ giành chiến thắng.
-  </TabItem>
-  <TabItem label="Xóa thẻ phạt trước loạt luân lưu">
-    * **Luật IFAB cập nhật:** Toàn bộ **Thẻ vàng** rút ra trong 120 phút thi đấu chính thức và hiệp phụ **KHÔNG bị tính cộng dồn** vào loạt sút luân lưu.
-    * *Ví dụ:* Một cầu thủ đã nhận 1 thẻ vàng trong trận, nếu nhận thêm 1 thẻ vàng trong loạt luân lưu do hành vi phi thể thao, cầu thủ đó **chỉ bị tính 1 thẻ vàng ở loạt luân lưu và KHÔNG bị nhận thẻ đỏ truất quyền thi đấu**.
-  </TabItem>
-</Tabs>
+* **Tung đồng xu lần 1:** Trọng tài chọn khung thành thực hiện loạt sút (trừ trường hợp yếu tố an ninh, ánh sáng hoặc mặt sân buộc phải chọn một khung thành cụ thể).
+* **Tung đồng xu lần 2:** Đội trưởng đoán đúng mặt đồng xu được quyền chọn **Sút trước** hoặc **Sút sau**.
+* **Quy tắc Cân bằng quân số (Reduce to Equate):** Nếu kết thúc trận đấu, Đội A chỉ còn 9 người (do 2 thẻ đỏ) trong khi Đội B có đủ 11 người:
+  * **Đội B bắt buộc phải loại bớt 2 cầu thủ** khỏi danh sách tham gia đá luân lưu để hai đội có quân số bằng nhau (9 vs 9).
+  * Điều này đảm bảo công bằng, tránh trường hợp đội ít người được quay vòng cầu thủ sút giỏi nhất sớm hơn.
+* **5 lượt đầu:** Mỗi đội đá luân phiên 5 quả. Đội nào tạo được khoảng cách bàn thắng mà đối phương không thể bắt kịp (ví dụ dẫn 3-0 sau 3 lượt) sẽ thắng cuộc ngay lập tức.
+* **Sau 5 lượt nếu vẫn hòa:** Hai đội bước vào loạt đá "Cái chết bất ngờ" theo từng cặp 1 vs 1. Đội nào ghi bàn trong khi đối thủ cùng lượt đá hỏng sẽ giành chiến thắng.
+* **Xóa thẻ vàng trước loạt luân lưu (Luật IFAB):** Toàn bộ **Thẻ vàng** rút ra trong 120 phút thi đấu chính thức và hiệp phụ **KHÔNG bị tính cộng dồn** vào loạt sút luân lưu.
+  * *Ví dụ:* Một cầu thủ đã nhận 1 thẻ vàng trong trận, nếu nhận thêm 1 thẻ vàng trong loạt luân lưu, cầu thủ đó **chỉ bị tính 1 thẻ vàng ở loạt luân lưu và KHÔNG bị nhận thẻ đỏ truất quyền thi đấu**.
 
 ---
 

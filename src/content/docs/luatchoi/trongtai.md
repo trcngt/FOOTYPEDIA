@@ -36,13 +36,13 @@ sidebar:
 ## 3. Cơ cấu Tổ trọng tài hoàn chỉnh 
 
 Trong các trận đấu đỉnh cao hiện đại, tổ điều hành gồm tối đa **6-8 thành viên**:
-
-[Trọng tài chính (Trên sân)]
-                           │
-   ┌───────────────────────┼───────────────────────┐
-   ▼                       ▼                       ▼
-[2 Trợ lý biên]        [Trọng tài thứ 4]        [Tổ Trọng tài VAR]
-(Căng cờ biên)         (Khu kỹ thuật)            (VAR + AVAR + RO)
+```text
+                  [Trọng tài chính (Trên sân)]
+                               │
+       ┌───────────────────────┼───────────────────────┐
+       ▼                       ▼                       ▼
+ [2 Trợ lý biên]        [Trọng tài thứ 4]        [Tổ Trọng tài VAR]
+ (Căng cờ biên)          (Khu kỹ thuật)           (VAR + AVAR + RO)
 
 | Vị trí | Nhiệm vụ chính |
 | :--- | :--- |

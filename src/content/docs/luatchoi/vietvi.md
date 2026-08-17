@@ -17,13 +17,15 @@ Cầu thủ đứng ở vị trí việt vị khi hội tụ đủ **3 điều k
 2. Đứng **gần đường biên ngang sân đối phương hơn quả bóng**.
 3. Đứng **gần đường biên ngang sân đối phương hơn cầu thủ phòng ngự áp chót** (cầu thủ thứ hai tính từ dưới lên của đối phương — thường là một trung vệ, vì thủ môn là cầu thủ cuối cùng).
 
+```text
 [Khung thành đối phương]
-│
-(Thủ môn)  <── Cầu thủ phòng ngự cuối cùng (1)
-│
-[Hậu vệ]   <── Cầu thủ phòng ngự ÁP CHÓT (2) ─────────── (Đường việt vị)
-│
-(Tiền đạo)  <── VỊ TRÍ VIỆT VỊ (Gần biên ngang hơn Hậu vệ áp chót)
+       │
+   (Thủ môn)  <── Cầu thủ phòng ngự cuối cùng (1)
+       │
+   [Hậu vệ]   <── Cầu thủ phòng ngự ÁP CHÓT (2) ─────────── (Đường việt vị)
+       │
+  (Tiền đạo)  <── VỊ TRÍ VIỆT VỊ (Gần biên ngang hơn Hậu vệ áp chót)
+```
 
 ### Bộ phận cơ thể dùng để xét việt vị:
 * Bất kỳ bộ phận nào của **đầu, thân mình, hoặc chân/bàn chân** (tất cả các bộ phận **hợp lệ để chơi bóng và ghi bàn**).

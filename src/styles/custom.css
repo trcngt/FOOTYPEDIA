@@ -73,3 +73,14 @@ body::before {
   animation-timeline: --page-scroll;
   animation-timeline: scroll(root block);
 }
+
+/* Khi đang ở trong 1 chuyên mục: Chỉ giữ lại mục đang mở, ẩn toàn bộ các mục còn lại */
+nav.sidebar ul > li:has(details[open]) ~ li,
+nav.sidebar ul > li:has(details:not([open])):not(:has(a[aria-current="page"])) {
+  display: none !important;
+}
+
+/* Cách viết tổng quát chính xác cho cấu trúc Starlight */
+starlight-menu-tree > ul > li:not(:has([aria-current="page"])):not(:has(a[href="/"])) {
+  display: none !important;
+}

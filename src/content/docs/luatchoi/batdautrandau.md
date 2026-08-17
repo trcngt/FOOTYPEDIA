@@ -69,5 +69,5 @@ Trước đây, trọng tài được xem như một "cột cờ di động" (b�
 2. Bóng bay thẳng vào lưới, HOẶC
 3. Quyền kiểm soát bóng đổi từ đội này sang đội kia.
 
-$\rightarrow$ Trọng tài **bắt buộc phải dừng trận đấu** và thực hiện một quả thả bóng cho đội kiểm soát bóng trước đó!
+Trọng tài **bắt buộc phải dừng trận đấu** và thực hiện một quả thả bóng cho đội kiểm soát bóng trước đó!
 :::

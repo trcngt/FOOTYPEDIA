@@ -17,14 +17,14 @@ Bóng được coi là ngoài cuộc trong **2 trường hợp duy nhất**:
 ### 1. Toàn bộ quả bóng đã vượt qua vạch giới hạn
 * Bóng đã **hoàn toàn vượt qua** đường biên dọc hoặc đường biên ngang (dù là lăn trên mặt đất hay bay trên không trung).
 * 📌 **Nguyên tắc 100%:** Chỉ cần **1 milimet** của đường cong quả bóng còn tiếp xúc hoặc chiếu thẳng xuống vạch vôi (nhìn theo góc chiếu thẳng đứng từ trên xuống), trái bóng **vẫn được tính là TRONG CUỘC**.
-
-[NGOÀI SÂN]               [TRÊN VẠCH]               [TRONG SÂN]
-   ( ○ )                     (---○---)                 (   ○   )
-     |                           |                         |
+```text
+    [NGOÀI SÂN]               [TRÊN VẠCH]               [TRONG SÂN]
+       ( ○ )                     (---○---)                 (   ○   )
+         │                           │                         │
 ─────────┴───────────────────────────┴─────────────────────────┴───────── (Vạch vôi)
-ĐÃ NGOÀI CUỘC               VẪN TRONG CUỘC            VẪN TRONG CUỘC
+   ĐÃ NGOÀI CUỘC               VẪN TRONG CUỘC            VẪN TRONG CUỘC
 (100% qua vạch)           (Chỉ cần 1mm còn liếm vạch)
-
+```
 
 ### 2. Trọng tài thổi còi dừng trận đấu
 * Trận đấu dừng lại ngay khi trọng tài cất còi vì một pha phạm lỗi, việt vị, chấn thương, kiểm tra VAR hoặc kết thúc hiệp/trận đấu.
