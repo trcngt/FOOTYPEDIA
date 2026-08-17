@@ -2,8 +2,12 @@
 title: Footypedia
 description: Bách khoa toàn thư bóng đá bài bản từ cơ bản đến nâng cao.
 template: splash
+editUrl: false
+prev: false
+next: false
+
 hero:
-  tagline: Bách khoa toàn thư bóng đá bài bản. Chọn một chủ đề bên dưới để bắt đầu hành trình tìm hiểu!
+  tagline: Bách khoa toàn thư bóng đá bài bản. Chọn một chủ đề bên dưới để bắt đầu hành trình khám phá!
   actions:
     - text: Về chúng tôi
       link: /about/
@@ -16,75 +20,70 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## Khám phá 10 Tầng tri thức
 
 <CardGrid stagger>
-	<Card title="1. Luật Bóng Đá" icon="open-book">
-		[Khám phá chi tiết →](/luatchoi/tongquatluatchoi/)
-		
-		Nền móng cơ bản: Tổng quan 17 điều luật, Việt vị, VAR, thẻ phạt.
-	</Card>
+  <Card title="1. Luật Bóng Đá" icon="open-book">
+    [Khám phá chi tiết →](/luatchoi/tongquatluatchoi/)
+    
+    Nền tảng 17 điều luật chuẩn IFAB và các quy chuẩn thi đấu quốc tế.
+  </Card>
 
-	<Card title="2. Vị Trí Cầu Thủ" icon="pencil">
-		[Khám phá chi tiết →](/vitri/vitrivaitro/)
-		
-		Vai trò chuyên môn: Sweeper Keeper, Inverted Fullback, False 9, Số 6.
-	</Card>
+  <Card title="2. Vị Trí Cầu Thủ" icon="pencil">
+    [Khám phá chi tiết →](/vitri/vitrivaitro/)
+    
+    Bản đồ vai trò, nhiệm vụ và không gian hoạt động trên sân cỏ hiện đại.
+  </Card>
 
-	<Card title="3. Sơ Đồ" icon="setting">
-		[Khám phá chi tiết →](/sodo/)
-		
-		Đọc trận đấu: Sơ đồ 4-3-3, 4-2-3-1, 3-5-2.
-	</Card>
+  <Card title="3. Sơ Đồ Đội Hình" icon="setting">
+    [Khám phá chi tiết →](/sodo/)
+    
+    Cấu trúc vận hành, cách bố trí hệ thống và sự biến thể của các khối đội hình.
+  </Card>
 
-	<Card title="4. Chiến Thuật" icon="setting">
-		[Khám phá chi tiết →](/chienthuat/)
-		
-		Đọc trận đấu: Gegenpressing, Tiki-taka.
-	</Card>
+  <Card title="4. Chiến Thuật" icon="puzzle">
+    [Khám phá chi tiết →](/chienthuat/)
+    
+    Triết lý chơi bóng, trường phái kiểm soát và tư duy tổ chức lối chơi đỉnh cao.
+  </Card>
 
-	<Card title="5. Style & Kỹ Năng" icon="star">
-		[Khám phá chi tiết →](/phongcach/luat-chuyen-keo-bong/)
-		
-		Giải mã chỉ số: Progressive Carry/Pass, Kháng Pressing, Half-space.
-	</Card>
+  <Card title="5. Style & Kỹ Năng" icon="star">
+    [Khám phá chi tiết →](/phongcach/luat-chuyen-keo-bong/)
+    
+    Bộ kỹ năng chuyên môn, phong cách cá nhân và các thuật ngữ chiến thuật chuyên sâu.
+  </Card>
 
-	<Card title="6. Hồ Sơ Cầu Thủ" icon="magnifier">
-		[Khám phá chi tiết →](/cauthu/lionel-messi/)
-		
-		Phân tích phong cách thi đấu & sự tiến hóa của các siêu sao.
-	</Card>
+  <Card title="6. Hồ Sơ Cầu Thủ" icon="magnifier">
+    [Khám phá chi tiết →](/cauthu/lionel-messi/)
+    
+    Chân dung, dấu ấn chuyên môn và di sản thi đấu của các ngôi sao sân cỏ.
+  </Card>
 
-	<Card title="7. Các Giải Đấu" icon="document">
-		[Khám phá chi tiết →](/giaidau/champions-league/)
-		
-		Thế thức & lịch sử Champions League, Ngoại Hạng Anh, World Cup.
-	</Card>
+  <Card title="7. Các Giải Đấu & Lịch Sử" icon="document">
+    [Khám phá chi tiết →](/giaidau/champions-league/)
+    
+    Các đấu trường danh giá, thể thức thi đấu và những cột mốc phát triển vĩ đại.
+  </Card>
 
-	<Card title="8. Chuyển Nhượng & Tài Chính" icon="laptop">
-		[Khám phá chi tiết →](/chuyennhuong/luatffp/)
-		
-		Góc độ kinh doanh: Luật FFP, Phí chuyển nhượng, Khấu hao.
-	</Card>
+  <Card title="8. Chuyển Nhượng & Tài Chính" icon="laptop">
+    [Khám phá chi tiết →](/chuyennhuong/luatffp/)
+    
+    Cơ chế vận hành thị trường, luật Công bằng tài chính (FFP) và kinh tế học bóng đá.
+  </Card>
 
-	<Card title="9. Lịch Sử & Cột Mốc" icon="information">
-		[Khám phá chi tiết →](/lichsu/lichsuworldcup/)
-		
-		Các kỳ World Cup kinh điển và những tập thể vĩ đại nhất.
-	</Card>
+  <Card title="9. Huấn Luyện Viên" icon="add-document">
+    [Khám phá chi tiết →](/hlv/pepguardiola/)
+    
+    Dấu ấn chiến lược, tư duy cầm quân và trường phái của những bộ óc vĩ đại.
+  </Card>
 
-	<Card title="10. HLV & Trường Phái" icon="add-document">
-		[Khám phá chi tiết →](/hlv/pepguardiola/)
-		
-		Hồ sơ các chiến lược gia: Pep Guardiola, Jürgen Klopp.
-	</Card>
-
-	<Card title="11. Văn Hóa & Derby" icon="list-format">
-		[Khám phá chi tiết →](/vanhoa/elclasico/)
-		
-		Những trận Siêu kinh điển, Derby rực lửa & văn hóa cổ vũ.
-	</Card>
+  <Card title="10. Văn Hóa & Derby" icon="list-format">
+    [Khám phá chi tiết →](/vanhoa/elclasico/)
+    
+    Bản sắc người hâm mộ, không khí rực lửa và những trận cầu kình địch kinh điển.
+  </Card>
 </CardGrid>
 
 ---
 
-<div style="text-align: center; margin-top: 3rem; color: var(--sl-color-gray-3); font-size: 0.9rem;">
-  ⚽ <strong>Footypedia</strong> — Dự án bách khoa toàn thư bóng đá bài bản cho cộng đồng người hâm mộ Việt Nam.
+<div style="text-align: center; margin-top: 3rem; color: var(--sl-color-gray-3); font-size: 0.9rem; line-height: 1.8;">
+  <p>⚽ <strong>Footypedia</strong> — Dự án bách khoa toàn thư bóng đá bài bản cho cộng đồng người hâm mộ Việt Nam.</p>
+  <p style="font-size: 0.8rem; opacity: 0.85;">© 2026 Designed & Developed by <a href="https://www.instagram.com/trcngt_" target="_blank" style="color: inherit; text-decoration: underline;">trcngt_</a></p>
 </div>

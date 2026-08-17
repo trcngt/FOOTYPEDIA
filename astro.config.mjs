@@ -15,16 +15,7 @@ export default defineConfig({
 					lang: 'vi',
 				},
 			},
-			social: [
-				{
-					icon: 'github',
-					label: 'GitHub',
-					href: 'https://github.com/trcngt/FOOTYPEDIA',
-				},
-			],
-			editLink: {
-				baseUrl: 'https://github.com/trcngt/FOOTYPEDIA/edit/main/',
-			},
+
 			customCss: ['./src/styles/custom.css'],
 			credits: false,
 			sidebar: [
