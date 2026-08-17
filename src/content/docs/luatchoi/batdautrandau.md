@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Trận đấu bóng đá bắt đầu khi tiếng còi khai cuộc vang lên và quả bóng được đưa vào cuộc hợp lệ. **Điều luật 8 (Law 8)** của IFAB quy định cách thức bắt đầu mỗi hiệp đấu, cách bắt đầu lại sau mỗi bàn thắng thông qua **Quả giao bóng (Kick-off)**, cũng như cách xử lý khi trận đấu bị tạm dừng bất ngờ bằng **Quả thả bóng (Dropped ball)**.
+Trận đấu bóng đá bắt đầu khi tiếng còi khai cuộc vang lên và quả bóng được đưa vào cuộc hợp lệ. IFAB quy định cách thức bắt đầu mỗi hiệp đấu, cách bắt đầu lại sau mỗi bàn thắng thông qua **Quả giao bóng (Kick-off)**, cũng như cách xử lý khi trận đấu bị tạm dừng bất ngờ bằng **Quả thả bóng (Dropped ball)**.
 
 ---
 
