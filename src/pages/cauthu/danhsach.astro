@@ -1,0 +1,32 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+const apiKey = import.meta.env.FOOTBALL_API_KEY;
+
+// Gọi API lấy danh sách cầu thủ Man City mùa giải 2025
+const response = await fetch('https://v3.football.api-sports.io/players?team=50&season=2025', {
+  headers: {
+    'x-apisports-key': apiKey,
+  },
+});
+
+const result = await response.json();
+const playersList = result.response || [];
+---
+
+
+  
+    {playersList.map((item) => (
+      
+        
+          
+          
+            Tuổi: {item.player.age}
+            Quốc tịch: {item.player.nationality}
+          
+        
+        Vị trí: {item.statistics[0]?.games?.position || 'N/A'}
+        Số bàn thắng: {item.statistics[0]?.goals?.total ?? 0}
+      
+    ))}
