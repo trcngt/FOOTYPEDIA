@@ -1,5 +1,5 @@
 ---
-title: "2.8 Tiền Đạo Cắm (ST/CF): Target Man, Poacher & Advanced Forward"
+title: "2.8. Tiền Đạo Cắm (ST/CF): Target Man, Poacher & Advanced Forward"
 description: "Phân tích 3 vai trò trung phong cổ điển đến hiện đại: Tiền đạo mục tiêu làm tường, sát thủ vòng cấm Poacher và tiền đạo toàn diện bứt tốc."
 sidebar:
   order: 8

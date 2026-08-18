@@ -1,5 +1,5 @@
 ---
-title: "2.4 Tiền Vệ Trụ (CDM/Số 6): Destroyer, Anchor & Regista"
+title: "2.4. Tiền Vệ Trụ (CDM/Số 6): Destroyer, Anchor & Regista"
 description: "Phân tích 3 trường phái tiền vệ phòng ngự: Máy quét Destroyer, Mỏ neo Anchor Man và Đạo diễn lùi sâu Regista."
 sidebar:
   order: 4

@@ -1,5 +1,5 @@
 ---
-title: "5.1 Nghệ Thuật Chuyền Bóng, Kéo Bóng & La Pausa"
+title: "5.1. Nghệ Thuật Chuyền Bóng, Kéo Bóng & La Pausa"
 description: "Phân tích chuyên sâu bộ kỹ năng chuyền bóng tịnh tiến, kỹ thuật kéo bóng Ball Carrying và nghệ thuật dừng nhịp La Pausa đỉnh cao."
 sidebar:
   order: 1

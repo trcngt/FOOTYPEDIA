@@ -1,5 +1,5 @@
 ---
-title: "3.0 Tổng Quan Sơ Đồ: Hệ Thống & Cấu Trúc Biến Hình"
+title: "Tổng Quan Sơ Đồ: Hệ Thống & Cấu Trúc Biến Hình"
 description: "Phân loại 3 hệ thống phòng ngự (4 hậu vệ, 3 hậu vệ, 5 hậu vệ), phân biệt sơ đồ xuất phát với cấu trúc biến hình khi kiểm soát bóng."
 sidebar:
   order: 0

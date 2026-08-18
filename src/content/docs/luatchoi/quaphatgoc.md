@@ -1,5 +1,5 @@
 ---
-title: 1.15 Quả Phạt Góc
+title: 1.15. Quả Phạt Góc
 description: Quy chuẩn thực hiện phạt góc, bàn thắng Olympic trực tiếp và các chiến thuật dàn xếp phạt góc đỉnh cao theo IFAB.
 sidebar:
   order: 15

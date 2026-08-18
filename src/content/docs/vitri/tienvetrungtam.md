@@ -1,5 +1,5 @@
 ---
-title: "2.5 Tiền Vệ Trung Tâm (CM/Số 8): Box-to-Box & Mezzala"
+title: "2.5. Tiền Vệ Trung Tâm (CM/Số 8): Box-to-Box & Mezzala"
 description: "Phân tích động cơ vĩnh cửu chạy 2 đầu vòng cấm Box-to-Box, tiền vệ dạt nách Mezzala và nghệ thuật khai thác Half-space."
 sidebar:
   order: 5

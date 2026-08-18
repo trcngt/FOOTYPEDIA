@@ -1,5 +1,5 @@
 ---
-title: 1.11 Các Quả Đá Phạt 
+title: 1.11. Các Quả Đá Phạt 
 description: Phân biệt đá phạt trực tiếp vs gián tiếp, quy tắc cự ly hàng rào 9,15m và luật đá phạt nhanh IFAB.
 sidebar:
   order: 11

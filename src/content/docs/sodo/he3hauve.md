@@ -1,5 +1,5 @@
 ---
-title: "3.3 Hệ 3 Hậu Vệ: 3-5-2, 3-4-3, 3-4-2-1, 3-4-1-2 & Biến Thể"
+title: "3.3. Hệ 3 Hậu Vệ: 3-5-2, 3-4-3, 3-4-2-1, 3-4-1-2 & Biến Thể"
 description: "Phân tích toàn diện hệ thống 3 trung vệ: Ưu thế của Wing-back, thoát pressing tuyến dưới và các biến thể 3-5-2, 3-4-3, 3-4-2-1, 3-4-1-2, 3-1-4-2, 3-3-3-1."
 sidebar:
   order: 3

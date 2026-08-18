@@ -1,5 +1,5 @@
 ---
-title: 1.2 Quả Bóng 
+title: 1.2. Quả Bóng 
 description: Quy chuẩn kỹ thuật, kích thước, áp suất và quy tắc thay bóng theo IFAB.
 sidebar:
   order: 2

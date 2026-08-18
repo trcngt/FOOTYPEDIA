@@ -1,5 +1,5 @@
 ---
-title: "2.7 Tiền Đạo Cánh (LW/RW): Winger, Inverted & Inside Forward"
+title: "2.7. Tiền Đạo Cánh (LW/RW): Winger, Inverted & Inside Forward"
 description: "Phân biệt Winger truyền thống bám biên tạt bóng, Inverted Winger nghịch chân bó trong và tiền đạo cánh săn bàn Inside Forward."
 sidebar:
   order: 7

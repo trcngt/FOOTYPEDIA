@@ -1,5 +1,5 @@
 ---
-title: 6.1 Giải Đấu Cấp Đội Tuyển Quốc Gia (ĐTQG)
+title: 6.1. Giải Đấu Cấp Đội Tuyển Quốc Gia (ĐTQG)
 description: Khám phá toàn cảnh các giải đấu cấp ĐTQG toàn cầu từ FIFA World Cup, UEFA EURO, Copa América đến Asian Cup, AFCON và Gold Cup.
 sidebar:
   order: 1

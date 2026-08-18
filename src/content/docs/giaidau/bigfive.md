@@ -1,5 +1,5 @@
 ---
-title: 6.3 "Big Five" & Các Giải VĐQG Châu Âu
+title: 6.3. "Big Five" & Các Giải VĐQG Châu Âu
 description: Khám phá chi tiết 5 giải VĐQG hàng đầu Châu Âu (Big Five), hệ thống lên xuống hạng và các giải đấu lớn khác tại lục địa già.
 sidebar:
   order: 3

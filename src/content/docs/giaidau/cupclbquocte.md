@@ -1,5 +1,5 @@
 ---
-title: 6.2 Giải Đấu Cấp CLB Quốc Tế
+title: 6.2. Giải Đấu Cấp CLB Quốc Tế
 description: Toàn cảnh hệ thống cúp CLB danh giá từ UEFA Champions League, Copa Libertadores, ACL Elite đến FIFA Club World Cup.
 sidebar:
   order: 2

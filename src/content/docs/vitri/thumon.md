@@ -1,5 +1,5 @@
 ---
-title: "2.1 Thủ Môn (GK): Shot-Stopper & Sweeper-Keeper"
+title: "2.1. Thủ Môn (GK): Shot-Stopper & Sweeper-Keeper"
 description: "6 kỹ năng gác đền cơ bản, vai trò thủ môn quét dọn không gian sau lưng hàng thủ và kỹ năng chơi chân thoát pressing."
 sidebar:
   order: 1

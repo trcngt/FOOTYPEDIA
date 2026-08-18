@@ -1,5 +1,5 @@
 ---
-title: 1.10 Lỗi & Hành Vi Vi Phạm 
+title: 1.10. Lỗi & Hành Vi Vi Phạm 
 description: Tổng hợp các lỗi phạt trực tiếp, gián tiếp, luật bóng chạm tay (Handball) và tiêu chuẩn rút thẻ phạt IFAB.
 sidebar:
   order: 10

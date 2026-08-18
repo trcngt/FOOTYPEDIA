@@ -1,5 +1,5 @@
 ---
-title: "3.2 Hệ 4 Hậu Vệ: 4-4-2, Kim Cương, Cây Thông & 4-2-4"
+title: "3.2. Hệ 4 Hậu Vệ: 4-4-2, Kim Cương, Cây Thông & 4-2-4"
 description: "Phân tích các sơ đồ 4 hậu vệ tập trung vào trục dọc và cặp tiền đạo: 4-4-2 phẳng, 4-4-2 Kim cương, 4-4-1-1, 4-2-2-2, Cây thông 4-3-2-1 và 4-2-4."
 sidebar:
   order: 2

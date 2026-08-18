@@ -1,5 +1,5 @@
 ---
-title: 6.5 Hệ Thống Bóng Đá Việt Nam
+title: 6.5. Hệ Thống Bóng Đá Việt Nam
 description: Toàn cảnh cấu trúc kim tự tháp giải đấu quốc nội từ V.League 1, V.League 2, Cúp Quốc Gia đến các cấp độ Đội tuyển Quốc gia Việt Nam.
 sidebar:
   order: 5

@@ -1,5 +1,5 @@
 ---
-title: 1.7 Bóng Trong & Ngoài Cuộc 
+title: 1.7. Bóng Trong & Ngoài Cuộc 
 description: Nguyên tắc toàn bộ quả bóng qua vạch vôi, bóng chạm xà/cột và tình huống bóng chạm trọng tài theo IFAB.
 sidebar:
   order: 7

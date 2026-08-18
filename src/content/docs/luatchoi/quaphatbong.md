@@ -1,5 +1,5 @@
 ---
-title: 1.14 Quả Phát Bóng Lên 
+title: 1.14. Quả Phát Bóng Lên 
 description: Quy định về quả phát bóng lên, luật bóng vào cuộc mới nhất và ứng dụng chiến thuật triển khai bóng ngắn (Build-up).
 sidebar:
   order: 14

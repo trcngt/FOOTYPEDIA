@@ -1,5 +1,5 @@
 ---
-title: 1.0 Tổng Quan Về Luật Bóng Đá
+title: Tổng Quan Về Luật Bóng Đá
 description: Khái niệm, nguồn gốc và cấu trúc 17 luật cơ bản trong bóng đá.
 sidebar:
   order: 0

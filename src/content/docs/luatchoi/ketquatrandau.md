@@ -1,5 +1,5 @@
 ---
-title: 1.8 Xác Định Kết Quả Trận Đấu 
+title: 1.8. Xác Định Kết Quả Trận Đấu 
 description: Tiêu chuẩn công nhận bàn thắng, công nghệ Goal-line và các phương thức phân định thắng thua (Hiệp phụ, Luân lưu 11m).
 sidebar:
   order: 8

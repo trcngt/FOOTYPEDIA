@@ -1,5 +1,5 @@
 ---
-title: "5.4 Nhãn Quan, Kỹ Năng Không Bóng & Phòng Ngự Cá Nhân"
+title: "5.4. Nhãn Quan, Kỹ Năng Không Bóng & Phòng Ngự Cá Nhân"
 description: "Khoa học về tư duy trên sân cỏ: Nghệ thuật quét sân Head Scanning, nhận bóng nửa thân Half-turn, chạy chỗ điểm mù Blindside và kỹ năng phòng ngự cá nhân."
 sidebar:
   order: 4

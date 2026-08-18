@@ -1,5 +1,5 @@
 ---
-title: "2.9 Đánh Lừa Hàng Thủ: False 9, Second Striker & Pressing Forward"
+title: "2.9. Đánh Lừa Hàng Thủ: False 9, Second Striker & Pressing Forward"
 description: "Tiền đạo ảo False 9 lùi sâu phá vỡ cấu trúc phòng ngự, vai trò hộ công Second Striker và tiền đạo phòng ngự từ xa Pressing Forward."
 sidebar:
   order: 9

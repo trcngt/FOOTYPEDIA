@@ -1,5 +1,5 @@
 ---
-title: "5.2 Kỹ Năng Đi Bóng & Đột Phá 1v1: Dribbling Mastery"
+title: "5.2. Kỹ Năng Đi Bóng & Đột Phá 1v1: Dribbling Mastery"
 description: "Khoa học đi bóng qua người: Kiểm soát cự ly hẹp (Close Control), đánh lừa trọng tâm (Body Feint), kỹ thuật xâu kim (Nutmeg) và các kỹ năng 1v1 đỉnh cao."
 sidebar:
   order: 2

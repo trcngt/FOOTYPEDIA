@@ -1,5 +1,5 @@
 ---
-title: "5.7 Ghép Profile 6 Nhóm Chỉ Số: Định Hình Phong Cách Cầu Thủ"
+title: "5.7. Ghép Profile 6 Nhóm Chỉ Số: Định Hình Phong Cách Cầu Thủ"
 description: "Phương pháp ghép ma trận 6 nhóm chỉ số kỹ năng (Physical, Technical, Attacking, Defending, Mental, Flair) để nhận diện và định danh phong cách thi đấu chuyên môn."
 sidebar:
   order: 7

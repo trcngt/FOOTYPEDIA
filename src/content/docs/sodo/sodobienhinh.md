@@ -1,5 +1,5 @@
 ---
-title: "3.5 Sơ Đồ Biến Hình Trong Trận: 3-2-5, 2-3-5 & 3-2-4-1"
+title: "3.5. Sơ Đồ Biến Hình Trong Trận: 3-2-5, 2-3-5 & 3-2-4-1"
 description: "Giải mã các cấu trúc biến hình hiện đại khi kiểm soát bóng: Hàng công 5 người 3-2-5/2-3-5, khối hộp 3-2-4-1 của Pep Guardiola và nghệ thuật 4-3-3 False 9."
 sidebar:
   order: 5

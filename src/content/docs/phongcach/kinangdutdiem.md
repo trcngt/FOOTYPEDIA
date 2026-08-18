@@ -1,5 +1,5 @@
 ---
-title: "5.3 Kỹ Năng Dứt Điểm Đa Dạng: Finishing Mastery"
+title: "5.3. Kỹ Năng Dứt Điểm Đa Dạng: Finishing Mastery"
 description: "Phân tích toàn diện kỹ thuật dứt điểm: Cứa lòng Finesse Shot, vỉa má ngoài Trivela, bấm bóng Chip Shot, bắt vô-lê và nghệ thuật không chiến."
 sidebar:
   order: 3

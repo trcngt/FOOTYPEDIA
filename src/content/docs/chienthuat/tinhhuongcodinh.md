@@ -1,5 +1,5 @@
 ---
-title: "4.6 Tình Huống Cố Định (Set-Pieces): Phạt Góc & Đá Phạt"
+title: "4.6. Tình Huống Cố Định (Set-Pieces): Phạt Góc & Đá Phạt"
 description: "Khoa học về các tình huống bóng chết: Nghệ thuật phạt góc (Near-post, Far-post, Short Corner), dàn xếp đá phạt trực tiếp/gián tiếp và bài ném biên hiện đại."
 sidebar:
   order: 6

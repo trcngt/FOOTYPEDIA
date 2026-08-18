@@ -1,5 +1,5 @@
 ---
-title: "2.0 Vị Trí & Vai Trò: Bản Đồ Không Gian"
+title: "Vị Trí & Vai Trò: Bản Đồ Không Gian"
 description: "Phân biệt Position vs Role, bản đồ 5 hành lang sân, khái niệm Half-space, Pocket và sự biến đổi hình thái đội hình."
 sidebar:
   order: 0

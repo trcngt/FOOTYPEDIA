@@ -1,5 +1,5 @@
 ---
-title: "3.1 Hệ 4 Hậu Vệ: 4-3-3, 4-2-3-1, 4-1-4-1 & 4-5-1"
+title: "3.1. Hệ 4 Hậu Vệ: 4-3-3, 4-2-3-1, 4-1-4-1 & 4-5-1"
 description: "Phân tích 4 sơ đồ kiểm soát và cân bằng kinh điển: Triết lý kiểm soát không gian 4-3-3, tính cân bằng công thủ 4-2-3-1 và biến thể phòng ngự 4-1-4-1 / 4-5-1."
 sidebar:
   order: 1

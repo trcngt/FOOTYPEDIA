@@ -1,5 +1,5 @@
 ---
-title: 1.12 Quả Phạt Đền 
+title: 1.12. Quả Phạt Đền 
 description: Quy chuẩn thực hiện Penalty 11m, giới hạn hành vi của thủ môn và các lỗi xâm nhập vòng cấm theo IFAB.
 sidebar:
   order: 12

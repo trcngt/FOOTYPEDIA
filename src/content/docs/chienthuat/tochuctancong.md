@@ -1,5 +1,5 @@
 ---
-title: "4.1 Tổ Chức Tấn Công: Possession, Build-up & Các Bài Đánh"
+title: "4.1. Tổ Chức Tấn Công: Possession, Build-up & Các Bài Đánh"
 description: "Phân tích toàn diện khâu có bóng: Trường phái kiểm soát vs trực diện, nghệ thuật triển khai bóng tuyến dưới (Build-up) và các bài đánh kết liễu 1/3 cuối sân."
 sidebar:
   order: 1

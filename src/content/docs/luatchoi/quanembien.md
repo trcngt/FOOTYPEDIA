@@ -1,5 +1,5 @@
 ---
-title: 1.13 Quả Ném Biên 
+title: 1.13. Quả Ném Biên 
 description: Kỹ thuật ném biên hợp lệ, lỗi ném biên sai luật và đặc quyền không việt vị theo quy định IFAB.
 sidebar:
   order: 13

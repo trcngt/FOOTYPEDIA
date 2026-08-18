@@ -1,5 +1,5 @@
 ---
-title: 1.5 Thời Gian Thi Đấu 
+title: 1.5. Thời Gian Thi Đấu 
 description: Quy định về 90 phút thi đấu, thời gian bù giờ, hiệp phụ và các khoảng nghỉ giữa hiệp.
 sidebar:
   order: 5

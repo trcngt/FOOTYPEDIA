@@ -1,5 +1,5 @@
 ---
-title: 1.3 Cầu Thủ & Trang Phục 
+title: 1.3. Cầu Thủ & Trang Phục 
 description: Quy định về số lượng cầu thủ, luật thay 5 người và tiêu chuẩn trang phục thi đấu theo IFAB.
 sidebar:
   order: 3

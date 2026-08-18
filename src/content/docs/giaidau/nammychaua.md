@@ -1,5 +1,5 @@
 ---
-title: 6.4 Giải VĐQG Nam Mỹ & Châu Á
+title: 6.4. Giải VĐQG Nam Mỹ & Châu Á
 description: Khám phá các lò đào tạo ngôi sao cuồng nhiệt tại Nam Mỹ và sự trỗi dậy kim tiền, bài bản của các giải VĐQG Châu Á.
 sidebar:
   order: 4

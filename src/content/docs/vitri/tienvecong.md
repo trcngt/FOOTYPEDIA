@@ -1,5 +1,5 @@
 ---
-title: "2.6 Tiền Vệ Công (CAM/Số 10): Nghệ Thuật Pocket"
+title: "2.6. Tiền Vệ Công (CAM/Số 10): Nghệ Thuật Pocket"
 description: "Khoảng trống giữa hai tuyến Pocket, kỹ năng xoay người một chạm, nhãn quan kiến tạo và sự tiến hóa của số 10 cổ điển."
 sidebar:
   order: 6

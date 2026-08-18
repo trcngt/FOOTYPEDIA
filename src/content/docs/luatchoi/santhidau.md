@@ -1,5 +1,5 @@
 ---
-title: 1.1 Sân Thi Đấu
+title: 1.1. Sân Thi Đấu
 description: Kích thước tiêu chuẩn, các vạch kẻ sân và khu vực kỹ thuật theo quy định IFAB/FIFA.
 sidebar:
   order: 1

@@ -1,5 +1,5 @@
 ---
-title: "3.4 Hệ 5 Hậu Vệ: 5-3-2, 5-4-1 & 5-2-3 (Phòng Ngự Đa Lớp)"
+title: "3.4. Hệ 5 Hậu Vệ: 5-3-2, 5-4-1 & 5-2-3 (Phòng Ngự Đa Lớp)"
 description: "Phân tích cấu trúc khối phòng ngự 5 hậu vệ, nghệ thuật bịt kín chiều ngang sân và các đòn phản công chuyển trạng thái chớp nhoáng."
 sidebar:
   order: 4

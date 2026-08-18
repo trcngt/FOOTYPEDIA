@@ -1,5 +1,5 @@
 ---
-title: "4.0 Tổng Quan Chiến Thuật: 4 Giai Đoạn & Lộ Trình Học"
+title: "Tổng Quan Chiến Thuật: 4 Giai Đoạn & Lộ Trình Học"
 description: "Bản đồ 7 nhóm chiến thuật cốt lõi, chu trình 4 giai đoạn trận đấu và lộ trình học đọc chiến thuật bóng đá từ cơ bản đến nâng cao."
 sidebar:
   order: 0

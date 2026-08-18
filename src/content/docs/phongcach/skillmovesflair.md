@@ -1,5 +1,5 @@
 ---
-title: "5.6 Tuyển Tập Kỹ Thuật Đặc Biệt: Skill Moves & Flair"
+title: "5.6. Tuyển Tập Kỹ Thuật Đặc Biệt: Skill Moves & Flair"
 description: "Giải mã các tuyệt kỹ biểu diễn kinh điển: Elastico, Roulette, Rabona, Sombrero, Rainbow Flick và nghệ thuật tạo đột biến ngẫu hứng."
 sidebar:
   order: 6

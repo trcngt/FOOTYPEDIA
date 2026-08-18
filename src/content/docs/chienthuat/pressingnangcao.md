@@ -1,5 +1,5 @@
 ---
-title: "4.5 Nghệ Thuật Pressing Nâng Cao: Triggers, Bẫy & Gegenpressing"
+title: "4.5. Nghệ Thuật Pressing Nâng Cao: Triggers, Bẫy & Gegenpressing"
 description: "Phân tích hệ thống gây áp lực hiện đại: Tín hiệu kích hoạt Trigger Press, nghệ thuật giăng bẫy Pressing Trap, Cover Shadow và triết lý Gegenpressing."
 sidebar:
   order: 5

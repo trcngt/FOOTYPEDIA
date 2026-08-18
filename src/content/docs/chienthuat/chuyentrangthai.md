@@ -1,5 +1,5 @@
 ---
-title: "4.3 Chuyển Trạng Thái: Phản Công & Phản Pressing"
+title: "4.3. Chuyển Trạng Thái: Phản Công & Phản Pressing"
 description: "Khoảnh khắc vàng 3-5 giây trong chuyển đổi trạng thái, phản công trực diện (Direct Counter), phản công biên (Wide Counter) và phản pressing sau khi mất bóng."
 sidebar:
   order: 3

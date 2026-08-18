@@ -1,5 +1,5 @@
 ---
-title: "4.4 Khai Thác Không Gian: Half-Space, Pocket, Zone 14 & Rotations"
+title: "4.4. Khai Thác Không Gian: Half-Space, Pocket, Zone 14 & Rotations"
 description: "Phân tích bản đồ không gian sân cỏ: Khai thác Half-space, nhận bóng giữa hai tuyến Between the Lines, chiếm lĩnh Pocket, làm chủ Zone 14 và hoán đổi vị trí Rotations."
 sidebar:
   order: 4

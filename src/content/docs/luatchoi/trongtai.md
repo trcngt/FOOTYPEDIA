@@ -1,5 +1,5 @@
 ---
-title: 1.4 Trọng Tài & Tổ Trọng Tài 
+title: 1.4. Trọng Tài & Tổ Trọng Tài 
 description: Quyền hạn tối cao của trọng tài chính, nguyên tắc phép lợi thế và vai trò của tổ điều hành trận đấu.
 sidebar:
   order: 4

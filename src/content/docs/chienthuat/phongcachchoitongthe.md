@@ -1,5 +1,5 @@
 ---
-title: "4.7 10 Phong Cách Chơi Tổng Thể Trong Bóng Đá"
+title: "4.7. 10 Phong Cách Chơi Tổng Thể Trong Bóng Đá"
 description: "Tổng hợp 10 trường phái và triết lý bóng đá kinh điển: Tiki-taka, Gegenpressing, Total Football, Positional Play, Catenaccio, Park the Bus và Route One."
 sidebar:
   order: 7

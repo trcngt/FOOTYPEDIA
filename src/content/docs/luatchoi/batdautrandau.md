@@ -1,5 +1,5 @@
 ---
-title: 1.6 Bắt Đầu & Bắt Đầu Lại Trận Đấu 
+title: 1.6. Bắt Đầu & Bắt Đầu Lại Trận Đấu 
 description: Quy định về tung đồng xu, quả giao bóng (Kick-off) và thủ tục thả bóng (Dropped ball) theo IFAB.
 sidebar:
   order: 6

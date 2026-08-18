@@ -1,5 +1,5 @@
 ---
-title: "4.2 Tổ Chức Phòng Ngự: High, Mid, Low Block & Kèm Người"
+title: "4.2. Tổ Chức Phòng Ngự: High, Mid, Low Block & Kèm Người"
 description: "Phân tích 3 khối phòng ngự cơ bản, các phương pháp kèm người (Man, Zonal, Hybrid), tính cô đặc Compactness, bẫy việt vị và Rest Defence."
 sidebar:
   order: 2

@@ -1,5 +1,5 @@
 ---
-title: "2.2 Trung Vệ (CB): Stopper - Cover & Ball-Playing Defender"
+title: "2.2. Trung Vệ (CB): Stopper - Cover & Ball-Playing Defender"
 description: "Cơ chế bù trừ giữa Stopper lao lên tranh chấp và Cover bọc lót, vai trò trung vệ phân phối bóng xuyên tuyến trong bóng đá hiện đại."
 sidebar:
   order: 2

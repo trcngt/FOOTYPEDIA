@@ -1,5 +1,5 @@
 ---
-title: 6.6 Hệ Thống Giải Trẻ & Bóng Đá Nữ
+title: 6.6. Hệ Thống Giải Trẻ & Bóng Đá Nữ
 description: Cấu trúc các giải đấu lứa tuổi trẻ ươm mầm tài năng và sự trỗi dậy mạnh mẽ của bóng đá nữ toàn cầu.
 sidebar:
   order: 6
