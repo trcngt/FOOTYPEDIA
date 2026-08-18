@@ -20,7 +20,7 @@ export default defineConfig({
 			credits: false,
 			sidebar: [
 				{
-					label: 'Trang Chủ',
+					label: 'TRANG CHỦ',
 					link: '/',
 				},
 				{

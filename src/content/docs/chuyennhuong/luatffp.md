@@ -1,5 +1,5 @@
 ---
-title: 3. Luật Công Bằng Tài Chính & Tính Bền Vững (FFP)
+title: 7.3. Luật Công Bằng Tài Chính & Tính Bền Vững (FFP)
 description: Tìm hiểu quy định Financial Sustainability của UEFA, cơ chế Squad Cost 70%, quy tắc hòa vốn và các án phạt tài chính.
 sidebar:
   order: 3

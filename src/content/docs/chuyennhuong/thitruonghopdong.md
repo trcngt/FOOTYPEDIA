@@ -1,5 +1,5 @@
 ---
-title: 1. Thị Trường & Hợp Đồng Chuyển Nhượng
+title: 7.1. Thị Trường & Hợp Đồng Chuyển Nhượng
 description: Toàn bộ các hình thức chuyển nhượng, điều khoản hợp đồng, trạng thái cầu thủ và thuật ngữ thị trường từ A-Z.
 sidebar:
   order: 1

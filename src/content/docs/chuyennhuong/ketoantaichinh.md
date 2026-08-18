@@ -1,5 +1,5 @@
 ---
-title: 2. Kinh Tế Học & Kế Toán Bóng Đá (Amortisation)
+title: 7.2. Kinh Tế Học & Kế Toán Bóng Đá (Amortisation)
 description: Khám phá bí mật kế toán bóng đá, cách tính khấu hao chuyển nhượng (Amortisation), giá trị sổ sách và phương pháp ghi nhận lợi nhuận bán cầu thủ.
 sidebar:
   order: 2
