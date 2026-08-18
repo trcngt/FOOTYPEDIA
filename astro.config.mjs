@@ -64,12 +64,7 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'lichsu' } }],
 				},
 				{
-					label: '9. HLV & Trường Phái',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'hlv' } }],
-				},
-				{
-					label: '10. Văn Hóa & Derby',
+					label: '9. Văn Hóa & Derby',
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'vanhoa' } }],
 				},
