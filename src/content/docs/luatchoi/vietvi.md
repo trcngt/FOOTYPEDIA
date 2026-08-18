@@ -1,5 +1,5 @@
 ---
-title: 1.9 Luật Việt Vị
+title: 1.9. Luật Việt Vị
 description: Định nghĩa vị trí việt vị, 3 trường hợp bị thổi phạt và công nghệ bắt việt vị bán tự động (SAOT).
 sidebar:
   order: 9

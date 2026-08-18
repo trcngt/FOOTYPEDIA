@@ -1,5 +1,5 @@
 ---
-title: "5.0 Tổng Quan Style & Kỹ Năng: Giải Mã Bản Sắc Cầu Thủ"
+title: "Tổng Quan Style & Kỹ Năng: Giải Mã Bản Sắc Cầu Thủ"
 description: "Phân biệt Vị trí, Chiến thuật với Style & Kỹ năng cá nhân, hệ thống 6 nhóm chỉ số định hình nên profile chuyên môn của một cầu thủ."
 sidebar:
   order: 0
