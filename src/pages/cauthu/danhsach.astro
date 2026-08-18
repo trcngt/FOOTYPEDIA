@@ -1,32 +1,47 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import dailyData from '../../data/daily-squads.json';
 
-const apiKey = import.meta.env.FOOTBALL_API_KEY;
-
-// Gọi API lấy danh sách cầu thủ Man City mùa giải 2025
-const response = await fetch('https://v3.football.api-sports.io/players?team=50&season=2025', {
-  headers: {
-    'x-apisports-key': apiKey,
+const leagueTree = [
+  {
+    name: '1. Ngoại Hạng Anh (EPL)',
+    teams: [
+      { id: '50', name: 'Manchester City' },
+      { id: '42', name: 'Arsenal' },
+      { id: '40', name: 'Liverpool' },
+      { id: '33', name: 'Manchester United' },
+    ],
   },
-});
+  {
+    name: '2. Tây Ban Nha (La Liga)',
+    teams: [
+      { id: '541', name: 'Real Madrid' },
+      { id: '529', name: 'FC Barcelona' },
+    ],
+  },
+  {
+    name: '3. Khác',
+    teams: [
+      { id: '157', name: 'Bayern Munich' },
+      { id: '505', name: 'Inter Milan' },
+      { id: '85', name: 'Paris Saint-Germain' },
+      { id: '608', name: 'Al-Nassr' },
+    ],
+  },
+];
 
-const result = await response.json();
-const playersList = result.response || [];
+const allTeams = leagueTree.flatMap((l) => l.teams);
+
+const dynamicSidebar = leagueTree.map((l) => ({
+  label: l.name,
+  items: l.teams.map((t) => ({
+    label: t.name,
+    link: `/cauthu/danhsach?team=${t.id}`,
+  })),
+}));
 ---
 
 
   
-    {playersList.map((item) => (
-      
-        
-          
-          
-            Tuổi: {item.player.age}
-            Quốc tịch: {item.player.nationality}
-          
-        
-        Vị trí: {item.statistics[0]?.games?.position || 'N/A'}
-        Số bàn thắng: {item.statistics[0]?.goals?.total ?? 0}
-      
-    ))}
+    Đang tải...
+    🔄 Dữ liệu được đồng bộ và cập nhật tự động hàng ngày
