@@ -49,32 +49,27 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'phongcach' } }],
 				},
 				{
-					label: '6. Hồ Sơ Cầu Thủ',
-					collapsed: true,
-					items: [{ autogenerate: { directory: 'cauthu' } }],
-				},
-				{
-					label: '7. Các Giải Đấu',
+					label: '6. Các Giải Đấu',
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'giaidau' } }],
 				},
 				{
-					label: '8. Chuyển Nhượng & Tài Chính',
+					label: '7. Chuyển Nhượng & Tài Chính',
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'chuyennhuong' } }],
 				},
 				{
-					label: '9. Lịch Sử & Cột Mốc',
+					label: '8. Lịch Sử & Cột Mốc',
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'lichsu' } }],
 				},
 				{
-					label: '10. HLV & Trường Phái',
+					label: '9. HLV & Trường Phái',
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'hlv' } }],
 				},
 				{
-					label: '11. Văn Hóa & Derby',
+					label: '10. Văn Hóa & Derby',
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'vanhoa' } }],
 				},
