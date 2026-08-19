@@ -1,0 +1,224 @@
+---
+// FormationMorpher.astro
+---
+
+<div class="formation-container">
+  <div class="formation-buttons">
+    <button class="f-btn active" data-formation="433">4-3-3 (Kiểm soát)</button>
+    <button class="f-btn" data-formation="352">3-5-2 (Phản công / Cánh)</button>
+    <button class="f-btn" data-formation="4231">4-2-3-1 (Cân bằng)</button>
+    <button class="f-btn" data-formation="442">4-4-2 (Cổ điển)</button>
+  </div>
+
+  <div class="tactical-board" id="board">
+    <div class="board-line halfway"></div>
+    <div class="board-line penalty-home"></div>
+    
+    <!-- 11 Cầu thủ với hiệu ứng transition trượt mượt mà -->
+    <div class="node gk" id="p1">GK</div>
+    <div class="node def" id="p2">LB</div>
+    <div class="node def" id="p3">CB</div>
+    <div class="node def" id="p4">CB</div>
+    <div class="node def" id="p5">RB</div>
+    <div class="node mid" id="p6">DM</div>
+    <div class="node mid" id="p7">CM</div>
+    <div class="node mid" id="p8">CM</div>
+    <div class="node fwd" id="p9">LW</div>
+    <div class="node fwd" id="p10">ST</div>
+    <div class="node fwd" id="p11">RW</div>
+  </div>
+
+  <div class="formation-insight" id="insight-text">
+    <strong>Sơ đồ 4-3-3:</strong> Triết lý kiểm soát tuyến giữa với 3 tiền vệ tam giác và giãn biên tối đa nhờ 2 tiền đạo cánh rộng.
+  </div>
+</div>
+
+<style>
+  .formation-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .formation-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .f-btn {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #475569;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .f-btn.active, .f-btn:hover {
+    background: #3b82f6;
+    color: #fff;
+    border-color: #60a5fa;
+  }
+  .tactical-board {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    background: #1e3a2b;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .board-line.halfway {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  .board-line.penalty-home {
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 18%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-bottom: none;
+  }
+  .node {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    /* Morphing trượt tọa độ siêu mượt */
+    transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background-color 0.4s ease;
+  }
+  .node.gk { background: #eab308; }
+  .node.def { background: #3b82f6; }
+  .node.mid { background: #10b981; }
+  .node.fwd { background: #ef4444; }
+  .formation-insight {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #1e293b;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    line-height: 1.5;
+  }
+</style>
+
+<script>
+  const formations = {
+    '433': {
+      desc: '<strong>Sơ đồ 4-3-3:</strong> Triết lý kiểm soát tuyến giữa với 3 tiền vệ tam giác và giãn biên tối đa nhờ 2 tiền đạo cánh rộng.',
+      pos: [
+        { id: 'p1', x: 50, y: 92, label: 'GK' },
+        { id: 'p2', x: 15, y: 75, label: 'LB' },
+        { id: 'p3', x: 38, y: 78, label: 'CB' },
+        { id: 'p4', x: 62, y: 78, label: 'CB' },
+        { id: 'p5', x: 85, y: 75, label: 'RB' },
+        { id: 'p6', x: 50, y: 60, label: 'DM' },
+        { id: 'p7', x: 30, y: 48, label: 'CM' },
+        { id: 'p8', x: 70, y: 48, label: 'CM' },
+        { id: 'p9', x: 15, y: 25, label: 'LW' },
+        { id: 'p10', x: 50, y: 20, label: 'ST' },
+        { id: 'p11', x: 85, y: 25, label: 'RW' }
+      ]
+    },
+    '352': {
+      desc: '<strong>Sơ đồ 3-5-2:</strong> Tăng cường chất thép trung lộ với 3 trung vệ, hai biên thuộc toàn quyền kiểm soát của Wing-backs dâng cao.',
+      pos: [
+        { id: 'p1', x: 50, y: 92, label: 'GK' },
+        { id: 'p2', x: 28, y: 78, label: 'CB' },
+        { id: 'p3', x: 50, y: 80, label: 'CB' },
+        { id: 'p4', x: 72, y: 78, label: 'CB' },
+        { id: 'p5', x: 10, y: 50, label: 'LWB' },
+        { id: 'p6', x: 90, y: 50, label: 'RWB' },
+        { id: 'p7', x: 35, y: 58, label: 'DM' },
+        { id: 'p8', x: 65, y: 58, label: 'DM' },
+        { id: 'p9', x: 50, y: 40, label: 'AM' },
+        { id: 'p10', x: 38, y: 22, label: 'ST' },
+        { id: 'p11', x: 62, y: 22, label: 'ST' }
+      ]
+    },
+    '4231': {
+      desc: '<strong>Sơ đồ 4-2-3-1:</strong> Cấu trúc cân bằng nhất hiện đại với cặp Pivot kép (2 tiền vệ trụ) bảo vệ hàng thủ và số 10 tự do sáng tạo.',
+      pos: [
+        { id: 'p1', x: 50, y: 92, label: 'GK' },
+        { id: 'p2', x: 15, y: 76, label: 'LB' },
+        { id: 'p3', x: 38, y: 78, label: 'CB' },
+        { id: 'p4', x: 62, y: 78, label: 'CB' },
+        { id: 'p5', x: 85, y: 76, label: 'RB' },
+        { id: 'p6', x: 38, y: 62, label: 'DM' },
+        { id: 'p7', x: 62, y: 62, label: 'DM' },
+        { id: 'p8', x: 50, y: 40, label: 'AM' },
+        { id: 'p9', x: 18, y: 35, label: 'LM' },
+        { id: 'p10', x: 82, y: 35, label: 'RM' },
+        { id: 'p11', x: 50, y: 18, label: 'ST' }
+      ]
+    },
+    '442': {
+      desc: '<strong>Sơ đồ 4-4-2:</strong> 2 khối hàng ngang vững chắc, giữ cự ly đội hình hẹp để bịt kín mọi khoảng trống ở trung lộ.',
+      pos: [
+        { id: 'p1', x: 50, y: 92, label: 'GK' },
+        { id: 'p2', x: 15, y: 78, label: 'LB' },
+        { id: 'p3', x: 38, y: 78, label: 'CB' },
+        { id: 'p4', x: 62, y: 78, label: 'CB' },
+        { id: 'p5', x: 85, y: 78, label: 'RB' },
+        { id: 'p6', x: 15, y: 48, label: 'LM' },
+        { id: 'p7', x: 38, y: 48, label: 'CM' },
+        { id: 'p8', x: 62, y: 48, label: 'CM' },
+        { id: 'p9', x: 85, y: 48, label: 'RM' },
+        { id: 'p10', x: 38, y: 22, label: 'ST' },
+        { id: 'p11', x: 62, y: 22, label: 'ST' }
+      ]
+    }
+  };
+
+  function setFormation(key) {
+    const data = formations[key];
+    if (!data) return;
+
+    data.pos.forEach(item => {
+      const el = document.getElementById(item.id);
+      if (el) {
+        el.style.left = `${item.x}%`;
+        el.style.top = `${item.y}%`;
+        el.textContent = item.label;
+      }
+    });
+
+    const insight = document.getElementById('insight-text');
+    if (insight) insight.innerHTML = data.desc;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.f-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const key = btn.getAttribute('data-formation');
+        setFormation(key);
+      });
+    });
+    setFormation('433');
+  });
+</script>

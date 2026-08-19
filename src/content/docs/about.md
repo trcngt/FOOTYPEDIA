@@ -48,7 +48,7 @@ Trong kỷ nguyên bóng đá hiện đại với các hệ thống chiến thu�
 
 ## 🤝 Lời Cảm Ơn & Kết Nối
 
-Footypedia luôn lắng nghe mọi đóng góp từ cộng đồng. Nếu bạn phát hiện sai sót kiến thức, có ý tưởng bổ sung nội dung hoặc muốn giao lưu về bóng đá, hãy kết nối trực tiếp với đội ngũ phát triển qua Instagram [@trcngt_](https://www.instagram.com/trcngt_) hoặc gửi email về địa chỉ bên trên.
+Footypedia luôn lắng nghe mọi đóng góp từ cộng đồng. Nếu bạn phát hiện sai sót kiến thức, có ý tưởng bổ sung nội dung hoặc muốn giao lưu về bóng đá, hãy kết nối trực tiếp với đội ngũ phát triển.
 
 > *"Bóng đá là một trò chơi đơn giản, nhưng chơi bóng đá một cách đơn giản lại là điều khó khăn nhất."*
 > 

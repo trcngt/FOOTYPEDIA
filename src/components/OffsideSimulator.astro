@@ -1,0 +1,265 @@
+---
+// OffsideSimulator.astro
+---
+
+<div class="offside-container">
+  <div class="header-status">
+    <div id="status-badge" class="badge onside">✅ HỢP LỆ (ONSIDE)</div>
+    <p id="status-desc" class="desc">Kéo cầu thủ tấn công (Chấm Xanh Dương) hoặc hậu vệ (Chấm Đỏ) để thử nghiệm.</p>
+  </div>
+
+  <div class="pitch" id="pitch">
+    <!-- Vạch giữa sân -->
+    <div class="halfway-line"></div>
+    <div class="center-circle"></div>
+    <div class="penalty-box"></div>
+
+    <!-- Đường việt vị ảo (Offside Line) -->
+    <div class="offside-line" id="offside-line"></div>
+
+    <!-- Vùng việt vị (Offside Zone) -->
+    <div class="offside-zone" id="offside-zone"></div>
+
+    <!-- Cầu thủ phòng ngự (Đỏ) -->
+    <div class="player defender gk" id="gk" style="left: 95%; top: 50%;">GK</div>
+    <div class="player defender" id="def1" style="left: 75%; top: 25%;">HẬU VỆ 1</div>
+    <div class="player defender" id="def2" style="left: 70%; top: 65%;">HẬU VỆ 2</div>
+
+    <!-- Cầu thủ tấn công (Xanh dương) -->
+    <div class="player attacker passer" id="passer" style="left: 40%; top: 50%;">CHUYỀN</div>
+    <div class="player attacker receiver" id="receiver" style="left: 65%; top: 35%;">TIỀN ĐẠO</div>
+
+    <!-- Quả bóng -->
+    <div class="ball" id="ball" style="left: 43%; top: 52%;">⚽</div>
+  </div>
+
+  <div class="controls-panel">
+    <label class="toggle-option">
+      <input type="checkbox" id="pass-from-own-half" />
+      Chuyền từ sân nhà
+    </label>
+    <button class="btn-reset" id="btn-reset">Đặt lại vị trí</button>
+  </div>
+</div>
+
+<style>
+  .offside-container {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #fff;
+    margin: 2rem 0;
+    user-select: none;
+  }
+  .header-status {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+  .badge.onside { background: #16a34a; }
+  .badge.offside { background: #dc2626; }
+  .desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+  }
+  .pitch {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    background: #15803d;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    touch-action: none;
+  }
+  .halfway-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .center-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .penalty-box {
+    position: absolute;
+    right: 0;
+    top: 20%;
+    width: 18%;
+    height: 60%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-right: none;
+  }
+  .offside-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #38bdf8;
+    z-index: 2;
+    transition: left 0.05s ease-out;
+  }
+  .offside-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(220, 38, 38, 0.2);
+    z-index: 1;
+  }
+  .player {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: bold;
+    cursor: grab;
+    z-index: 5;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  .player:active { cursor: grabbing; }
+  .defender { background: #ef4444; border: 2px solid #fff; }
+  .attacker { background: #3b82f6; border: 2px solid #fff; }
+  .ball {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    z-index: 4;
+    cursor: grab;
+  }
+  .controls-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .btn-reset {
+    background: #334155;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  function initOffside() {
+    const pitch = document.getElementById('pitch');
+    const offsideLine = document.getElementById('offside-line');
+    const offsideZone = document.getElementById('offside-zone');
+    const statusBadge = document.getElementById('status-badge');
+    const statusDesc = document.getElementById('status-desc');
+
+    const receiver = document.getElementById('receiver');
+    const def1 = document.getElementById('def1');
+    const def2 = document.getElementById('def2');
+    const ball = document.getElementById('ball');
+
+    const players = [receiver, def1, def2, ball];
+
+    let activeDrag = null;
+
+    players.forEach(el => {
+      if (!el) return;
+      el.addEventListener('pointerdown', (e) => {
+        activeDrag = el;
+        el.setPointerCapture(e.pointerId);
+      });
+
+      el.addEventListener('pointermove', (e) => {
+        if (!activeDrag || !pitch) return;
+        const rect = pitch.getBoundingClientRect();
+        let x = ((e.clientX - rect.left) / rect.width) * 100;
+        let y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        x = Math.max(5, Math.min(95, x));
+        y = Math.max(5, Math.min(95, y));
+
+        activeDrag.style.left = `${x}%`;
+        activeDrag.style.top = `${y}%`;
+
+        calculateOffside();
+      });
+
+      el.addEventListener('pointerup', () => { activeDrag = null; });
+      el.addEventListener('pointercancel', () => { activeDrag = null; });
+    });
+
+    function getX(el) {
+      return parseFloat(el.style.left);
+    }
+
+    function calculateOffside() {
+      // 1. Tìm hậu vệ áp chót (người đứng gần đáy sân thứ 2, sau GK ở 95%)
+      const defXList = [getX(def1), getX(def2)].sort((a, b) => b - a);
+      const secondLastDefX = defXList[1]; // Vị trí hậu vệ áp chót (theo chiều tấn công sang phải)
+
+      // 2. Đường việt vị không thể thấp hơn vạch giữa sân (50%)
+      const offsideX = Math.max(50, secondLastDefX);
+
+      if (offsideLine && offsideZone) {
+        offsideLine.style.left = `${offsideX}%`;
+        offsideZone.style.left = `${offsideX}%`;
+        offsideZone.style.width = `${100 - offsideX}%`;
+      }
+
+      const receiverX = getX(receiver);
+      const ballX = getX(ball);
+
+      // 3. Kiểm tra các điều kiện việt vị chuẩn IFAB:
+      // a) Nằm trên nửa sân đối phương (> 50%)
+      // b) Đứng dưới người hậu vệ áp chót (> secondLastDefX)
+      // c) Đứng phía trước trái bóng (> ballX)
+      const isPastHalfway = receiverX > 50;
+      const isPastDefender = receiverX > secondLastDefX;
+      const isPastBall = receiverX > ballX;
+
+      if (isPastHalfway && isPastDefender && isPastBall) {
+        statusBadge.className = 'badge offside';
+        statusBadge.textContent = '❌ VIỆT VỊ (OFFSIDE)';
+        statusDesc.textContent = `Tiền đạo vượt qua hậu vệ áp chót (${secondLastDefX.toFixed(1)}%) và đứng trước bóng!`;
+        offsideLine.style.background = '#ef4444';
+      } else {
+        statusBadge.className = 'badge onside';
+        statusBadge.textContent = '✅ HỢP LỆ (ONSIDE)';
+        if (!isPastHalfway) {
+          statusDesc.textContent = 'Hợp lệ: Tiền đạo vẫn đang ở phần sân nhà.';
+        } else if (!isPastBall) {
+          statusDesc.textContent = 'Hợp lệ: Tiền đạo đứng ngang hoặc sau trái bóng.';
+        } else {
+          statusDesc.textContent = 'Hợp lệ: Tiền đạo đứng trên hoặc ngang hàng với hậu vệ áp chót.';
+        }
+        offsideLine.style.background = '#38bdf8';
+      }
+    }
+
+    calculateOffside();
+  }
+
+  // Chạy khi Astro tải xong DOM
+  document.addEventListener('DOMContentLoaded', initOffside);
+</script>

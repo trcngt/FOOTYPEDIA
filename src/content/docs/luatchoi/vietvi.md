@@ -5,6 +5,14 @@ sidebar:
   order: 9
 ---
 
+import OffsideSimulator from '../../../components/OffsideSimulator.astro';
+
+## 🎮 Thực Hành Trực Quan Bắt Lỗi Việt Vị
+
+Hãy tự tay kéo các cầu thủ trên sân để trải nghiệm ranh giới việt vị theo chuẩn IFAB:
+
+<OffsideSimulator />
+
 **Luật Việt Vị (Offside - Law 11)** là một trong những điều luật phức tạp, tinh tế và có tầm ảnh hưởng lớn nhất đến sự phát triển của chiến thuật bóng đá hiện đại. Bản chất của luật việt vị là ngăn chặn tiền đạo đối phương "mắc màn" chực chờ sẵn bên phần sân đội bạn để nhận bóng dễ dàng.
 
 ---
