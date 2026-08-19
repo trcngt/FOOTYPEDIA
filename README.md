@@ -1,49 +1,47 @@
-# Starlight Starter Kit: Basics
+# ⚽ FOOTYPEDIA
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+> Thư viện bách khoa toàn thư kỹ thuật số về bóng đá — tổng hợp thông tin, số liệu, lịch sử và chiến thuật bóng đá.
 
-```
-npm create astro@latest -- --template starlight
-```
+🔗 **Live Demo:** [footypedia.vercel.app](https://footypedia.vercel.app/)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 📌 Tính năng chính
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+* 📖 **Tài liệu & Bài viết chi tiết:** Tối ưu hóa đọc bài viết với định dạng MDX linh hoạt.
+* ⚡ **Hiệu năng cao:** Xây dựng trên nền tảng Astro giúp tải trang cực nhanh và tối ưu SEO.
+* 🌓 **Hỗ trợ giao diện:** Dark/Light mode mặc định theo hệ thống.
+* 🔍 **Tìm kiếm thông minh:** Tích hợp bộ tìm kiếm nội dung nhanh chóng.
+* 📱 **Responsive:** Hiển thị mượt mà trên cả máy tính và thiết bị di động.
 
-```
-.
-├── public/
+---
+
+## 🛠️ Công nghệ sử dụng
+
+* **Framework:** [Astro](https://astro.build/)
+* **Theme / Documentation Kit:** [Starlight](https://starlight.astro.build/)
+* **Nội dung:** MDX & Markdown
+* **Ngôn ngữ:** TypeScript / JavaScript, CSS
+* **Hosting / Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## 🚀 Cài đặt & Chạy trên máy cục bộ (Local Development)
+
+### Yêu cầu hệ thống
+* **Node.js**: Phiên bản 18 trở lên
+* **npm**, **pnpm**, hoặc **yarn**
+
+---
+## Cấu trúc thư mục cơ bản
+```text
+FOOTYPEDIA/
+├── public/              # Tài nguyên tĩnh (ảnh, favicon, fonts)
 ├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
+│   ├── assets/          # Hình ảnh xử lý qua Astro
+│   └── content/
+│       └── docs/        # Toàn bộ bài viết, nội dung MDX của Footypedia
+├── astro.config.mjs     # File cấu hình Astro & Starlight
 ├── package.json
 └── tsconfig.json
 ```
-
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
-
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
