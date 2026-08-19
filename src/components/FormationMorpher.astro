@@ -2,223 +2,695 @@
 // FormationMorpher.astro
 ---
 
-<div class="formation-container">
-  <div class="formation-buttons">
-    <button class="f-btn active" data-formation="433">4-3-3 (Kiểm soát)</button>
-    <button class="f-btn" data-formation="352">3-5-2 (Phản công / Cánh)</button>
-    <button class="f-btn" data-formation="4231">4-2-3-1 (Cân bằng)</button>
-    <button class="f-btn" data-formation="442">4-4-2 (Cổ điển)</button>
+<div class="morpher-container">
+  <!-- Bảng chọn 6 Hệ thống chiến thuật (Grid 3x2 đều chằn chặn, không icon) -->
+  <div class="system-grid-picker">
+    <button class="sys-btn active" data-system="pep-3241">3-2-4-1</button>
+    <button class="sys-btn" data-system="klopp-235">2-3-5</button>
+    <button class="sys-btn" data-system="inzaghi-352">3-5-2</button>
+    <button class="sys-btn" data-system="ancelotti-diamond">4-4-2 Diamond</button>
+    <button class="sys-btn" data-system="simeone-442">4-4-2 Low-Block</button>
+    <button class="sys-btn" data-system="classic-4231">4-2-3-1</button>
   </div>
 
-  <div class="tactical-board" id="board">
-    <div class="board-line halfway"></div>
-    <div class="board-line penalty-home"></div>
-    
-    <!-- 11 Cầu thủ với hiệu ứng transition trượt mượt mà -->
-    <div class="node gk" id="p1">GK</div>
-    <div class="node def" id="p2">LB</div>
-    <div class="node def" id="p3">CB</div>
-    <div class="node def" id="p4">CB</div>
-    <div class="node def" id="p5">RB</div>
-    <div class="node mid" id="p6">DM</div>
-    <div class="node mid" id="p7">CM</div>
-    <div class="node mid" id="p8">CM</div>
-    <div class="node fwd" id="p9">LW</div>
-    <div class="node fwd" id="p10">ST</div>
-    <div class="node fwd" id="p11">RW</div>
+  <!-- Nút chuyển đổi trạng thái: Chia đều 50% mỗi bên -->
+  <div class="phase-switch-bar">
+    <button class="phase-btn" data-phase="defend">
+      Khi Mất Bóng (Phòng Ngự)
+    </button>
+    <button class="phase-btn active" data-phase="attack">
+      Khi Có Bóng (Triển Khai)
+    </button>
   </div>
 
-  <div class="formation-insight" id="insight-text">
-    <strong>Sơ đồ 4-3-3:</strong> Triết lý kiểm soát tuyến giữa với 3 tiền vệ tam giác và giãn biên tối đa nhờ 2 tiền đạo cánh rộng.
+  <!-- Bố cục Sân 2D & Thông số chiến thuật -->
+  <div class="display-grid">
+    <!-- Sân 2D minh họa 11 cầu thủ -->
+    <div class="pitch-card">
+      <div class="pitch-header">
+        <span class="pitch-title" id="formation-name">Sơ đồ: 3-2-4-1 (Kiểm soát áp đảo)</span>
+        <span class="attack-dir">Tấn công ➔</span>
+      </div>
+
+      <div class="pitch-wrapper">
+        <div class="pitch-board" id="pitch-board">
+          <!-- Vạch sân -->
+          <div class="half-line"></div>
+          <div class="center-circle"></div>
+          <div class="box-left"></div>
+          <div class="box-right"></div>
+
+          <!-- 11 Cầu thủ -->
+          <div class="node gk" id="p-gk">GK</div>
+          <div class="node" id="p-1">1</div>
+          <div class="node" id="p-2">2</div>
+          <div class="node" id="p-3">3</div>
+          <div class="node" id="p-4">4</div>
+          <div class="node" id="p-5">5</div>
+          <div class="node" id="p-6">6</div>
+          <div class="node" id="p-7">7</div>
+          <div class="node" id="p-8">8</div>
+          <div class="node" id="p-9">9</div>
+          <div class="node" id="p-10">10</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bảng phân tích chuyển thái -->
+    <div class="info-card">
+      <div class="info-header">
+        <h3 id="phase-title">Pha Triển Khai Bóng (Build-up Phase)</h3>
+        <span class="badge-phase" id="phase-badge">In-Possession</span>
+      </div>
+
+      <p class="phase-desc" id="phase-desc">
+        Hậu vệ cánh bó hẳn vào trung lộ đá cặp tiền vệ trụ kép (Double Pivot). Hai tiền vệ công dâng cao chiếm lĩnh khoảng trống Half-space tạo nên cấu trúc 5 tiền đạo áp đảo tuyến trên.
+      </p>
+
+      <div class="tactical-notes">
+        <div class="note-item">
+          <strong>Cấu trúc khối:</strong>
+          <span id="note-structure">3 Trung vệ + 2 Tiền vệ mỏ neo + 5 Mũi công (3-2-4-1)</span>
+        </div>
+        <div class="note-item">
+          <strong>Mục tiêu chiến thuật:</strong>
+          <span id="note-objective">Tạo ưu thế quân số tuyến giữa (+1 Overload) và khóa chặt các đường phản công nhanh.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <style>
-  .formation-container {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .morpher-container {
     background: #0f172a;
     border: 1px solid #334155;
     border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  .formation-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    justify-content: center;
-  }
-  .f-btn {
-    background: #1e293b;
-    color: #94a3b8;
-    border: 1px solid #475569;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: all 0.2s;
-  }
-  .f-btn.active, .f-btn:hover {
-    background: #3b82f6;
+    padding: 1.25rem;
     color: #fff;
-    border-color: #60a5fa;
-  }
-  .tactical-board {
-    position: relative;
+    margin: 2rem 0;
     width: 100%;
-    height: 420px;
-    background: #1e3a2b;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    overflow: hidden;
   }
-  .board-line.halfway {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.4);
+
+  /* Grid 6 hệ thống: 3 cột x 2 hàng đều nhau 100% */
+  .system-grid-picker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 0 0 0.75rem 0;
+    padding: 0;
+    align-items: stretch;
+    width: 100%;
   }
-  .board-line.penalty-home {
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    right: 25%;
-    height: 18%;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    border-bottom: none;
+
+  @media (max-width: 768px) {
+    .system-grid-picker {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
-  .node {
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
+
+  @media (max-width: 500px) {
+    .system-grid-picker {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sys-btn {
+    height: 42px;
+    width: 100%;
+    margin: 0 !important;
+    background: #0f172a;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: #fff;
-    border: 2px solid #fff;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    /* Morphing trượt tọa độ siêu mượt */
-    transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.4s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
+    line-height: 1;
+    vertical-align: middle;
   }
-  .node.gk { background: #eab308; }
-  .node.def { background: #3b82f6; }
-  .node.mid { background: #10b981; }
-  .node.fwd { background: #ef4444; }
-  .formation-insight {
-    margin-top: 1rem;
-    padding: 0.8rem;
+
+  .sys-btn:hover {
+    color: #fff;
+    border-color: #38bdf8;
     background: #1e293b;
+  }
+
+  .sys-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #38bdf8;
+  }
+
+  /* Nút chuyển đổi trạng thái: 2 ô chia đều 50% */
+  .phase-switch-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    background: #1e293b;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    margin-bottom: 1.25rem;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .phase-btn {
+    height: 42px;
+    width: 100%;
+    margin: 0 !important;
+    background: #0f172a;
+    color: #94a3b8;
+    border: 1px solid #475569;
     border-radius: 6px;
-    font-size: 0.9rem;
-    color: #e2e8f0;
-    line-height: 1.5;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 0 0.5rem;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .phase-btn:hover {
+    color: #fff;
+    border-color: #38bdf8;
+  }
+
+  .phase-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #38bdf8;
+  }
+
+  /* Layout 2 cột */
+  .display-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px) {
+    .display-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pitch-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 0.9rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pitch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .pitch-title {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #38bdf8;
+  }
+
+  .attack-dir {
+    font-size: 0.76rem;
+    color: #94a3b8;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+
+  /* Sân bóng tương tác với CSS Transition mượt */
+  .pitch-wrapper {
+    width: 100%;
+  }
+
+  .pitch-board {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    background: #15803d;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .half-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .center-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .box-left {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 15%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
+  }
+
+  .box-right {
+    position: absolute;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 15%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-right: none;
+  }
+
+  /* 11 Node Cầu thủ */
+  .node {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #0284c7;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1), top 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  .node.gk {
+    background: #f59e0b;
+  }
+
+  .info-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1.1rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+  }
+
+  .info-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #38bdf8;
+  }
+
+  .badge-phase {
+    background: #0284c7;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .phase-desc {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+  }
+
+  .tactical-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    background: #0f172a;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid #38bdf8;
+  }
+
+  .note-item {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+
+  .note-item strong {
+    color: #f1f5f9;
+    display: block;
+    margin-bottom: 0.15rem;
   }
 </style>
 
 <script>
-  const formations = {
-    '433': {
-      desc: '<strong>Sơ đồ 4-3-3:</strong> Triết lý kiểm soát tuyến giữa với 3 tiền vệ tam giác và giãn biên tối đa nhờ 2 tiền đạo cánh rộng.',
-      pos: [
-        { id: 'p1', x: 50, y: 92, label: 'GK' },
-        { id: 'p2', x: 15, y: 75, label: 'LB' },
-        { id: 'p3', x: 38, y: 78, label: 'CB' },
-        { id: 'p4', x: 62, y: 78, label: 'CB' },
-        { id: 'p5', x: 85, y: 75, label: 'RB' },
-        { id: 'p6', x: 50, y: 60, label: 'DM' },
-        { id: 'p7', x: 30, y: 48, label: 'CM' },
-        { id: 'p8', x: 70, y: 48, label: 'CM' },
-        { id: 'p9', x: 15, y: 25, label: 'LW' },
-        { id: 'p10', x: 50, y: 20, label: 'ST' },
-        { id: 'p11', x: 85, y: 25, label: 'RW' }
+  interface Coords {
+    x: number; // %
+    y: number; // %
+    label: string;
+  }
+
+  interface SystemData {
+    nameAttack: string;
+    nameDefend: string;
+    descAttack: string;
+    descDefend: string;
+    structAttack: string;
+    structDefend: string;
+    objAttack: string;
+    objDefend: string;
+    attack: Coords[];
+    defend: Coords[];
+  }
+
+  const systems: Record<string, SystemData> = {
+    'pep-3241': {
+      nameAttack: 'Sơ đồ tấn công: 3-2-4-1 (Hộp trung tuyến Box Midfield)',
+      nameDefend: 'Sơ đồ phòng ngự: 4-4-2 (Khối Mid-block chặt chẽ)',
+      descAttack: 'Hậu vệ cánh bó vào trung lộ tạo thành cặp tiền vệ trụ kép (Double Pivot). 2 tiền vệ công dâng cao khai thác Half-space tạo cấu trúc 5 tiền đạo.',
+      descDefend: 'Đội hình rút về khối 4-4-2 giăng ngang, thu hẹp khoảng cách giữa các tuyến để bịt kín mọi khoảng trống trung lộ.',
+      structAttack: '3 Trung vệ + 2 Pivot (John Stones/Rodri) + 5 Mũi công (3-2-4-1)',
+      structDefend: '4 Hậu vệ + 4 Tiền vệ giăng ngang + 2 Tiền đạo gây sức ép (4-4-2)',
+      objAttack: 'Áp đảo quân số tuyến giữa (+1 Overload) và chống phản công trực diện.',
+      objDefend: 'Bảo vệ trung lộ, ép đối phương phải chuyền bóng bế tắc ra biên.',
+      attack: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 25, y: 22, label: 'LCB' },
+        { x: 22, y: 50, label: 'CB' },
+        { x: 25, y: 78, label: 'RCB' },
+        { x: 45, y: 38, label: 'DM' },
+        { x: 45, y: 62, label: 'IWB' },
+        { x: 70, y: 15, label: 'LW' },
+        { x: 68, y: 38, label: 'AM' },
+        { x: 68, y: 62, label: 'AM' },
+        { x: 70, y: 85, label: 'RW' },
+        { x: 86, y: 50, label: 'ST' }
+      ],
+      defend: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 22, y: 18, label: 'LB' },
+        { x: 20, y: 38, label: 'CB' },
+        { x: 20, y: 62, label: 'CB' },
+        { x: 22, y: 82, label: 'RB' },
+        { x: 42, y: 18, label: 'LM' },
+        { x: 40, y: 38, label: 'CM' },
+        { x: 40, y: 62, label: 'CM' },
+        { x: 42, y: 82, label: 'RM' },
+        { x: 60, y: 38, label: 'SS' },
+        { x: 62, y: 62, label: 'ST' }
       ]
     },
-    '352': {
-      desc: '<strong>Sơ đồ 3-5-2:</strong> Tăng cường chất thép trung lộ với 3 trung vệ, hai biên thuộc toàn quyền kiểm soát của Wing-backs dâng cao.',
-      pos: [
-        { id: 'p1', x: 50, y: 92, label: 'GK' },
-        { id: 'p2', x: 28, y: 78, label: 'CB' },
-        { id: 'p3', x: 50, y: 80, label: 'CB' },
-        { id: 'p4', x: 72, y: 78, label: 'CB' },
-        { id: 'p5', x: 10, y: 50, label: 'LWB' },
-        { id: 'p6', x: 90, y: 50, label: 'RWB' },
-        { id: 'p7', x: 35, y: 58, label: 'DM' },
-        { id: 'p8', x: 65, y: 58, label: 'DM' },
-        { id: 'p9', x: 50, y: 40, label: 'AM' },
-        { id: 'p10', x: 38, y: 22, label: 'ST' },
-        { id: 'p11', x: 62, y: 22, label: 'ST' }
+    'klopp-235': {
+      nameAttack: 'Sơ đồ tấn công: 2-3-5 (Gegenpressing rực lửa)',
+      nameDefend: 'Sơ đồ phòng ngự: 4-3-3 (Bẫy áp sát tầm cao High-press)',
+      descAttack: 'Hai hậu vệ biên dâng kịch kim như 2 tiền đạo cánh. Tiền đạo cánh bó vào trong dứt điểm cùng tiền đạo cắm, tạo thành thế gọng kìm 5 người.',
+      descDefend: 'Toàn đội lập tức vây bắt quả bóng trong 5 giây đầu tiên (Gegenpressing) để đoạt lại quyền kiểm soát ngay trên phần sân khách.',
+      structAttack: '2 Trung vệ + 3 Tiền vệ hỗ trợ + 5 Cầu thủ vây hãm vòng cấm (2-3-5)',
+      structDefend: '3 Tiền đạo ép trung vệ + Tuyến 3 tiền vệ bọc lót tầm cao (4-3-3)',
+      objAttack: 'Đột kích chớp nhoáng với cường độ cao và tận dụng quả tạt điểm rơi.',
+      objDefend: 'Đoạt bóng ở vị trí gần khung thành đối phương nhất có thể.',
+      attack: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 28, y: 35, label: 'CB' },
+        { x: 28, y: 65, label: 'CB' },
+        { x: 48, y: 50, label: 'DM' },
+        { x: 68, y: 10, label: 'LB' },
+        { x: 68, y: 90, label: 'RB' },
+        { x: 55, y: 32, label: 'CM' },
+        { x: 55, y: 68, label: 'CM' },
+        { x: 80, y: 28, label: 'LW' },
+        { x: 85, y: 50, label: 'CF' },
+        { x: 80, y: 72, label: 'RW' }
+      ],
+      defend: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 28, y: 18, label: 'LB' },
+        { x: 26, y: 38, label: 'CB' },
+        { x: 26, y: 62, label: 'CB' },
+        { x: 28, y: 82, label: 'RB' },
+        { x: 45, y: 30, label: 'CM' },
+        { x: 42, y: 50, label: 'DM' },
+        { x: 45, y: 70, label: 'CM' },
+        { x: 68, y: 22, label: 'LW' },
+        { x: 72, y: 50, label: 'ST' },
+        { x: 68, y: 78, label: 'RW' }
       ]
     },
-    '4231': {
-      desc: '<strong>Sơ đồ 4-2-3-1:</strong> Cấu trúc cân bằng nhất hiện đại với cặp Pivot kép (2 tiền vệ trụ) bảo vệ hàng thủ và số 10 tự do sáng tạo.',
-      pos: [
-        { id: 'p1', x: 50, y: 92, label: 'GK' },
-        { id: 'p2', x: 15, y: 76, label: 'LB' },
-        { id: 'p3', x: 38, y: 78, label: 'CB' },
-        { id: 'p4', x: 62, y: 78, label: 'CB' },
-        { id: 'p5', x: 85, y: 76, label: 'RB' },
-        { id: 'p6', x: 38, y: 62, label: 'DM' },
-        { id: 'p7', x: 62, y: 62, label: 'DM' },
-        { id: 'p8', x: 50, y: 40, label: 'AM' },
-        { id: 'p9', x: 18, y: 35, label: 'LM' },
-        { id: 'p10', x: 82, y: 35, label: 'RM' },
-        { id: 'p11', x: 50, y: 18, label: 'ST' }
+    'inzaghi-352': {
+      nameAttack: 'Sơ đồ tấn công: 3-1-4-2 (Áp đảo biên & Cặp song sát 2 ST)',
+      nameDefend: 'Sơ đồ phòng ngự: 5-3-2 (Khối thủ 5 hậu vệ kiên cố)',
+      descAttack: 'Hai Wing-back dâng cao tạt bóng cho 2 tiền đạo cắm. Tiền vệ Regista lùi sâu làm trạm trung chuyển điều phối bóng toàn sân.',
+      descDefend: 'Hai Wing-back lùi sâu tạo thành hàng ngang 5 hậu vệ bảo vệ vòng cấm, triệt tiêu mọi phương án căng ngang của đối thủ.',
+      structAttack: '3 Trung vệ + 1 DLP + 4 Tiền vệ tấn công + 2 Tiền đạo (3-1-4-2)',
+      structDefend: '5 Hậu vệ giăng ngang + 3 Tiền vệ phòng ngự + 2 Tiền đạo (5-3-2)',
+      objAttack: 'Tận dụng sự ăn ý của cặp song sát 2 ST và khả năng tạt cánh của Wing-back.',
+      objDefend: 'Bảo vệ khu vực 16m50 bằng quân số áp đảo, chống bóng bổng.',
+      attack: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 24, y: 25, label: 'LCB' },
+        { x: 20, y: 50, label: 'CB' },
+        { x: 24, y: 75, label: 'RCB' },
+        { x: 42, y: 50, label: 'DLP' },
+        { x: 65, y: 12, label: 'LWB' },
+        { x: 60, y: 35, label: 'MEZ' },
+        { x: 60, y: 65, label: 'MEZ' },
+        { x: 65, y: 88, label: 'RWB' },
+        { x: 82, y: 40, label: 'ST' },
+        { x: 82, y: 60, label: 'ST' }
+      ],
+      defend: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 18, y: 12, label: 'LWB' },
+        { x: 16, y: 30, label: 'LCB' },
+        { x: 15, y: 50, label: 'CB' },
+        { x: 16, y: 70, label: 'RCB' },
+        { x: 18, y: 88, label: 'RWB' },
+        { x: 35, y: 32, label: 'CM' },
+        { x: 32, y: 50, label: 'DM' },
+        { x: 35, y: 68, label: 'CM' },
+        { x: 55, y: 40, label: 'ST' },
+        { x: 55, y: 60, label: 'ST' }
       ]
     },
-    '442': {
-      desc: '<strong>Sơ đồ 4-4-2:</strong> 2 khối hàng ngang vững chắc, giữ cự ly đội hình hẹp để bịt kín mọi khoảng trống ở trung lộ.',
-      pos: [
-        { id: 'p1', x: 50, y: 92, label: 'GK' },
-        { id: 'p2', x: 15, y: 78, label: 'LB' },
-        { id: 'p3', x: 38, y: 78, label: 'CB' },
-        { id: 'p4', x: 62, y: 78, label: 'CB' },
-        { id: 'p5', x: 85, y: 78, label: 'RB' },
-        { id: 'p6', x: 15, y: 48, label: 'LM' },
-        { id: 'p7', x: 38, y: 48, label: 'CM' },
-        { id: 'p8', x: 62, y: 48, label: 'CM' },
-        { id: 'p9', x: 85, y: 48, label: 'RM' },
-        { id: 'p10', x: 38, y: 22, label: 'ST' },
-        { id: 'p11', x: 62, y: 22, label: 'ST' }
+    'ancelotti-diamond': {
+      nameAttack: 'Sơ đồ tấn công: 2-4-4 (Số 10 ảo xâm nhập vòng cấm)',
+      nameDefend: 'Sơ đồ phòng ngự: 4-4-2 (Khối phòng thủ khu vực phẳng)',
+      descAttack: 'Tiền vệ số 10 (Jude Bellingham) dâng cao như một tiền đạo thứ 3, trong khi 2 tiền đạo dạt rộng kéo dãn trung vệ đối phương.',
+      descDefend: 'Số 10 lùi về hỗ trợ trung tuyến tạo thành 2 tuyến 4 người giăng ngang phòng ngự từ xa.',
+      structAttack: '2 Trung vệ + 4 Tiền vệ kiểm soát + 4 Mũi nhọn cơ động (2-4-4)',
+      structDefend: '4 Hậu vệ + 4 Tiền vệ (Tuyến giữa Kim Cương duỗi thẳng thành 4-4-2)',
+      objAttack: 'Tạo đột biến từ tuyến hai bằng các pha băng cắt bất ngờ của Số 10.',
+      objDefend: 'Kiểm soát nhịp độ, ru ngủ đối phương và phản công thần tốc.',
+      attack: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 26, y: 35, label: 'CB' },
+        { x: 26, y: 65, label: 'CB' },
+        { x: 44, y: 50, label: 'DM' },
+        { x: 58, y: 15, label: 'LB' },
+        { x: 52, y: 36, label: 'CM' },
+        { x: 52, y: 64, label: 'CM' },
+        { x: 58, y: 85, label: 'RB' },
+        { x: 78, y: 50, label: 'AM' },
+        { x: 84, y: 30, label: 'SS' },
+        { x: 84, y: 70, label: 'SS' }
+      ],
+      defend: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 20, y: 18, label: 'LB' },
+        { x: 18, y: 38, label: 'CB' },
+        { x: 18, y: 62, label: 'CB' },
+        { x: 20, y: 82, label: 'RB' },
+        { x: 38, y: 18, label: 'LM' },
+        { x: 36, y: 38, label: 'DM' },
+        { x: 36, y: 62, label: 'CM' },
+        { x: 38, y: 82, label: 'AM' },
+        { x: 58, y: 38, label: 'ST' },
+        { x: 58, y: 62, label: 'ST' }
+      ]
+    },
+    'simeone-442': {
+      nameAttack: 'Sơ đồ tấn công: 4-2-4 (Phản công trực diện Chớp nhoáng)',
+      nameDefend: 'Sơ đồ phòng ngự: 4-4-2 (Khối Low-Block 2 tầng bê tông)',
+      descAttack: 'Phất bóng dài vượt tuyến ngay khi đoạt được bóng, 2 tiền vệ cánh và 2 tiền đạo bứt tốc đột kích vòng cấm đối phương.',
+      descDefend: 'Toàn bộ 10 cầu thủ lùi sát về trước vòng 16m50, cự ly giữa các tuyến chỉ từ 10-15m, bịt kín mọi kẽ hở dứt điểm.',
+      structAttack: '4 Hậu vệ giữ cự ly an toàn + 2 Pivot thu hồi + 4 Tiền đạo phản công',
+      structDefend: 'Khối bê tông 2 tầng phòng ngự khu vực (Cholismo)',
+      objAttack: 'Trừng phạt sai lầm đối phương bằng tốc độ và sự sắc bén tối đa.',
+      objDefend: 'Bảo toàn mành lưới, triệt tiêu mọi khoảng trống chơi bóng của đối thủ.',
+      attack: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 25, y: 35, label: 'CB' },
+        { x: 25, y: 65, label: 'CB' },
+        { x: 42, y: 15, label: 'LB' },
+        { x: 42, y: 85, label: 'RB' },
+        { x: 48, y: 38, label: 'CM' },
+        { x: 48, y: 62, label: 'CM' },
+        { x: 75, y: 15, label: 'LM' },
+        { x: 75, y: 85, label: 'RM' },
+        { x: 82, y: 38, label: 'ST' },
+        { x: 82, y: 62, label: 'ST' }
+      ],
+      defend: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 16, y: 16, label: 'LB' },
+        { x: 14, y: 38, label: 'CB' },
+        { x: 14, y: 62, label: 'CB' },
+        { x: 16, y: 84, label: 'RB' },
+        { x: 28, y: 18, label: 'LM' },
+        { x: 26, y: 38, label: 'CM' },
+        { x: 26, y: 62, label: 'CM' },
+        { x: 28, y: 82, label: 'RM' },
+        { x: 42, y: 40, label: 'ST' },
+        { x: 42, y: 60, label: 'ST' }
+      ]
+    },
+    'classic-4231': {
+      nameAttack: 'Sơ đồ tấn công: 3-3-3-1 (Kiểm soát nhịp độ cân bằng)',
+      nameDefend: 'Sơ đồ phòng ngự: 4-4-1-1 / 4-2-3-1 (Khối cân bằng Mid-block)',
+      descAttack: 'Một tiền vệ trụ lùi sâu bọc lót (tạo hàng thủ 3 người), hậu vệ cánh dâng cao hỗ trợ bộ 3 tiền vệ công kiến tạo cho tiền đạo cắm.',
+      descDefend: 'Khối phòng ngự 3 tuyến cân bằng, tiền vệ công số 10 lùi về hỗ trợ cặp tiền vệ mỏ neo bịt kín trung lộ.',
+      structAttack: '3 Hậu vệ + 3 Tiền vệ lùi + 3 Hộ công + 1 Tiền đạo mục tiêu (3-3-3-1)',
+      structDefend: '4 Hậu vệ + 2 Pivot đánh chặn + 3 Tiền vệ hỗ trợ + 1 Tiền đạo cắm',
+      objAttack: 'Kiểm soát nhịp độ ổn định, kéo dãn hàng thủ đối phương bằng chuyền ngắn.',
+      objDefend: 'Duy trì sự cân bằng công - thủ, hạn chế tối đa nguy cơ thủng lưới.',
+      attack: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 24, y: 25, label: 'LCB' },
+        { x: 20, y: 50, label: 'CB' },
+        { x: 24, y: 75, label: 'RCB' },
+        { x: 45, y: 20, label: 'LB' },
+        { x: 42, y: 50, label: 'DM' },
+        { x: 45, y: 80, label: 'RB' },
+        { x: 70, y: 22, label: 'LAM' },
+        { x: 68, y: 50, label: 'CAM' },
+        { x: 70, y: 78, label: 'RAM' },
+        { x: 86, y: 50, label: 'ST' }
+      ],
+      defend: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 20, y: 18, label: 'LB' },
+        { x: 18, y: 38, label: 'CB' },
+        { x: 18, y: 62, label: 'CB' },
+        { x: 20, y: 82, label: 'RB' },
+        { x: 35, y: 40, label: 'DM' },
+        { x: 35, y: 60, label: 'DM' },
+        { x: 48, y: 18, label: 'LAM' },
+        { x: 46, y: 50, label: 'CAM' },
+        { x: 48, y: 82, label: 'RAM' },
+        { x: 65, y: 50, label: 'ST' }
       ]
     }
   };
 
-  function setFormation(key) {
-    const data = formations[key];
-    if (!data) return;
+  function initMorpher() {
+    let currentSystem = 'pep-3241';
+    let currentPhase = 'attack';
 
-    data.pos.forEach(item => {
-      const el = document.getElementById(item.id);
-      if (el) {
-        el.style.left = `${item.x}%`;
-        el.style.top = `${item.y}%`;
-        el.textContent = item.label;
+    const sysBtns = document.querySelectorAll('.sys-btn');
+    const phaseBtns = document.querySelectorAll('.phase-btn');
+
+    const formNameEl = document.getElementById('formation-name');
+    const phaseTitleEl = document.getElementById('phase-title');
+    const phaseBadgeEl = document.getElementById('phase-badge');
+    const phaseDescEl = document.getElementById('phase-desc');
+    const noteStructureEl = document.getElementById('note-structure');
+    const noteObjectiveEl = document.getElementById('note-objective');
+
+    const nodeIds = ['p-gk', 'p-1', 'p-2', 'p-3', 'p-4', 'p-5', 'p-6', 'p-7', 'p-8', 'p-9', 'p-10'];
+
+    function updateBoard() {
+      const data = systems[currentSystem];
+      if (!data) return;
+
+      const isAttack = currentPhase === 'attack';
+      const coordsList = isAttack ? data.attack : data.defend;
+
+      if (formNameEl) formNameEl.textContent = isAttack ? data.nameAttack : data.nameDefend;
+      if (phaseTitleEl) phaseTitleEl.textContent = isAttack ? 'Pha Triển Khai Bóng (In-Possession)' : 'Pha Phòng Ngự (Out-of-Possession)';
+      if (phaseBadgeEl) {
+        phaseBadgeEl.textContent = isAttack ? 'In-Possession' : 'Out-of-Possession';
+        phaseBadgeEl.style.background = isAttack ? '#0284c7' : '#dc2626';
       }
-    });
+      if (phaseDescEl) phaseDescEl.textContent = isAttack ? data.descAttack : data.descDefend;
+      if (noteStructureEl) noteStructureEl.textContent = isAttack ? data.structAttack : data.structDefend;
+      if (noteObjectiveEl) noteObjectiveEl.textContent = isAttack ? data.objAttack : data.objDefend;
 
-    const insight = document.getElementById('insight-text');
-    if (insight) insight.innerHTML = data.desc;
-  }
+      coordsList.forEach((coord, idx) => {
+        const nodeEl = document.getElementById(nodeIds[idx]);
+        if (nodeEl) {
+          nodeEl.style.left = `${coord.x}%`;
+          nodeEl.style.top = `${coord.y}%`;
+          nodeEl.textContent = coord.label;
+        }
+      });
+    }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.f-btn');
-    buttons.forEach(btn => {
+    sysBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
+        sysBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const key = btn.getAttribute('data-formation');
-        setFormation(key);
+        currentSystem = btn.getAttribute('data-system') || 'pep-3241';
+        updateBoard();
       });
     });
-    setFormation('433');
-  });
+
+    phaseBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        phaseBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPhase = btn.getAttribute('data-phase') || 'attack';
+        updateBoard();
+      });
+    });
+
+    updateBoard();
+  }
+
+  document.addEventListener('DOMContentLoaded', initMorpher);
 </script>

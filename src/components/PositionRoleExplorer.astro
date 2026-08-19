@@ -1,0 +1,611 @@
+---
+// PositionRoleExplorer.astro
+---
+
+<div class="role-explorer-container">
+  <!-- Bảng chọn 2 tầng chia đều chuẩn Grid -->
+  <div class="role-selector-panel">
+    <!-- HÀNG 1: CHIA ĐỀU 4 Ô BẰNG NHAU 100% -->
+    <div class="row-tier-1">
+      <button class="nav-btn active" data-line="gk">🧤 Thủ Môn</button>
+      <button class="nav-btn" data-line="def">🛡️ Hậu Vệ</button>
+      <button class="nav-btn" data-line="mid">⚙️ Tiền Vệ</button>
+      <button class="nav-btn" data-line="fwd">⚡ Tiền Đạo</button>
+    </div>
+
+    <!-- HÀNG 2: CHIA ĐỀU 3 Ô BẰNG NHAU (RIÊNG THỦ MÔN 1 Ô) -->
+    <div class="row-tier-2">
+      <!-- Nhóm Thủ Môn (1 ô) -->
+      <div class="role-group single-col active" id="group-gk">
+        <button class="role-btn active" data-role="sweeper-gk">Thủ môn quét (Sweeper Keeper)</button>
+      </div>
+
+      <!-- Nhóm Hậu Vệ (Chia đều 3 ô) -->
+      <div class="role-group trio-cols" id="group-def">
+        <button class="role-btn" data-role="inv-fullback">Hậu vệ bó trong (IWB)</button>
+        <button class="role-btn" data-role="att-wingback">Hậu vệ tấn công (WB)</button>
+        <button class="role-btn" data-role="bpd">Trung vệ phát động (BPD)</button>
+      </div>
+
+      <!-- Nhóm Tiền Vệ (Chia đều 3 ô) -->
+      <div class="role-group trio-cols" id="group-mid">
+        <button class="role-btn" data-role="regista">Nhạc trưởng lùi sâu (DLP)</button>
+        <button class="role-btn" data-role="b2b">Tiền vệ con thoi (B2B)</button>
+        <button class="role-btn" data-role="mezzala">Tiền vệ lệch cánh (MEZ)</button>
+      </div>
+
+      <!-- Nhóm Tiền Đạo (Chia đều 3 ô) -->
+      <div class="role-group trio-cols" id="group-fwd">
+        <button class="role-btn" data-role="false-9">Số 9 Ảo (False 9)</button>
+        <button class="role-btn" data-role="inv-winger">Tiền đạo cánh (IW)</button>
+        <button class="role-btn" data-role="target-man">Tiền đạo mục tiêu (TM)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bố cục Sân 2D Heatmap & Thông tin chi tiết -->
+  <div class="display-grid">
+    <!-- Cột trái: Sân 2D Heatmap -->
+    <div class="pitch-card">
+      <div class="pitch-header">
+        <span class="pitch-badge-primary">🔥 Bản Đồ Nhiệt</span>
+        <span class="pitch-badge-sub">Tấn công ➔</span>
+      </div>
+
+      <div class="pitch-wrapper">
+        <svg viewBox="0 0 500 340" class="mini-pitch" id="role-pitch">
+          <!-- Nền sân cỏ -->
+          <rect x="0" y="0" width="500" height="340" fill="#14532d" rx="8" />
+          <rect x="20" y="20" width="460" height="300" fill="#15803d" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+          
+          <!-- Vạch sân cơ bản -->
+          <line x1="250" y1="20" x2="250" y2="320" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+          <circle cx="250" cy="170" r="45" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+          
+          <!-- Vòng cấm trái -->
+          <rect x="20" y="85" width="70" height="170" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+          <rect x="20" y="125" width="25" height="90" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+
+          <!-- Vòng cấm phải -->
+          <rect x="410" y="85" width="70" height="170" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+          <rect x="455" y="125" width="25" height="90" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+
+          <!-- Heatmap Layer -->
+          <g id="heatmap-layer"></g>
+
+          <!-- Marker Layer -->
+          <g id="marker-layer"></g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Cột phải: Thông số chiến thuật & Hình mẫu -->
+    <div class="info-card">
+      <div class="role-title-row">
+        <h3 id="role-name">Thủ môn quét (Sweeper Keeper)</h3>
+        <span class="role-code" id="role-code">SK / GK</span>
+      </div>
+
+      <p class="role-desc" id="role-desc">
+        Không chỉ bảo vệ khung thành, thủ môn quét chủ động dâng cao ngoài vòng cấm để bọc lót khoảng trống phía sau hàng thủ và tham gia triển khai bóng (Build-up).
+      </p>
+
+      <div class="skills-box">
+        <span class="section-label">🎯 Kỹ năng then chốt:</span>
+        <div class="tags-list" id="role-skills">
+          <span class="skill-tag">Phán đoán & Đọc tình huống</span>
+          <span class="skill-tag">Chơi chân & Chuyền dài</span>
+          <span class="skill-tag">Tốc độ xuất kích</span>
+        </div>
+      </div>
+
+      <div class="archetype-box">
+        <span class="section-label">🌟 Cầu thủ hình mẫu tiêu biểu:</span>
+        <p class="archetype-names" id="role-archetypes">Manuel Neuer, Ederson, Alisson Becker, Marc-André ter Stegen</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .role-explorer-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.25rem;
+    color: #fff;
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  /* Khung bao bọc cả 2 hàng */
+  .role-selector-panel {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* HÀNG 1: 4 CỘT CHIA ĐỀU 25% */
+  .row-tier-1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-btn {
+    height: 42px;
+    width: 100%;
+    margin: 0 !important;
+    background: #0f172a;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 0 0.4rem;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .nav-btn:hover {
+    color: #fff;
+    border-color: #475569;
+  }
+
+  .nav-btn.active {
+    background: #0284c7;
+    color: #fff;
+    border-color: #38bdf8;
+  }
+
+  /* HÀNG 2: CONTAINER */
+  .row-tier-2 {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .role-group {
+    display: none;
+    width: 100%;
+    gap: 0.5rem;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+  }
+
+  .role-group.active {
+    display: grid;
+  }
+
+  /* 3 CỘT CHIA ĐỀU 33.3% */
+  .role-group.trio-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 1 CỘT (THỦ MÔN) */
+  .role-group.single-col {
+    grid-template-columns: 1fr;
+  }
+
+  .role-btn {
+    height: 42px;
+    width: 100%;
+    margin: 0 !important;
+    background: #0f172a;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .role-btn:hover {
+    border-color: #38bdf8;
+    color: #fff;
+    background: #1e293b;
+  }
+
+  .role-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #38bdf8;
+  }
+
+  @media (max-width: 640px) {
+    .row-tier-1 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .role-group.trio-cols {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Grid hiển thị nội dung bên dưới */
+  .display-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  
+  @media (max-width: 900px) {
+    .display-grid { grid-template-columns: 1fr; }
+  }
+
+  .pitch-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 0.9rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pitch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .pitch-badge-primary {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #38bdf8;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .pitch-badge-sub {
+    background: rgba(56, 189, 248, 0.1);
+    color: #93c5fd;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .pitch-wrapper {
+    width: 100%;
+  }
+
+  .mini-pitch {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  .info-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1.1rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .role-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+  }
+
+  .role-title-row h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #38bdf8;
+  }
+
+  .role-code {
+    background: #0369a1;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .role-desc {
+    margin: 0;
+    font-size: 0.86rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 0.3rem;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .skill-tag {
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: #f1f5f9;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .archetype-box {
+    background: #0f172a;
+    padding: 0.7rem 0.85rem;
+    border-radius: 6px;
+    border-left: 3px solid #f59e0b;
+  }
+
+  .archetype-names {
+    margin: 0;
+    font-size: 0.84rem;
+    color: #fde68a;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+</style>
+
+<script>
+  interface RoleData {
+    name: string;
+    code: string;
+    desc: string;
+    skills: string[];
+    archetypes: string;
+    heatmap: string;
+    marker: { x: number; y: number; label: string };
+    arrow?: { x1: number; y1: number; x2: number; y2: number };
+  }
+
+  const roleDataset: Record<string, RoleData> = {
+    'sweeper-gk': {
+      name: 'Thủ môn quét (Sweeper Keeper)',
+      code: 'SK / GK',
+      desc: 'Không chỉ bảo vệ khung thành, thủ môn quét chủ động dâng cao ngoài vòng cấm 16m50 để bọc lót bóng bổng/bóng dài sau lưng hàng thủ và tham gia phân phối bóng.',
+      skills: ['Phán đoán & Đọc trận đấu', 'Chơi chân & Phất bóng dài', 'Tốc độ xuất kích ngoài vòng cấm', 'Bản lĩnh chịu áp lực'],
+      archetypes: 'Manuel Neuer, Ederson Moraes, Alisson Becker, Marc-André ter Stegen',
+      heatmap: `<ellipse cx="80" cy="170" rx="60" ry="75" fill="rgba(239, 68, 68, 0.45)" filter="blur(8px)"/>
+                <circle cx="55" cy="170" r="35" fill="rgba(245, 158, 11, 0.6)" filter="blur(6px)"/>`,
+      marker: { x: 75, y: 170, label: 'SK' },
+      arrow: { x1: 50, y1: 170, x2: 120, y2: 170 }
+    },
+    'inv-fullback': {
+      name: 'Hậu vệ bó trong (Inverted Fullback)',
+      code: 'IWB / LB-RB',
+      desc: 'Khi có bóng, hậu vệ này bó thẳng vào trung lộ tạo thành cặp tiền vệ trụ kép (Double Pivot) giúp áp đảo quân số tuyến giữa và chống phản công trung lộ.',
+      skills: ['Tư duy vị trí & Giữ cự ly', 'Kỹ năng chuyền ngắn chuẩn xác', 'Thoát pressing trung lộ', 'Đánh chặn từ xa'],
+      archetypes: 'Trent Alexander-Arnold, John Stones, Oleksandr Zinchenko, Philipp Lahm',
+      heatmap: `<ellipse cx="210" cy="225" rx="65" ry="40" fill="rgba(239, 68, 68, 0.5)" filter="blur(8px)"/>
+                <ellipse cx="140" cy="265" rx="55" ry="30" fill="rgba(245, 158, 11, 0.5)" filter="blur(6px)"/>`,
+      marker: { x: 195, y: 235, label: 'IWB' },
+      arrow: { x1: 130, y1: 270, x2: 215, y2: 215 }
+    },
+    'att-wingback': {
+      name: 'Hậu vệ biên tấn công (Attacking Wing-Back)',
+      code: 'WB / LWB-RWB',
+      desc: 'Bao quát toàn bộ hành lang cánh. Nhiệm vụ chính là dâng cao sát đường biên ngang sân đối phương để tạt bóng hoặc xâm nhập vòng cấm dứt điểm.',
+      skills: ['Thể lực bền bỉ phi thường', 'Tốc độ & Bứt tốc đoạn dài', 'Kỹ năng tạt bóng điểm rơi', 'Ý thức lùi về bọc lót'],
+      archetypes: 'Alphonso Davies, Achraf Hakimi, Roberto Carlos, Andy Robertson',
+      heatmap: `<ellipse cx="280" cy="285" rx="140" ry="25" fill="rgba(239, 68, 68, 0.55)" filter="blur(8px)"/>
+                <ellipse cx="380" cy="285" rx="60" ry="20" fill="rgba(245, 158, 11, 0.65)" filter="blur(5px)"/>`,
+      marker: { x: 320, y: 285, label: 'RWB' },
+      arrow: { x1: 160, y1: 285, x2: 430, y2: 285 }
+    },
+    'bpd': {
+      name: 'Trung vệ phát động (Ball-Playing Defender)',
+      code: 'BPD / CB',
+      desc: 'Bên cạnh nhiệm vụ phòng ngự, BPD chịu trách nhiệm tung các đường chuyền xuyên tuyến (line-breaking) hoặc phất bóng dài vượt tuyến mở ra cơ hội tấn công.',
+      skills: ['Tầm nhìn chiến thuật rộng', 'Chuyền dài & Phất bóng chuẩn xác', 'Bình tĩnh kiểm soát bóng dưới áp lực', 'Không chiến tốt'],
+      archetypes: 'Virgil van Dijk, David Alaba, Gerard Piqué, Leonardo Bonucci',
+      heatmap: `<ellipse cx="140" cy="170" rx="50" ry="80" fill="rgba(239, 68, 68, 0.45)" filter="blur(8px)"/>`,
+      marker: { x: 140, y: 170, label: 'BPD' },
+      arrow: { x1: 140, y1: 170, x2: 340, y2: 90 }
+    },
+    'regista': {
+      name: 'Nhạc trưởng lùi sâu (Regista / DLP)',
+      code: 'Regista / DM',
+      desc: 'Bộ não điều tiết nhịp độ (Tempo) toàn đội. Đứng ngay trước hàng thủ để nhận bóng và phân phối sang hai biên hoặc tung đường chuyền quyết định.',
+      skills: ['Nhãn quan bao quát toàn sân', 'Kỹ năng phân phối bóng bậc thầy', 'Khả năng giữ nhịp điệu trận đấu', 'Đọc trước hướng bóng'],
+      archetypes: 'Andrea Pirlo, Rodri, Toni Kroos, Sergio Busquets, Jorginho',
+      heatmap: `<ellipse cx="230" cy="170" rx="75" ry="60" fill="rgba(239, 68, 68, 0.55)" filter="blur(8px)"/>
+                <circle cx="230" cy="170" r="35" fill="rgba(245, 158, 11, 0.7)" filter="blur(6px)"/>`,
+      marker: { x: 230, y: 170, label: 'DLP' }
+    },
+    'b2b': {
+      name: 'Tiền vệ con thoi (Box-to-Box Midfielder)',
+      code: 'B2B / CM',
+      desc: 'Cỗ máy năng lượng bao phủ toàn bộ chiều dọc sân: vừa có mặt ở vòng cấm nhà để tắc bóng, vừa kịp thời băng vào vòng cấm đối phương để ghi bàn.',
+      skills: ['Nguồn thể lực vô tận', 'Kỹ năng công thủ toàn diện', 'Khả năng sút xa uy lực', 'Xâm nhập vòng cấm bất ngờ (Late runs)'],
+      archetypes: 'Jude Bellingham, Steven Gerrard, Arturo Vidal, Yaya Touré, N\'Golo Kanté',
+      heatmap: `<ellipse cx="260" cy="170" rx="140" ry="55" fill="rgba(239, 68, 68, 0.5)" filter="blur(8px)"/>
+                <ellipse cx="260" cy="170" rx="60" ry="30" fill="rgba(245, 158, 11, 0.65)" filter="blur(5px)"/>`,
+      marker: { x: 260, y: 170, label: 'B2B' },
+      arrow: { x1: 150, y1: 170, x2: 380, y2: 170 }
+    },
+    'mezzala': {
+      name: 'Tiền vệ lệch cánh (Mezzala / Half-Space Runner)',
+      code: 'MEZ / CM',
+      desc: 'Khởi đầu từ trung tâm nhưng chủ động dạt ra hành lang trong (Half-space) để phối hợp tam giác biên hoặc tạo đột biến sau lưng hậu vệ đối phương.',
+      skills: ['Khai thác khoảng trống Half-space', 'Kỹ năng rê dắt & Chọc khe', 'Căng ngang & Tạt sệt', 'Độ nhạy bàn thắng'],
+      archetypes: 'Kevin De Bruyne, Andrés Iniesta, Bernardo Silva, Paul Pogba',
+      heatmap: `<ellipse cx="320" cy="100" rx="75" ry="35" fill="rgba(239, 68, 68, 0.55)" filter="blur(8px)"/>
+                <circle cx="335" cy="95" r="30" fill="rgba(245, 158, 11, 0.7)" filter="blur(5px)"/>`,
+      marker: { x: 320, y: 100, label: 'MEZ' },
+      arrow: { x1: 260, y1: 130, x2: 380, y2: 75 }
+    },
+    'false-9': {
+      name: 'Số 9 Ảo (False 9)',
+      code: 'F9 / CF',
+      desc: 'Được bố trí cao nhất nhưng liên tục lùi sâu về tuyến giữa để kéo dãn các trung vệ đối phương, tạo khoảng trống cho các tiền đạo cánh băng vào ghi bàn.',
+      skills: ['Kỹ năng rê dắt & Chạm bóng một chạm', 'Tư duy kiến tạo sắc bén', 'Thoát kèm người thông minh', 'Dứt điểm tinh tế'],
+      archetypes: 'Lionel Messi (2009-2012), Roberto Firmino, Francesco Totti, Harry Kane',
+      heatmap: `<ellipse cx="330" cy="170" rx="70" ry="55" fill="rgba(239, 68, 68, 0.55)" filter="blur(8px)"/>
+                <circle cx="300" cy="170" r="35" fill="rgba(245, 158, 11, 0.7)" filter="blur(6px)"/>`,
+      marker: { x: 320, y: 170, label: 'F9' },
+      arrow: { x1: 410, y1: 170, x2: 290, y2: 170 }
+    },
+    'inv-winger': {
+      name: 'Tiền đạo cánh nghịch chân (Inverted Winger)',
+      code: 'IW / LW-RW',
+      desc: 'Cầu thủ thuận chân trái đá cánh phải (hoặc ngược lại), liên tục rê bóng cắt chéo vào trung lộ để tung ra các cú cứa lòng cong vút hoặc chọc khe xé toang hàng thủ.',
+      skills: ['Rê bóng 1v1 kỹ thuật', 'Cứa lòng & Sút xa hiểm hóc', 'Tốc độ đổi hướng cực nhanh', 'Phối hợp đập nhả bật tường'],
+      archetypes: 'Arjen Robben, Mohamed Salah, Kylian Mbappé, Bukayo Saka, Vinícius Júnior',
+      heatmap: `<ellipse cx="375" cy="70" rx="60" ry="30" fill="rgba(239, 68, 68, 0.5)" filter="blur(8px)"/>
+                <ellipse cx="370" cy="120" rx="45" ry="35" fill="rgba(245, 158, 11, 0.65)" filter="blur(6px)"/>`,
+      marker: { x: 375, y: 75, label: 'IW' },
+      arrow: { x1: 390, y1: 65, x2: 370, y2: 135 }
+    },
+    'target-man': {
+      name: 'Tiền đạo mục tiêu (Target Man)',
+      code: 'TM / ST',
+      desc: 'Ngọn hải đăng trong vòng cấm với thể hình lý tưởng, tì đè làm tường cho đồng đội băng lên hoặc trực tiếp không chiến ghi bàn từ các quả tạt.',
+      skills: ['Thể hình & Sức mạnh tì đè', 'Không chiến & Đánh đầu dũng mãnh', 'Kỹ năng làm tường (Hold-up play)', 'Khả năng chớp thời cơ trong vòng cấm'],
+      archetypes: 'Erling Haaland, Zlatan Ibrahimović, Olivier Giroud, Didier Drogba',
+      heatmap: `<ellipse cx="430" cy="170" rx="45" ry="50" fill="rgba(239, 68, 68, 0.6)" filter="blur(8px)"/>
+                <circle cx="435" cy="170" r="28" fill="rgba(245, 158, 11, 0.75)" filter="blur(5px)"/>`,
+      marker: { x: 435, y: 170, label: 'TM' }
+    }
+  };
+
+  function initRoleExplorer() {
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const roleGroups = document.querySelectorAll('.role-group');
+    const roleBtns = document.querySelectorAll('.role-btn');
+
+    const nameEl = document.getElementById('role-name');
+    const codeEl = document.getElementById('role-code');
+    const descEl = document.getElementById('role-desc');
+    const skillsEl = document.getElementById('role-skills');
+    const archEl = document.getElementById('role-archetypes');
+    const heatmapLayer = document.getElementById('heatmap-layer');
+    const markerLayer = document.getElementById('marker-layer');
+
+    function renderRole(key: string) {
+      const data = roleDataset[key];
+      if (!data) return;
+
+      if (nameEl) nameEl.textContent = data.name;
+      if (codeEl) codeEl.textContent = data.code;
+      if (descEl) descEl.textContent = data.desc;
+      if (archEl) archEl.textContent = data.archetypes;
+
+      if (skillsEl) {
+        skillsEl.innerHTML = data.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
+      }
+
+      if (heatmapLayer) {
+        heatmapLayer.innerHTML = data.heatmap;
+      }
+
+      if (markerLayer) {
+        let svgContent = `
+          <circle cx="${data.marker.x}" cy="${data.marker.y}" r="15" fill="#0284c7" stroke="#ffffff" stroke-width="2.5" />
+          <text x="${data.marker.x}" y="${data.marker.y + 4}" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="middle">${data.marker.label}</text>
+        `;
+
+        if (data.arrow) {
+          svgContent += `
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#38bdf8" />
+              </marker>
+            </defs>
+            <line x1="${data.arrow.x1}" y1="${data.arrow.y1}" x2="${data.arrow.x2}" y2="${data.arrow.y2}" 
+                  stroke="#38bdf8" stroke-width="3.5" stroke-dasharray="4,3" marker-end="url(#arrowhead)" />
+          `;
+        }
+
+        markerLayer.innerHTML = svgContent;
+      }
+
+      roleBtns.forEach(btn => {
+        if (btn.getAttribute('data-role') === key) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    navBtns.forEach(tab => {
+      tab.addEventListener('click', () => {
+        navBtns.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const line = tab.getAttribute('data-line');
+        roleGroups.forEach(g => g.classList.remove('active'));
+
+        const targetGroup = document.getElementById(`group-${line}`);
+        if (targetGroup) {
+          targetGroup.classList.add('active');
+          const firstRoleBtn = targetGroup.querySelector('.role-btn') as HTMLElement;
+          if (firstRoleBtn) {
+            firstRoleBtn.click();
+          }
+        }
+      });
+    });
+
+    roleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-role') || 'sweeper-gk';
+        renderRole(key);
+      });
+    });
+
+    renderRole('sweeper-gk');
+  }
+
+  document.addEventListener('DOMContentLoaded', initRoleExplorer);
+</script>
