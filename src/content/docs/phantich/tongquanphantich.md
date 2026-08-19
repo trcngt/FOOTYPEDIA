@@ -1,5 +1,5 @@
 ---
-title: 0. Tổng Quan Phân Tích Dữ Liệu Bóng Đá
+title: Tổng Quan Phân Tích Dữ Liệu Bóng Đá
 description: Khám phá cuộc cách mạng số liệu, cách các CLB chuyên nghiệp ứng dụng Data Analytics để tuyển trạch, đánh giá hiệu quả và đọc trận đấu.
 sidebar:
   order: 0
