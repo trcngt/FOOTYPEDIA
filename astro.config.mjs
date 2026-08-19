@@ -68,6 +68,11 @@ export default defineConfig({
 					collapsed: true,
 					items: [{ autogenerate: { directory: 'vanhoa' } }],
 				},
+				{
+					label: '10. Phân Tích Dữ Liệu & Thống Kê Hiện Đại',
+					collapsed: true,
+					items: [{ autogenerate: { directory: 'phantich' } }],
+				},
 			],
 		}),
 	],

@@ -1,5 +1,5 @@
 ---
-title: 4. Các Thế Hệ Cầu Thủ & CLB Huyền Thoại
+title: 8.4. Các Thế Hệ Cầu Thủ & CLB Huyền Thoại
 description: Tôn vinh các thế hệ ngôi sao kiệt xuất qua từng thập niên và mô hình nghiên cứu di sản lịch sử của các câu lạc bộ vĩ đại.
 sidebar:
   order: 4
