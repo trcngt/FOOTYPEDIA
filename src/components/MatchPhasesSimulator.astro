@@ -1,0 +1,525 @@
+---
+// MatchPhasesSimulator.astro
+---
+
+<div class="phases-container">
+  <!-- Bảng chọn 4 Pha trận đấu (Chia đều 4 ô phẳng đẹp mắt) -->
+  <div class="phases-nav-grid">
+    <button class="phase-tab-btn active" data-phase="in-possession">
+      1. Có Bóng (Tấn Công)
+    </button>
+    <button class="phase-tab-btn" data-phase="trans-def">
+      2. Chuyển Đổi Phòng Ngự
+    </button>
+    <button class="phase-tab-btn" data-phase="out-possession">
+      3. Mất Bóng (Phòng Ngự)
+    </button>
+    <button class="phase-tab-btn" data-phase="trans-att">
+      4. Chuyển Đổi Tấn Công
+    </button>
+  </div>
+
+  <!-- Khung Sân 2D & Bảng phân tích chi tiết -->
+  <div class="display-grid">
+    <!-- Cột trái: Sân bóng chuyển động Animation -->
+    <div class="pitch-card">
+      <div class="pitch-header">
+        <span class="phase-badge" id="phase-badge">PHA 1: CÓ BÓNG (IN-POSSESSION)</span>
+        <span class="attack-dir">Tấn công ➔</span>
+      </div>
+
+      <div class="pitch-wrapper">
+        <div class="pitch-board">
+          <!-- Vạch sân cỏ -->
+          <div class="half-line"></div>
+          <div class="center-circle"></div>
+          <div class="box-left"></div>
+          <div class="box-right"></div>
+
+          <!-- 11 Cầu thủ Node -->
+          <div class="node gk" id="phase-node-0">GK</div>
+          <div class="node" id="phase-node-1">CB</div>
+          <div class="node" id="phase-node-2">CB</div>
+          <div class="node" id="phase-node-3">LB</div>
+          <div class="node" id="phase-node-4">RB</div>
+          <div class="node" id="phase-node-5">DM</div>
+          <div class="node" id="phase-node-6">CM</div>
+          <div class="node" id="phase-node-7">CM</div>
+          <div class="node" id="phase-node-8">LW</div>
+          <div class="node" id="phase-node-9">ST</div>
+          <div class="node" id="phase-node-10">RW</div>
+
+          <!-- Quả bóng chỉ thị trạng thái -->
+          <div class="ball-indicator" id="ball-node">⚽</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cột phải: Thẻ phân tích lý thuyết & nguyên tắc -->
+    <div class="info-card">
+      <div class="info-header">
+        <h3 id="phase-title">Pha 1: Tổ Chức Tấn Công (In-Possession)</h3>
+        <span class="tempo-tag" id="phase-tempo">Nhịp độ: Kiểm soát & Cài đặt</span>
+      </div>
+
+      <p class="phase-desc" id="phase-desc">
+        Đội bóng chủ động kiểm soát bóng, mở rộng tối đa chiều ngang (Width) và chiều sâu (Depth) của mặt sân nhằm kéo giãn khối phòng ngự đối phương và tìm kiếm khoảng trống xâm nhập.
+      </p>
+
+      <div class="key-principles-box">
+        <div class="principle-item">
+          <strong>🎯 Mục tiêu cốt lõi:</strong>
+          <span id="phase-objective">Tịnh tiến bóng an toàn qua các tuyến và tạo cơ hội dứt điểm.</span>
+        </div>
+        <div class="principle-item">
+          <strong>⏱️ Quy tắc hành động:</strong>
+          <span id="phase-rule">Tạo các tam giác chuyền bóng (+1 Pass Option) & chiếm lĩnh Half-space.</span>
+        </div>
+        <div class="principle-item">
+          <strong>🌟 Ví dụ tiêu biểu:</strong>
+          <span id="phase-example">Triết lý Positional Play (Juego de Posición) của Man City & Barcelona.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .phases-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.25rem;
+    color: #fff;
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  /* 4 Tab giai đoạn chia đều 4 cột */
+  .phases-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .phases-nav-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .phase-tab-btn {
+    height: 42px;
+    width: 100%;
+    margin: 0 !important;
+    background: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.4rem;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .phase-tab-btn:hover {
+    color: #fff;
+    border-color: #38bdf8;
+    background: #243247;
+  }
+
+  .phase-tab-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.35);
+  }
+
+  /* Layout 2 cột */
+  .display-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px) {
+    .display-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pitch-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 0.9rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pitch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .phase-badge {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+  }
+
+  .attack-dir {
+    font-size: 0.76rem;
+    color: #94a3b8;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+
+  .pitch-wrapper {
+    width: 100%;
+  }
+
+  .pitch-board {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    background: #15803d;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .half-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .center-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .box-left {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 15%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
+  }
+
+  .box-right {
+    position: absolute;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 15%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-right: none;
+  }
+
+  .node {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #0284c7;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1), top 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  .node.gk {
+    background: #f59e0b;
+  }
+
+  .ball-indicator {
+    position: absolute;
+    font-size: 1.1rem;
+    transform: translate(-50%, -50%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1), top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+  }
+
+  .info-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1.1rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+  }
+
+  .info-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #38bdf8;
+  }
+
+  .tempo-tag {
+    background: #0369a1;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .phase-desc {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+  }
+
+  .key-principles-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    background: #0f172a;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid #38bdf8;
+  }
+
+  .principle-item {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+
+  .principle-item strong {
+    color: #f1f5f9;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+</style>
+
+<script>
+  interface NodeCoord {
+    x: number; // %
+    y: number; // %
+    label: string;
+  }
+
+  interface PhaseData {
+    badge: string;
+    title: string;
+    tempo: string;
+    desc: string;
+    objective: string;
+    rule: string;
+    example: string;
+    ball: { x: number; y: number };
+    nodes: NodeCoord[];
+  }
+
+  const matchPhases: Record<string, PhaseData> = {
+    'in-possession': {
+      badge: 'PHA 1: CÓ BÓNG (IN-POSSESSION)',
+      title: 'Pha 1: Tổ Chức Tấn Công (In-Possession)',
+      tempo: 'Nhịp độ: Cài đặt & Kiểm soát',
+      desc: 'Đội bóng chủ động cầm bóng, mở rộng tối đa chiều ngang (Width) và chiều sâu (Depth) của mặt sân nhằm kéo giãn khối cự ly đối phương và khai thác các khoảng trống Half-space.',
+      objective: 'Tịnh tiến bóng an toàn qua các tuyến và tạo cơ hội dứt điểm vào vòng cấm.',
+      rule: 'Mở rộng đội hình (Spread Out) & duy trì ít nhất 2 phương án nhận đường chuyền.',
+      example: 'Triết lý Positional Play (Kiểm soát vị trí) của Pep Guardiola / Mikel Arteta.',
+      ball: { x: 55, y: 50 },
+      nodes: [
+        { x: 8, y: 50, label: 'GK' },
+        { x: 28, y: 35, label: 'LCB' },
+        { x: 28, y: 65, label: 'RCB' },
+        { x: 62, y: 12, label: 'LB' },
+        { x: 62, y: 88, label: 'RB' },
+        { x: 48, y: 50, label: 'DM' },
+        { x: 66, y: 34, label: 'AM' },
+        { x: 66, y: 66, label: 'AM' },
+        { x: 80, y: 20, label: 'LW' },
+        { x: 86, y: 50, label: 'ST' },
+        { x: 80, y: 80, label: 'RW' }
+      ]
+    },
+    'trans-def': {
+      badge: 'PHA 2: CHUYỂN ĐỔI PHÒNG NGỰ',
+      title: 'Pha 2: Chuyển Đổi Phòng Ngự (Defensive Transition)',
+      tempo: 'Thời gian vàng: 3 - 5 Giây',
+      desc: 'Khoảnh khắc ngay sau khi để mất bóng. Toàn đội phải ra quyết định ngay lập tức: Phản áp sát tức thì (Counter-press/Gegenpressing) để cướp lại bóng trong 5 giây hoặc rút lui khẩn cấp (Fall Back) để tái lập khối phòng ngự.',
+      objective: 'Ngăn chặn đối phương tung đường phản công nhanh nguy hiểm.',
+      rule: 'Quy tắc 5 giây: Gần bóng thì áp sát vây bắt, xa bóng thì lập tức lùi về bọc lót.',
+      example: 'Gegenpressing của Klopp (Liverpool) hoặc Rest Defense (Phòng ngự dự phòng) của Man City.',
+      ball: { x: 65, y: 40 },
+      nodes: [
+        { x: 10, y: 50, label: 'GK' },
+        { x: 32, y: 38, label: 'CB' },
+        { x: 32, y: 62, label: 'CB' },
+        { x: 48, y: 22, label: 'LB' },
+        { x: 48, y: 78, label: 'RB' },
+        { x: 55, y: 48, label: 'DM' },
+        { x: 62, y: 36, label: 'CM' },
+        { x: 58, y: 60, label: 'CM' },
+        { x: 70, y: 32, label: 'LW' },
+        { x: 75, y: 45, label: 'ST' },
+        { x: 68, y: 70, label: 'RW' }
+      ]
+    },
+    'out-possession': {
+      badge: 'PHA 3: MẤT BÓNG (OUT-OF-POSSESSION)',
+      title: 'Pha 3: Tổ Chức Phòng Ngự (Out-of-Possession)',
+      tempo: 'Nhịp độ: Kỷ luật & Thu hẹp khối',
+      desc: 'Đội bóng hoàn toàn không có bóng và đã thiết lập xong cấu trúc phòng ngự có tổ chức (Khối thấp Low-block hoặc Khối trung bình Mid-block) để bảo vệ khu vực trung lộ và trước vòng 16m50.',
+      objective: 'Triệt tiêu mọi khoảng trống nguy hiểm, ép đối phương vào bẫy để đoạt lại bóng.',
+      rule: 'Giữ cự ly hẹp (Compactness): Chiều dài và chiều ngang khối đội hình không quá 30m.',
+      example: 'Khối 4-4-2 phòng ngự kỷ luật của Diego Simeone (Atlético Madrid).',
+      ball: { x: 52, y: 50 },
+      nodes: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 20, y: 18, label: 'LB' },
+        { x: 18, y: 38, label: 'CB' },
+        { x: 18, y: 62, label: 'CB' },
+        { x: 20, y: 82, label: 'RB' },
+        { x: 38, y: 18, label: 'LM' },
+        { x: 36, y: 38, label: 'CM' },
+        { x: 36, y: 62, label: 'CM' },
+        { x: 38, y: 82, label: 'RM' },
+        { x: 55, y: 38, label: 'ST' },
+        { x: 55, y: 62, label: 'ST' }
+      ]
+    },
+    'trans-att': {
+      badge: 'PHA 4: CHUYỂN ĐỔI TẤN CÔNG',
+      title: 'Pha 4: Chuyển Đổi Tấn Công (Attacking Transition)',
+      tempo: 'Thời gian vàng: 8 - 10 Giây',
+      desc: 'Khoảnh khắc vàng ngay sau khi đoạt lại được bóng. Đối phương đang trong trạng thái mở và mất cân bằng cấu trúc, đội bóng lập tức tung ra đòn phản công chớp nhoáng (Counter-attack).',
+      objective: 'Tung đường chuyền dọc thẳng (Vertical Pass) khai thác khoảng trống sau lưng đối thủ.',
+      rule: 'Đưa bóng lên phía trước nhanh nhất có thể trước khi đối phương kịp ổn định đội hình.',
+      example: 'Các đòn phản công thần tốc của Real Madrid (Ancelotti) hoặc Dortmund (thời Klopp).',
+      ball: { x: 42, y: 52 },
+      nodes: [
+        { x: 6, y: 50, label: 'GK' },
+        { x: 22, y: 36, label: 'CB' },
+        { x: 22, y: 64, label: 'CB' },
+        { x: 40, y: 15, label: 'LB' },
+        { x: 40, y: 85, label: 'RB' },
+        { x: 42, y: 50, label: 'DM' },
+        { x: 55, y: 35, label: 'CM' },
+        { x: 58, y: 65, label: 'CM' },
+        { x: 74, y: 18, label: 'LW' },
+        { x: 80, y: 50, label: 'ST' },
+        { x: 74, y: 82, label: 'RW' }
+      ]
+    }
+  };
+
+  function initPhasesSimulator() {
+    const tabBtns = document.querySelectorAll('.phase-tab-btn');
+    const badgeEl = document.getElementById('phase-badge');
+    const titleEl = document.getElementById('phase-title');
+    const tempoEl = document.getElementById('phase-tempo');
+    const descEl = document.getElementById('phase-desc');
+    const objEl = document.getElementById('phase-objective');
+    const ruleEl = document.getElementById('phase-rule');
+    const exEl = document.getElementById('phase-example');
+    const ballNode = document.getElementById('ball-node');
+
+    function renderPhase(key: string) {
+      const data = matchPhases[key];
+      if (!data) return;
+
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (titleEl) titleEl.textContent = data.title;
+      if (tempoEl) tempoEl.textContent = data.tempo;
+      if (descEl) descEl.textContent = data.desc;
+      if (objEl) objEl.textContent = data.objective;
+      if (ruleEl) ruleEl.textContent = data.rule;
+      if (exEl) exEl.textContent = data.example;
+
+      // Di chuyển bóng
+      if (ballNode) {
+        ballNode.style.left = `${data.ball.x}%`;
+        ballNode.style.top = `${data.ball.y}%`;
+      }
+
+      // Di chuyển 11 cầu thủ
+      data.nodes.forEach((node, idx) => {
+        const el = document.getElementById(`phase-node-${idx}`);
+        if (el) {
+          el.style.left = `${node.x}%`;
+          el.style.top = `${node.y}%`;
+          el.textContent = node.label;
+        }
+      });
+
+      tabBtns.forEach(btn => {
+        if (btn.getAttribute('data-phase') === key) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-phase') || 'in-possession';
+        renderPhase(key);
+      });
+    });
+
+    renderPhase('in-possession');
+  }
+
+  document.addEventListener('DOMContentLoaded', initPhasesSimulator);
+</script>

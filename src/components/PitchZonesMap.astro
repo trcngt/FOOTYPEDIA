@@ -1,0 +1,492 @@
+---
+// PitchZonesMap.astro
+---
+
+<div class="zones-container">
+  <!-- Thanh 4 nút chọn nhanh không icon, chia đều 4 cột 100% -->
+  <div class="quick-zone-bar">
+    <button class="quick-btn active" data-zone="14">Zone 14 (Vùng Vàng)</button>
+    <button class="quick-btn" data-zone="5">Half-Space Trái (Zone 5)</button>
+    <button class="quick-btn" data-zone="8">Half-Space Phải (Zone 8)</button>
+    <button class="quick-btn" data-zone="17">Vòng Cấm Địa (Zone 17)</button>
+  </div>
+
+  <!-- Bố cục Sân 2D Lưới 18 Vùng & Bảng Phân Tích -->
+  <div class="display-grid">
+    <!-- Cột trái: Sân 2D được căn giữa hoàn toàn -->
+    <div class="pitch-card">
+      <div class="pitch-header">
+        <span class="pitch-badge-primary" id="selected-zone-badge">Đang chọn: Zone 14</span>
+        <span class="pitch-badge-sub">Tấn công ➔</span>
+      </div>
+
+      <div class="pitch-wrapper">
+        <svg viewBox="0 0 600 360" class="zones-svg" id="pitch-svg">
+          <!-- Nền sân cỏ -->
+          <rect x="0" y="0" width="600" height="360" fill="#14532d" rx="8" />
+          <rect x="15" y="15" width="570" height="330" fill="#15803d" stroke="#ffffff" stroke-width="2" opacity="0.6" />
+          
+          <!-- Vạch sân cơ bản -->
+          <line x1="300" y1="15" x2="300" y2="345" stroke="#ffffff" stroke-width="2" opacity="0.4" />
+          <circle cx="300" cy="180" r="45" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4" />
+          
+          <!-- Vòng cấm trái -->
+          <rect x="15" y="75" width="80" height="210" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4" />
+          <!-- Vòng cấm phải -->
+          <rect x="505" y="75" width="80" height="210" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4" />
+
+          <!-- ================= LƯỚI 18 ZONES ================= -->
+          <!-- HÀNG TRÊN -->
+          <g class="zone-cell" data-zone="1"><rect x="15" y="15" width="95" height="110" /><text x="62" y="75">1</text></g>
+          <g class="zone-cell" data-zone="2"><rect x="110" y="15" width="95" height="110" /><text x="157" y="75">2</text></g>
+          <g class="zone-cell" data-zone="3"><rect x="205" y="15" width="95" height="110" /><text x="252" y="75">3</text></g>
+          <g class="zone-cell" data-zone="4"><rect x="300" y="15" width="95" height="110" /><text x="347" y="75">4</text></g>
+          <g class="zone-cell special-halfspace" data-zone="5"><rect x="395" y="15" width="95" height="110" /><text x="442" y="75">5 (HS)</text></g>
+          <g class="zone-cell" data-zone="6"><rect x="490" y="15" width="95" height="110" /><text x="537" y="75">6</text></g>
+
+          <!-- HÀNG GIỮA -->
+          <g class="zone-cell" data-zone="10"><rect x="15" y="125" width="95" height="110" /><text x="62" y="185">10</text></g>
+          <g class="zone-cell" data-zone="11"><rect x="110" y="125" width="95" height="110" /><text x="157" y="185">11</text></g>
+          <g class="zone-cell" data-zone="12"><rect x="205" y="125" width="95" height="110" /><text x="252" y="185">12</text></g>
+          <g class="zone-cell" data-zone="13"><rect x="300" y="125" width="95" height="110" /><text x="347" y="185">13</text></g>
+          <g class="zone-cell special-zone14 active" data-zone="14"><rect x="395" y="125" width="95" height="110" /><text x="442" y="185">14 (GOLD)</text></g>
+          <g class="zone-cell special-box" data-zone="17"><rect x="490" y="125" width="95" height="110" /><text x="537" y="185">17 (BOX)</text></g>
+
+          <!-- HÀNG DƯỚI -->
+          <g class="zone-cell" data-zone="7"><rect x="15" y="235" width="95" height="110" /><text x="62" y="295">7</text></g>
+          <g class="zone-cell" data-zone="18"><rect x="110" y="235" width="95" height="110" /><text x="157" y="295">18</text></g>
+          <g class="zone-cell" data-zone="9"><rect x="205" y="235" width="95" height="110" /><text x="252" y="295">9</text></g>
+          <g class="zone-cell" data-zone="16"><rect x="300" y="235" width="95" height="110" /><text x="347" y="295">16</text></g>
+          <g class="zone-cell special-halfspace" data-zone="8"><rect x="395" y="235" width="95" height="110" /><text x="442" y="295">8 (HS)</text></g>
+          <g class="zone-cell" data-zone="15"><rect x="490" y="235" width="95" height="110" /><text x="537" y="295">15</text></g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Cột phải: Thẻ phân tích chỉ số chiến thuật -->
+    <div class="info-card">
+      <div class="info-header">
+        <h3 id="zone-name">Zone 14 (Vùng Vàng / The Golden Zone)</h3>
+        <span class="danger-tag" id="zone-threat">Mức đe dọa: Cực Đại (Tạo ra > 70% bàn thắng)</span>
+      </div>
+
+      <p class="zone-desc" id="zone-desc">
+        Khu vực trung lộ nằm ngay trước vòng 16m50 của đối phương. Đây là tử huyệt chiến thuật quan trọng nhất trong bóng đá đỉnh cao: Đội nào kiểm soát được Zone 14 sẽ tạo ra trên 70% số bàn thắng quyết định.
+      </p>
+
+      <div class="tactical-breakdown">
+        <div class="stat-row">
+          <span class="stat-label">Hành vi chiến thuật tối ưu:</span>
+          <span class="stat-val" id="zone-action">Chọc khe xuyên khe trung vệ (Through-ball), Sút xa từ tuyến hai, Bật nhả 1-2 đập tường.</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Thời gian giữ bóng cho phép:</span>
+          <span class="stat-val" id="zone-tempo">Tối đa 1 – 2 nhịp (Dưới 1.5 giây để tránh bị vây ráp).</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Bậc thầy thống trị vùng này:</span>
+          <span class="stat-val highlight" id="zone-masters">Lionel Messi, Zinédine Zidane, Kevin De Bruyne, Mesut Özil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .zones-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.25rem;
+    color: #fff;
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  /* 4 Nút chọn nhanh chia đều 4 cột */
+  .quick-zone-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 0 0 1.25rem 0;
+    padding: 0;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  @media (max-width: 768px) {
+    .quick-zone-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .quick-btn {
+    height: 42px;
+    width: 100%;
+    margin: 0 !important;
+    background: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .quick-btn:hover {
+    color: #fff;
+    border-color: #38bdf8;
+    background: #243247;
+  }
+
+  .quick-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #38bdf8;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.35);
+  }
+
+  /* Grid 2 cột */
+  .display-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px) {
+    .display-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Căn giữa sân bóng theo phương dọc */
+  .pitch-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 0.9rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .pitch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .pitch-badge-primary {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #38bdf8;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .pitch-badge-sub {
+    background: rgba(56, 189, 248, 0.1);
+    color: #93c5fd;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Canh giữa sân bóng hoàn hảo */
+  .pitch-wrapper {
+    width: 100%;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+
+  .zones-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  /* Ô Zone SVG */
+  .zone-cell {
+    cursor: pointer;
+  }
+
+  .zone-cell rect {
+    fill: rgba(15, 23, 42, 0.45);
+    stroke: rgba(255, 255, 255, 0.35);
+    stroke-width: 1.2;
+    transition: all 0.15s ease;
+  }
+
+  .zone-cell text {
+    fill: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+    font-weight: 700;
+    text-anchor: middle;
+    pointer-events: none;
+  }
+
+  .zone-cell:hover rect {
+    fill: rgba(56, 189, 248, 0.35);
+    stroke: #38bdf8;
+  }
+
+  .zone-cell.special-zone14 rect {
+    fill: rgba(239, 68, 68, 0.35);
+    stroke: #ef4444;
+  }
+
+  .zone-cell.special-halfspace rect {
+    fill: rgba(245, 158, 11, 0.3);
+    stroke: #f59e0b;
+  }
+
+  .zone-cell.special-box rect {
+    fill: rgba(168, 85, 247, 0.3);
+    stroke: #a855f7;
+  }
+
+  .zone-cell.active rect {
+    fill: #0284c7 !important;
+    stroke: #38bdf8 !important;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+  }
+
+  .zone-cell.active text {
+    fill: #ffffff !important;
+    font-weight: 900;
+  }
+
+  .info-card {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1.1rem;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .info-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.6rem;
+  }
+
+  .info-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #38bdf8;
+  }
+
+  .danger-tag {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    width: fit-content;
+  }
+
+  .zone-desc {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+  }
+
+  .tactical-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    background: #0f172a;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid #38bdf8;
+  }
+
+  .stat-row {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+
+  .stat-label {
+    color: #f1f5f9;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .stat-val.highlight {
+    color: #fde68a;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  interface ZoneInfo {
+    name: string;
+    threat: string;
+    desc: string;
+    action: string;
+    tempo: string;
+    masters: string;
+  }
+
+  const zoneDataset: Record<string, ZoneInfo> = {
+    '14': {
+      name: 'Zone 14 (Vùng Vàng / The Golden Zone)',
+      threat: 'Mức đe dọa: Cực Đại (Tạo ra > 70% bàn thắng)',
+      desc: 'Khu vực trung lộ ngay trước vòng cấm đối phương. Đây là "thánh địa" của các số 10 cổ điển và các pha chọc khe quyết định. Thống trị Zone 14 là thước đo đẳng cấp của các đội bóng kiểm soát.',
+      action: 'Chọc khe xé toang trung vệ (Through-ball), Sút xa từ tuyến hai, Bật nhả 1-2 đập tường.',
+      tempo: 'Cực nhanh: 1 – 2 chạm (Dưới 1.5 giây để tránh bị tiền vệ trụ đối phương áp sát).',
+      masters: 'Lionel Messi, Zinédine Zidane, Kevin De Bruyne, Mesut Özil'
+    },
+    '5': {
+      name: 'Zone 5 (Hành Lang Trong Trái / Left Half-Space)',
+      threat: 'Mức đe dọa: Rất Cao (Góc chuyền nguy hiểm nhất)',
+      desc: 'Hành lang nằm kẹp giữa biên trái và trung lộ. Từ đây, góc quan sát mở rộng 180 độ, dễ dàng tung ra các đường chuyền vòng cung vào cột xa hoặc cứa lòng chân phải.',
+      action: 'Tạt bóng sớm điểm rơi (Inswinging cross), Chọc khe nách trung vệ - hậu vệ biên.',
+      tempo: 'Chủ động điều tiết: 2 – 3 chạm.',
+      masters: 'Kevin De Bruyne, Andrés Iniesta, David Silva, Kylian Mbappé'
+    },
+    '8': {
+      name: 'Zone 8 (Hành Lang Trong Phải / Right Half-Space)',
+      threat: 'Mức đe dọa: Rất Cao (Vùng kiến tạo sở trường)',
+      desc: 'Nách trong bên phải sân đối phương. Vùng đất ưa thích của các chân chuyền thuận chân phải hoặc các tiền đạo cánh nghịch chân cắt vào trung lộ dứt điểm.',
+      action: 'Căng ngang sệt sát mặt cỏ (Cut-back), Cứa lòng góc xa, Phối hợp tam giác biên.',
+      tempo: 'Chủ động điều tiết: 2 – 3 chạm.',
+      masters: 'Kevin De Bruyne, Mohamed Salah, Bernardo Silva, Bukayo Saka'
+    },
+    '17': {
+      name: 'Zone 17 (Vòng Cấm Địa Đối Phương / The Penalty Box)',
+      threat: 'Mức đe dọa: Chuyển Hóa Bàn Thắng (xG > 0.40/cú sút)',
+      desc: 'Khu vực kết liễu trận đấu. Nơi mọi đường chuyền từ Zone 14 và Half-space hướng đến để các tiền đạo cắm chớp thời cơ.',
+      action: 'Đệm bóng cận thành (Tap-in), Đánh đầu không chiến, Càn lướt tì đè dứt điểm.',
+      tempo: '1 chạm duy nhất để tung cú sút.',
+      masters: 'Erling Haaland, Cristiano Ronaldo, Robert Lewandowski, Gerd Müller'
+    },
+    '6': {
+      name: 'Zone 6 (Đáy Biên Trái / Left Wide Final Third)',
+      threat: 'Mức đe dọa: Trung Bình (Kiến tạo gián tiếp)',
+      desc: 'Khu vực sát đường biên ngang bên trái. Thường được sử dụng để kéo dãn hàng thủ đối phương trước khi trả ngược về Zone 14 hoặc treo bóng bổng.',
+      action: 'Tạt cánh bổng (High cross) hoặc Nhả bóng tuyến hai (Cut-back).',
+      tempo: '1 – 2 chạm.',
+      masters: 'Vinícius Júnior, Ryan Giggs, Alphonso Davies'
+    },
+    '15': {
+      name: 'Zone 15 (Đáy Biên Phải / Right Wide Final Third)',
+      threat: 'Mức đe dọa: Trung Bình (Kiến tạo gián tiếp)',
+      desc: 'Khu vực sát đường biên ngang bên phải, nơi các hậu vệ cánh dâng cao thực hiện các quả tạt sát đáy biên.',
+      action: 'Tạt cánh sớm hoặc đột phá đáy biên căng ngang.',
+      tempo: '1 – 2 chạm.',
+      masters: 'Trent Alexander-Arnold, Dani Alves, Kyle Walker'
+    },
+    '13': {
+      name: 'Zone 13 (Vòng Tròn Giữa Sân / Central Midfield)',
+      threat: 'Mức đe dọa: Thấp (Vùng điều phối & Tịnh tiến)',
+      desc: 'Trái tim của sân bóng, nơi diễn ra các cuộc tranh chấp quyền kiểm soát nhịp độ (Tempo) và phân phối bóng ra hai biên.',
+      action: 'Chuyền bóng đảo cánh (Switch of play), Thoát pressing, Thu hồi bóng.',
+      tempo: 'Điều tiết nhịp độ (Nhanh / Chậm tùy tình huống).',
+      masters: 'Rodri, Sergio Busquets, Toni Kroos, Luka Modrić'
+    }
+  };
+
+  function initZonesMap() {
+    const zoneCells = document.querySelectorAll('.zone-cell');
+    const quickBtns = document.querySelectorAll('.quick-btn');
+
+    const badgeEl = document.getElementById('selected-zone-badge');
+    const nameEl = document.getElementById('zone-name');
+    const threatEl = document.getElementById('zone-threat');
+    const descEl = document.getElementById('zone-desc');
+    const actionEl = document.getElementById('zone-action');
+    const tempoEl = document.getElementById('zone-tempo');
+    const mastersEl = document.getElementById('zone-masters');
+
+    function renderZone(key: string) {
+      const data = zoneDataset[key] || {
+        name: `Zone ${key} (Khu Vực Phát Động & Phòng Ngự)`,
+        threat: 'Mức đe dọa: Thấp (Khu vực kiểm soát phần sân nhà)',
+        desc: `Zone ${key} là khu vực triển khai bóng từ tuyến dưới (Build-up) và phòng thủ ngăn chặn đối phương xâm nhập.`,
+        action: 'Triển khai bóng ngắn, giữ cự ly khối phòng ngự, phất bóng dài vượt tuyến.',
+        tempo: 'Chắc chắn, hạn chế tối đa để mất bóng.',
+        masters: 'Các trung vệ và tiền vệ trụ hàng đầu thế giới.'
+      };
+
+      if (badgeEl) badgeEl.textContent = `Đang chọn: Zone ${key}`;
+      if (nameEl) nameEl.textContent = data.name;
+      if (threatEl) threatEl.textContent = data.threat;
+      if (descEl) descEl.textContent = data.desc;
+      if (actionEl) actionEl.textContent = data.action;
+      if (tempoEl) tempoEl.textContent = data.tempo;
+      if (mastersEl) mastersEl.textContent = data.masters;
+
+      zoneCells.forEach(cell => {
+        if (cell.getAttribute('data-zone') === key) {
+          cell.classList.add('active');
+        } else {
+          cell.classList.remove('active');
+        }
+      });
+
+      quickBtns.forEach(btn => {
+        if (btn.getAttribute('data-zone') === key) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    zoneCells.forEach(cell => {
+      cell.addEventListener('click', () => {
+        const zoneId = cell.getAttribute('data-zone') || '14';
+        renderZone(zoneId);
+      });
+    });
+
+    quickBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const zoneId = btn.getAttribute('data-zone') || '14';
+        renderZone(zoneId);
+      });
+    });
+
+    renderZone('14');
+  }
+
+  document.addEventListener('DOMContentLoaded', initZonesMap);
+</script>
