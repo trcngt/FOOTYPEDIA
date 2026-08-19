@@ -1,16 +1,28 @@
 ---
-title: "Tổng Quan Sơ Đồ: Hệ Thống & Cấu Trúc Biến Hình"
-description: "Phân loại 3 hệ thống phòng ngự (4 hậu vệ, 3 hậu vệ, 5 hậu vệ), phân biệt sơ đồ xuất phát với cấu trúc biến hình khi kiểm soát bóng."
+title: "Tổng Quan & Tiến Hóa Sơ Đồ Đội Hình"
+description: "Khám phá cách vận hành của các khối sơ đồ chiến thuật và tương tác chuyển đổi đội hình theo thời gian thực."
 sidebar:
   order: 0
 ---
 
+import FormationMorpher from '../../../components/FormationMorpher.astro';
+
+Bóng đá hiện đại không có một sơ đồ nào là hoàn hảo tuyệt đối. Mỗi hệ thống chiến thuật đều là sự đánh đổi có chủ đích giữa quân số phòng ngự, mật độ kiểm soát tuyến giữa và độ rộng trên hàng công.
+
+---
+
+## 🎮 Bảng Tương Tác: Chuyển Động Sơ Đồ Chiến Thuật
+
+Nhấp vào từng sơ đồ bên dưới để quan sát cách 11 cầu thủ tự động dịch chuyển vị trí và tái cấu trúc đội hình:
+
+<FormationMorpher />
+
+---
 Trong bóng đá hiện đại, một sơ đồ chiến thuật (như 4-3-3 hay 3-5-2) chỉ là **sơ đồ xuất phát trên danh nghĩa**. Khi tiếng còi khai cuộc vang lên, hình thái của đội bóng sẽ liên tục co giãn và biến hình qua từng trạng thái thi đấu.
 
 ---
 
 ## 1. Bản Đồ Tổng Hợp Các Hệ Thống Sơ Đồ Phổ Biến
-
 Toàn bộ các sơ đồ bóng đá từ cổ điển đến hiện đại được phân loại theo cấu trúc số lượng hậu vệ cơ sở:
 
 ```text

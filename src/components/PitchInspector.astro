@@ -1,0 +1,273 @@
+---
+// PitchInspector.astro
+---
+
+<div class="pitch-inspector-container">
+  <div class="inspector-header">
+    <div class="title-bar">
+      <span class="icon">📐</span>
+      <h3 id="zone-title">Khu Vực: Toàn Bộ Sân (Pitch Overview)</h3>
+    </div>
+    <p id="zone-desc" class="zone-description">
+      Nhấp hoặc di chuột vào các khu vực sáng trên sân để khám phá kích thước chuẩn FIFA và ý nghĩa chiến thuật/luật lệ.
+    </p>
+    <div class="specs-pill" id="zone-specs">
+      📏 Kích thước chuẩn quốc tế: <strong>105m x 68m</strong>
+    </div>
+  </div>
+
+  <div class="svg-wrapper">
+    <svg viewBox="0 0 1150 780" class="interactive-pitch" id="pitch-svg">
+      <!-- Nền cỏ -->
+      <rect x="0" y="0" width="1150" height="780" fill="#15803d" rx="16" />
+      
+      <!-- Viền ngoài an toàn (Run-off area) -->
+      <rect x="50" y="50" width="1050" height="680" fill="#16a34a" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="full-pitch" />
+
+      <!-- Đường cỏ sọc xen kẽ tạo hiệu ứng sân cỏ chuyên nghiệp -->
+      <g opacity="0.12" fill="#000000">
+        <rect x="50" y="50" width="105" height="680" />
+        <rect x="260" y="50" width="105" height="680" />
+        <rect x="470" y="50" width="105" height="680" />
+        <rect x="680" y="50" width="105" height="680" />
+        <rect x="890" y="50" width="105" height="680" />
+      </g>
+
+      <!-- Đường giữa sân -->
+      <line x1="575" y1="50" x2="575" y2="730" stroke="#ffffff" stroke-width="4" />
+
+      <!-- Vòng tròn trung tâm & Điểm giao bóng -->
+      <circle cx="575" cy="390" r="91.5" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="center-circle" />
+      <circle cx="575" cy="390" r="6" fill="#ffffff" class="zone-hit" data-zone="center-spot" />
+
+      <!-- KHU VỰC BÊN TRÁI -->
+      <!-- Vòng cấm địa lớn (16m50) Bên Trái -->
+      <rect x="50" y="189" width="165" height="402" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="penalty-box" />
+      <!-- Vòng cấm nhỏ (5m50) Bên Trái -->
+      <rect x="50" y="298.5" width="55" height="183" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="goal-area" />
+      <!-- Cung tròn hãm 16m50 (D-Arc) Trái -->
+      <path d="M 215 332 A 91.5 91.5 0 0 1 215 448" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="d-arc" />
+      <!-- Điểm phạt đền 11m Trái -->
+      <circle cx="160" cy="390" r="6" fill="#ffffff" class="zone-hit" data-zone="penalty-spot" />
+      <!-- Khung thành Trái -->
+      <rect x="25" y="353.4" width="25" height="73.2" fill="rgba(255,255,255,0.3)" stroke="#f8fafc" stroke-width="3" class="zone-hit" data-zone="goal-post" />
+
+      <!-- KHU VỰC BÊN PHẢI -->
+      <!-- Vòng cấm địa lớn (16m50) Bên Phải -->
+      <rect x="935" y="189" width="165" height="402" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="penalty-box" />
+      <!-- Vòng cấm nhỏ (5m50) Bên Phải -->
+      <rect x="1045" y="298.5" width="55" height="183" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="goal-area" />
+      <!-- Cung tròn hãm 16m50 (D-Arc) Phải -->
+      <path d="M 935 332 A 91.5 91.5 0 0 0 935 448" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="d-arc" />
+      <!-- Điểm phạt đền 11m Phải -->
+      <circle cx="990" cy="390" r="6" fill="#ffffff" class="zone-hit" data-zone="penalty-spot" />
+      <!-- Khung thành Phải -->
+      <rect x="1100" y="353.4" width="25" height="73.2" fill="rgba(255,255,255,0.3)" stroke="#f8fafc" stroke-width="3" class="zone-hit" data-zone="goal-post" />
+
+      <!-- 4 Cung phạt góc (Corner Arcs) -->
+      <path d="M 50 60 A 10 10 0 0 0 60 50" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="corner-arc" />
+      <path d="M 50 720 A 10 10 0 0 1 60 730" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="corner-arc" />
+      <path d="M 1100 60 A 10 10 0 0 1 1090 50" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="corner-arc" />
+      <path d="M 1100 720 A 10 10 0 0 0 1090 730" fill="transparent" stroke="#ffffff" stroke-width="4" class="zone-hit" data-zone="corner-arc" />
+    </svg>
+  </div>
+
+  <div class="quick-nav-buttons">
+    <button class="nav-btn active" data-target="full-pitch">Toàn sân</button>
+    <button class="nav-btn" data-target="penalty-box">Khu 16m50</button>
+    <button class="nav-btn" data-target="goal-area">Khu 5m50</button>
+    <button class="nav-btn" data-target="penalty-spot">Chấm 11m</button>
+    <button class="nav-btn" data-target="center-circle">Vòng tròn giữa sân</button>
+    <button class="nav-btn" data-target="goal-post">Khung thành</button>
+    <button class="nav-btn" data-target="corner-arc">Cung phạt góc</button>
+  </div>
+</div>
+
+<style>
+  .pitch-inspector-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #f8fafc;
+    margin: 2rem 0;
+  }
+  .inspector-header {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #38bdf8;
+  }
+  .title-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .title-bar h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #38bdf8;
+  }
+  .zone-description {
+    margin: 0.4rem 0 0.6rem 0;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+  .specs-pill {
+    display: inline-block;
+    background: #0f172a;
+    border: 1px solid #475569;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: #94a3b8;
+  }
+  .specs-pill strong {
+    color: #fbbf24;
+  }
+  .svg-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  }
+  .interactive-pitch {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+  }
+  .zone-hit {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .zone-hit:hover, .zone-hit.selected {
+    fill: rgba(56, 189, 248, 0.35) !important;
+    stroke: #38bdf8 !important;
+    stroke-width: 6 !important;
+  }
+  .quick-nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  .nav-btn {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-btn.active, .nav-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    border-color: #38bdf8;
+  }
+</style>
+
+<script>
+  const pitchData = {
+    'full-pitch': {
+      title: 'Toàn Bộ Mặt Sân Thi Đấu (The Field of Play)',
+      desc: 'Mặt sân hình chữ nhật với hai đường biên dọc dài hơn hai đường biên ngang. Theo chuẩn thi đấu quốc tế của FIFA/IFAB, mặt sân tiêu chuẩn bắt buộc phải là 105m x 68m.',
+      specs: 'Chiều dài: 100m - 110m (Chuẩn: 105m) | Chiều rộng: 64m - 75m (Chuẩn: 68m)'
+    },
+    'penalty-box': {
+      title: 'Khu Vực Phạt Đền 16m50 (Penalty Area)',
+      desc: 'Khu vực duy nhất thủ môn được phép chơi bóng bằng tay. Bất kỳ lỗi trực tiếp nào của đội phòng ngự trong khu vực này đều dẫn đến một quả phạt đền (Penalty 11m).',
+      specs: 'Kích thước: Kéo dài 16.5m từ mép trong mỗi cột dọc và 16.5m vào sân (Rộng 40.32m x Dài 16.5m)'
+    },
+    'goal-area': {
+      title: 'Khu Cầu Môn 5m50 (Goal Area)',
+      desc: 'Khu vực đặt bóng cho các quả phát bóng lên (Goal kick) và các quả đá phạt trực tiếp/gián tiếp của đội phòng ngự.',
+      specs: 'Kích thước: Kéo dài 5.5m từ mép trong mỗi cột dọc và 5.5m vào sân (Rộng 18.32m x Dài 5.5m)'
+    },
+    'penalty-spot': {
+      title: 'Điểm Phạt Đền (Penalty Spot)',
+      desc: 'Vị trí cố định để đặt bóng khi thực hiện quả đá phạt đền 11m. Khi thực hiện, chỉ có thủ môn và người sút bóng được đứng bên trong vòng cấm.',
+      specs: 'Khoảng cách: 11.0m (12 yards) tính từ chính giữa đường vạch vôi khung thành'
+    },
+    'center-circle': {
+      title: 'Vòng Tròn Trung Tâm (Center Circle)',
+      desc: 'Khi bắt đầu trận đấu hoặc sau khi có bàn thắng, mọi cầu thủ đối phương bắt buộc phải đứng ngoài vòng tròn này cho đến khi bóng được giao.',
+      specs: 'Bán kính: 9.15m (10 yards) tính từ điểm giao bóng trung tâm'
+    },
+    'center-spot': {
+      title: 'Điểm Giao Bóng Trung Tâm (Center Mark)',
+      desc: 'Tọa độ chính xác đặt bóng ở thời điểm bắt đầu hiệp 1, hiệp 2, hiệp phụ hoặc ngay sau khi một bàn thắng vừa được ghi.',
+      specs: 'Tọa độ: Điểm chính giữa đường thẳng chia đôi 2 nửa sân'
+    },
+    'goal-post': {
+      title: 'Khung Thành Tiêu Chuẩn (The Goals)',
+      desc: 'Bao gồm 2 cột dọc nối liền bởi 1 xà ngang màu trắng. Bàn thắng chỉ hợp lệ khi toàn bộ quả bóng đã vượt qua hoàn toàn mép sau của đường vạch vôi giữa 2 cột.',
+      specs: 'Chiều rộng: 7.32m (8 yards) | Chiều cao: 2.44m (8 feet) | Độ dày vạch vôi: 12cm'
+    },
+    'd-arc': {
+      title: 'Cung Phạt Đền / Chữ D (Penalty Arc)',
+      desc: 'Được kẻ bên ngoài vòng cấm 16m50 nhằm đảm bảo tất cả các cầu thủ khác phải đứng cách quả bóng ít nhất 9.15m khi đối phương thực hiện quả penalty.',
+      specs: 'Bán kính: 9.15m tính từ tâm là Điểm phạt đền 11m'
+    },
+    'corner-arc': {
+      title: 'Cung Phạt Góc (Corner Arc)',
+      desc: 'Quả bóng bắt buộc phải được đặt bên trong hoặc chạm vào mép của cung tròn này khi đá phạt góc. Đối phương phải đứng cách cung ít nhất 9.15m.',
+      specs: 'Bán kính: 1.0m (1 yard) tính từ chân cột cờ góc'
+    }
+  };
+
+  function initPitchInspector() {
+    const titleEl = document.getElementById('zone-title');
+    const descEl = document.getElementById('zone-desc');
+    const specsEl = document.getElementById('zone-specs');
+    const allZones = document.querySelectorAll('.zone-hit');
+    const navButtons = document.querySelectorAll('.nav-btn');
+
+    function selectZone(zoneKey) {
+      const data = pitchData[zoneKey] || pitchData['full-pitch'];
+      if (titleEl) titleEl.textContent = `Khu Vực: ${data.title}`;
+      if (descEl) descEl.textContent = data.desc;
+      if (specsEl) specsEl.innerHTML = `📏 Thông số: <strong>${data.specs}</strong>`;
+
+      allZones.forEach(el => {
+        if (el.getAttribute('data-zone') === zoneKey) {
+          el.classList.add('selected');
+        } else {
+          el.classList.remove('selected');
+        }
+      });
+
+      navButtons.forEach(btn => {
+        if (btn.getAttribute('data-target') === zoneKey) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    allZones.forEach(zone => {
+      zone.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const key = zone.getAttribute('data-zone');
+        selectZone(key);
+      });
+    });
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-target');
+        selectZone(key);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initPitchInspector);
+</script>

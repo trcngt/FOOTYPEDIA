@@ -1,0 +1,231 @@
+---
+// HandballInspector.astro
+---
+
+<div class="handball-container">
+  <div class="inspector-header">
+    <div id="handball-badge" class="badge valid">🟢 HỢP LỆ (KHÔNG TÍNH CHẠM TAY)</div>
+    <h3 id="handball-title" class="title">Vị Trí: Vai (Shoulder)</h3>
+    <p id="handball-desc" class="desc">
+      Nhấp vào các khớp/vị trí trên cánh tay dưới đây để xem ranh giới "T-shirt line" (mép nách áo) theo chuẩn IFAB.
+    </p>
+  </div>
+
+  <div class="visual-wrapper">
+    <svg viewBox="0 0 400 420" class="arm-svg" id="arm-svg">
+      <!-- Cơ thể & Cổ minh họa -->
+      <path d="M 80 400 L 80 180 Q 110 120 160 120 L 200 120 Q 250 120 280 180 L 280 400 Z" fill="#334155" opacity="0.4" />
+      <circle cx="200" cy="80" r="40" fill="#475569" />
+
+      <!-- Vùng Vai (Hợp lệ) -->
+      <path d="M 80 180 Q 90 140 140 140 L 140 200 Q 80 200 80 180 Z" 
+            class="body-zone zone-safe selected" data-zone="shoulder" />
+
+      <!-- Vùng Bắp tay trên (Phần nách áo - Hợp lệ) -->
+      <rect x="70" y="200" width="60" height="40" rx="6" 
+            class="body-zone zone-safe" data-zone="upper-arm" />
+
+      <!-- ĐƯỜNG RANH GIỚI T-SHIRT LINE (Đáy nách áo) -->
+      <line x1="50" y1="240" x2="150" y2="240" stroke="#f59e0b" stroke-width="4" stroke-dasharray="6,4" />
+      <text x="160" y="245" fill="#f59e0b" font-size="13" font-weight="bold">← Ranh giới Nách Áo (T-Shirt Line)</text>
+
+      <!-- Vùng Bắp tay dưới (Lỗi) -->
+      <rect x="70" y="245" width="58" height="50" rx="6" 
+            class="body-zone zone-foul" data-zone="lower-arm" />
+
+      <!-- Vùng Cẳng tay (Lỗi) -->
+      <rect x="68" y="300" width="54" height="60" rx="6" 
+            class="body-zone zone-foul" data-zone="forearm" />
+
+      <!-- Bàn tay (Lỗi) -->
+      <path d="M 65 365 Q 65 410 95 410 Q 120 410 120 365 Z" 
+            class="body-zone zone-foul" data-zone="hand" />
+
+      <!-- Nhãn hướng dẫn -->
+      <text x="35" y="165" fill="#a7f3d0" font-size="12" font-weight="bold">VAI</text>
+      <text x="25" y="225" fill="#a7f3d0" font-size="12" font-weight="bold">BẮP TRÊN</text>
+      <text x="15" y="275" fill="#fca5a5" font-size="12" font-weight="bold">BẮP DƯỚI</text>
+      <text x="12" y="335" fill="#fca5a5" font-size="12" font-weight="bold">CẲNG TAY</text>
+      <text x="15" y="390" fill="#fca5a5" font-size="12" font-weight="bold">BÀN TAY</text>
+    </svg>
+  </div>
+
+  <div class="arm-buttons">
+    <button class="arm-btn active" data-zone="shoulder">1. Khớp Vai</button>
+    <button class="arm-btn" data-zone="upper-arm">2. Bắp tay trên (Ngang nách)</button>
+    <button class="arm-btn" data-zone="lower-arm">3. Bắp tay dưới (Dưới nách)</button>
+    <button class="arm-btn" data-zone="forearm">4. Cẳng tay</button>
+    <button class="arm-btn" data-zone="hand">5. Bàn tay</button>
+  </div>
+</div>
+
+<style>
+  .handball-container {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #fff;
+    margin: 2rem 0;
+  }
+  .inspector-header {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+  .badge.valid { background: #16a34a; color: #fff; }
+  .badge.foul { background: #dc2626; color: #fff; }
+  .title {
+    margin: 0.2rem 0;
+    font-size: 1.2rem;
+    color: #38bdf8;
+  }
+  .desc {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin-top: 0.4rem;
+    line-height: 1.5;
+  }
+  .visual-wrapper {
+    display: flex;
+    justify-content: center;
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .arm-svg {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+  .body-zone {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .zone-safe { fill: #059669; }
+  .zone-safe:hover, .zone-safe.selected { fill: #10b981; stroke: #34d399; stroke-width: 3; }
+  .zone-foul { fill: #b91c1c; }
+  .zone-foul:hover, .zone-foul.selected { fill: #ef4444; stroke: #f87171; stroke-width: 3; }
+
+  .arm-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    justify-content: center;
+  }
+  .arm-btn {
+    background: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    padding: 0.45rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .arm-btn.active, .arm-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    border-color: #38bdf8;
+  }
+</style>
+
+<script>
+  const zoneRules = {
+    'shoulder': {
+      title: 'Khớp Vai (Shoulder)',
+      isFoul: false,
+      desc: 'Theo luật IFAB, phần vai được tính là một phần của thân mình. Bóng chạm vào vùng này hoàn toàn HỢP LỆ và có thể dùng để chuyền hoặc ghi bàn.'
+    },
+    'upper-arm': {
+      title: 'Bắp Tay Trên (Ngang / Trên Mép Nách Áo)',
+      isFoul: false,
+      desc: 'Quy tắc T-Shirt Line: Phần cánh tay từ mép dưới nách áo trở lên phía vai KHÔNG BỊ COI là bóng chạm tay. Tình huống này hợp lệ.'
+    },
+    'lower-arm': {
+      title: 'Bắp Tay Dưới (Nằm Dưới Đáy Nách Áo)',
+      isFoul: true,
+      desc: 'Đã vượt qua ranh giới T-shirt line. Bất kỳ va chạm nào của bóng từ điểm này trở xuống đều được tính là LỖI CHẠM TAY (Handball).'
+    },
+    'forearm': {
+      title: 'Cẳng Tay (Forearm)',
+      isFoul: true,
+      desc: 'Phạm vi cánh tay dưới. Nếu cầu thủ để bóng chạm cẳng tay trong tư thế cơ thể phình to bất thường hoặc cố ý, trọng tài sẽ thổi phạt trực tiếp / penalty.'
+    },
+    'hand': {
+      title: 'Bàn Tay & Ngón Tay (Hand & Fingers)',
+      isFoul: true,
+      desc: 'Khu vực cấm tuyệt đối (ngoại trừ thủ môn trong vòng cấm 16m50). Mọi hành vi dùng bàn tay chơi bóng đều cấu thành lỗi chạm tay rõ ràng.'
+    }
+  };
+
+  function initHandballInspector() {
+    const badge = document.getElementById('handball-badge');
+    const title = document.getElementById('handball-title');
+    const desc = document.getElementById('handball-desc');
+    const zones = document.querySelectorAll('.body-zone');
+    const btns = document.querySelectorAll('.arm-btn');
+
+    function selectArmZone(key) {
+      const data = zoneRules[key];
+      if (!data) return;
+
+      if (title) title.textContent = `Vị Trí: ${data.title}`;
+      if (desc) desc.textContent = data.desc;
+
+      if (badge) {
+        if (data.isFoul) {
+          badge.className = 'badge foul';
+          badge.textContent = '❌ LỖI CHẠM TAY (HANDBALL)';
+        } else {
+          badge.className = 'badge valid';
+          badge.textContent = '🟢 HỢP LỆ (KHÔNG TÍNH CHẠM TAY)';
+        }
+      }
+
+      zones.forEach(z => {
+        if (z.getAttribute('data-zone') === key) {
+          z.classList.add('selected');
+        } else {
+          z.classList.remove('selected');
+        }
+      });
+
+      btns.forEach(b => {
+        if (b.getAttribute('data-zone') === key) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
+
+    zones.forEach(z => {
+      z.addEventListener('click', () => {
+        const key = z.getAttribute('data-zone');
+        selectArmZone(key);
+      });
+    });
+
+    btns.forEach(b => {
+      b.addEventListener('click', () => {
+        const key = b.getAttribute('data-zone');
+        selectArmZone(key);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initHandballInspector);
+</script>
